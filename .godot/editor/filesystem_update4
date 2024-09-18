@@ -1,0 +1,4 @@
+res://scenes/main_scene.tscn
+res://scenes/sprite_2d.gd
+res://scenes/enemy.tscn
+res://scenes/enemy.gd
