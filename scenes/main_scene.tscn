@@ -1,18 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cptdneovd2ovh"]
+[gd_scene load_steps=2 format=3 uid="uid://cptdneovd2ovh"]
 
-[ext_resource type="Texture2D" uid="uid://bqw5xa4q18ak2" path="res://icon.svg" id="1_u0c4k"]
-[ext_resource type="Script" path="res://scenes/sprite_2d.gd" id="2_an2cx"]
-[ext_resource type="PackedScene" uid="uid://bjm5awditly3x" path="res://scenes/enemy.tscn" id="2_hyskm"]
+[ext_resource type="PackedScene" uid="uid://b3yoi5ia0ewu2" path="res://scenes/player.tscn" id="3_dbpv6"]
 
 [node name="MainScene" type="Node2D"]
-script = ExtResource("2_an2cx")
-image = ExtResource("2_hyskm")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(602, 602)
-texture = ExtResource("1_u0c4k")
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="Player" parent="." groups=["player"] instance=ExtResource("3_dbpv6")]
+position = Vector2(610, 595)

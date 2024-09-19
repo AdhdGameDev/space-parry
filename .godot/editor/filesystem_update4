@@ -1,4 +1,7 @@
-res://scenes/main_scene.tscn
-res://scenes/sprite_2d.gd
-res://scenes/enemy.tscn
+res://scenes/basic_projectile.tscn
 res://scenes/enemy.gd
+res://scenes/basic_projectile.gd
+res://scenes/enemy.tscn
+res://scenes/main_scene.tscn
+res://scenes/player.tscn
+res://scenes/player.gd
