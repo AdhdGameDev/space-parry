@@ -1,17 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjm5awditly3x"]
+[gd_scene load_steps=6 format=3 uid="uid://bjm5awditly3x"]
 
 [ext_resource type="Script" path="res://scenes/enemy.gd" id="1_bsnem"]
 [ext_resource type="Texture2D" uid="uid://bqw5xa4q18ak2" path="res://icon.svg" id="1_wrhkj"]
 [ext_resource type="PackedScene" uid="uid://cpg7fworn2gp3" path="res://scenes/basic_projectile.tscn" id="2_m77s2"]
+[ext_resource type="PackedScene" uid="uid://c8w0dawifubjw" path="res://scenes/gpu_particles_2d.tscn" id="3_7ro81"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5qbt"]
-size = Vector2(127, 141.5)
+size = Vector2(59, 53)
 
-[node name="Enemy" type="Area2D"]
+[node name="Enemy" type="Area2D" groups=["enemy"]]
 script = ExtResource("1_bsnem")
 projectile = ExtResource("2_m77s2")
+explosion_particle = ExtResource("3_7ro81")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1.5)
 shape = SubResource("RectangleShape2D_x5qbt")
 metadata/_edit_group_ = true
 
@@ -27,5 +30,6 @@ autostart = true
 wait_time = 10.0
 one_shot = true
 
+[connection signal="area_entered" from="." to="." method="_on_enemy_hit"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="LiveTimer" to="." method="_on_live_timer_timeout"]

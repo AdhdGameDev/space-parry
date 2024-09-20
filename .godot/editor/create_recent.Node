@@ -1,5 +1,13 @@
-AnimatedSprite2D
+AudioStreamPlayer
 Sprite2D
-Timer
 CollisionShape2D
 Area2D
+GPUParticles2D
+WorldEnvironment
+Label
+MarginContainer
+HBoxContainer
+CanvasLayer
+Timer
+Node2D
+AnimatedSprite2D

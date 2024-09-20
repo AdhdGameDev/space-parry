@@ -1,48 +1,21 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3yoi5ia0ewu2"]
+[gd_scene load_steps=8 format=3 uid="uid://b3yoi5ia0ewu2"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_vorp1"]
 [ext_resource type="PackedScene" uid="uid://bjm5awditly3x" path="res://scenes/enemy.tscn" id="2_o7w06"]
+[ext_resource type="PackedScene" uid="uid://dsdome0t6utyc" path="res://scenes/player_laser.tscn" id="3_2kcdo"]
 [ext_resource type="Texture2D" uid="uid://drypebh6u88v2" path="res://assets/spaceShips_005.png" id="3_7yqc1"]
-[ext_resource type="Texture2D" uid="uid://cajfqfj3t1u6h" path="res://assets/atlas_17.png" id="4_1i2qr"]
+[ext_resource type="AudioStream" uid="uid://b5x0jb5wimtmt" path="res://assets/sfx_laser1.ogg" id="5_cek4k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sykmj"]
 radius = 71.5542
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jd2sv"]
-size = Vector2(153, 31)
+size = Vector2(217, 71.5)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x6q31"]
-atlas = ExtResource("4_1i2qr")
-region = Rect2(0, 0, 1024, 682)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_flnf3"]
-atlas = ExtResource("4_1i2qr")
-region = Rect2(0, 682, 1024, 682)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6rxpn"]
-atlas = ExtResource("4_1i2qr")
-region = Rect2(0, 1364, 1024, 682)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_cpeaj"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x6q31")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_flnf3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6rxpn")
-}],
-"loop": true,
-"name": &"deflect",
-"speed": 10.0
-}]
-
-[node name="Player" type="Area2D"]
+[node name="Player" type="Area2D" groups=["player"]]
 script = ExtResource("1_vorp1")
 enemy = ExtResource("2_o7w06")
+laser = ExtResource("3_2kcdo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)
@@ -59,14 +32,13 @@ autostart = true
 [node name="DeflectArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeflectArea"]
-position = Vector2(0, -88)
+position = Vector2(2.5, -108.25)
 shape = SubResource("RectangleShape2D_jd2sv")
 
-[node name="deflect_animation" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1.00001, -102)
-scale = Vector2(0.1, 0.183)
-sprite_frames = SubResource("SpriteFrames_cpeaj")
-animation = &"deflect"
-frame_progress = 0.358566
+[node name="DeflectTimerBuffer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_cek4k")
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

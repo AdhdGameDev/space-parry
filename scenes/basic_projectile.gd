@@ -2,8 +2,10 @@ extends Area2D
 
 class_name BasicProjectile
 # Speed of the projectile
-var speed = 100
+var speed = 250
 var velocity = Vector2.ZERO
+
+var reflected: bool = false
 
 # Reference to the player (target)
 var target_position = Vector2.ZERO
@@ -22,6 +24,6 @@ func _physics_process(delta):
 
 
 func _on_player_ara_entered(area: Area2D) -> void:
-	if area.is_in_group("player") :
+	if area.is_in_group("player"):
 		queue_free()
 	

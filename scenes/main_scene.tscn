@@ -1,8 +1,40 @@
-[gd_scene load_steps=2 format=3 uid="uid://cptdneovd2ovh"]
+[gd_scene load_steps=7 format=3 uid="uid://cptdneovd2ovh"]
 
+[ext_resource type="Script" path="res://scenes/main_scene.gd" id="1_crt0v"]
+[ext_resource type="Texture2D" uid="uid://ddcgpdfhpuft1" path="res://assets/craiyon_141502_space_background_2d_cartoon.png" id="2_mdbi6"]
+[ext_resource type="PackedScene" uid="uid://wfnpdlgrmtni" path="res://scenes/ui.tscn" id="3_22107"]
 [ext_resource type="PackedScene" uid="uid://b3yoi5ia0ewu2" path="res://scenes/player.tscn" id="3_dbpv6"]
+[ext_resource type="AudioStream" uid="uid://cg5e0yq4td0gb" path="res://assets/chip-mode-danijel-zambo-main-version-1431-02-05.mp3" id="5_b6u0h"]
+
+[sub_resource type="Environment" id="Environment_a5hil"]
+background_mode = 3
+glow_enabled = true
+glow_levels/4 = 1.44
+glow_levels/5 = 0.0
+glow_blend_mode = 1
+glow_hdr_threshold = 0.1
+adjustment_enabled = true
+adjustment_contrast = 1.2
+adjustment_saturation = 1.6
 
 [node name="MainScene" type="Node2D"]
+script = ExtResource("1_crt0v")
 
-[node name="Player" parent="." groups=["player"] instance=ExtResource("3_dbpv6")]
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(575, 584.512)
+scale = Vector2(1.92578, 1.89748)
+texture = ExtResource("2_mdbi6")
+
+[node name="Player" parent="." instance=ExtResource("3_dbpv6")]
 position = Vector2(610, 595)
+
+[node name="Control" parent="." instance=ExtResource("3_22107")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_a5hil")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_b6u0h")
+autoplay = true
+
+[connection signal="area_entered" from="Player" to="." method="_on_enemy_hit"]

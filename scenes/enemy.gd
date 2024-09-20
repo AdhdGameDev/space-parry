@@ -3,10 +3,11 @@ extends Area2D
 class_name Enemy
 
 @export var projectile: PackedScene
+@export var explosion_particle: PackedScene
 
 var center_position: Vector2
 var current_angle: float
-var rotation_speed: float = 0.4
+@export var rotation_speed: float = 0.4
 var direction: int = 1
 
 var change_direction: bool = false
@@ -41,8 +42,29 @@ func spawn_projectile() -> void:
 	var spawned_projectile: BasicProjectile = projectile.instantiate()
 	get_tree().root.add_child(spawned_projectile)  # Add it to the scene root, not as a child of Enemy
 	spawned_projectile.global_position = self.global_position
+	spawned_projectile.add_to_group("projectile")
 	spawned_projectile.set_target(center_position)
 
 
 func _on_live_timer_timeout() -> void:
 	queue_free()
+
+					
+func _on_enemy_hit(area: Area2D) -> void:
+	if area.is_in_group("projectile"):
+		print("yep")
+		var current_projectile: BasicProjectile = area as BasicProjectile
+		if current_projectile.reflected:
+			SignalBus.enemy_destroyed.emit(10)
+			explode()
+			queue_free()  # Enemy is hit by a reflected projectile
+			current_projectile.queue_free()  # Optionally remove the projectile		
+			
+func explode() -> void:
+	var explosion = explosion_particle.instantiate()
+	explosion.global_position = self.global_position
+	get_tree().root.add_child(explosion)  # Add it to the scene root, not as a child of Enemy
+	explosion.emitting = true
+	
+
+				
