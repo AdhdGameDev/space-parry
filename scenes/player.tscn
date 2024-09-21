@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3yoi5ia0ewu2"]
+[gd_scene load_steps=9 format=3 uid="uid://b3yoi5ia0ewu2"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_vorp1"]
 [ext_resource type="PackedScene" uid="uid://bjm5awditly3x" path="res://scenes/enemy.tscn" id="2_o7w06"]
 [ext_resource type="PackedScene" uid="uid://dsdome0t6utyc" path="res://scenes/player_laser.tscn" id="3_2kcdo"]
 [ext_resource type="Texture2D" uid="uid://drypebh6u88v2" path="res://assets/spaceShips_005.png" id="3_7yqc1"]
 [ext_resource type="AudioStream" uid="uid://b5x0jb5wimtmt" path="res://assets/sfx_laser1.ogg" id="5_cek4k"]
+[ext_resource type="Texture2D" uid="uid://bowshtjedddr1" path="res://assets/PNG/Effects/shield3.png" id="6_2k78k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sykmj"]
 radius = 71.5542
@@ -41,4 +42,14 @@ wait_time = 0.5
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_cek4k")
 
+[node name="LaserCooldownTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(2, -87)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("6_2k78k")
+
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
+[connection signal="timeout" from="LaserCooldownTimer" to="." method="_on_laser_cooldown_timer_timeout"]

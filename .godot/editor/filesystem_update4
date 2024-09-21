@@ -12,3 +12,7 @@ res://scenes/ui.gd
 res://scenes/gpu_particles_2d.tscn
 res://scenes/player_laser.tscn
 res://scenes/player_laser.gd
+res://scenes/main_menu.tscn
+res://assets/fonts/new_label_settings.tres
+res://scenes/main_menu.gd
+res://scenes/game_scene.tscn

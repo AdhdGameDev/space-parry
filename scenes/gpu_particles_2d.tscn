@@ -15,7 +15,7 @@ point_count = 4
 curve = SubResource("Curve_n2fcs")
 
 [sub_resource type="Curve" id="Curve_0nhuj"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.773333, 0.142857), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.726667, 0.21978), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_5ewg3"]
@@ -24,9 +24,11 @@ curve = SubResource("Curve_0nhuj")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_13oxb"]
 lifetime_randomness = 0.5
 particle_flag_disable_z = true
+angle_min = -31.0
+angle_max = 469.4
 spread = 180.0
-angular_velocity_min = -329.31
-angular_velocity_max = 15.48
+angular_velocity_min = -298.34
+angular_velocity_max = 193.55
 orbit_velocity_min = 9.49949e-08
 orbit_velocity_max = 9.49949e-08
 orbit_velocity_curve = SubResource("CurveTexture_eviil")
@@ -34,17 +36,29 @@ radial_velocity_min = -43.01
 radial_velocity_max = 247.32
 radial_velocity_curve = SubResource("CurveTexture_xtuwy")
 gravity = Vector3(0, 0, 0)
+linear_accel_min = -53.67
+linear_accel_max = 35.95
+radial_accel_min = -11.83
+radial_accel_max = 11.83
 scale_min = 20.0
 scale_max = 20.0
 scale_curve = SubResource("CurveTexture_5ewg3")
+scale_over_velocity_min = 10.75
+scale_over_velocity_max = 290.32
+anim_speed_min = 1.38
+anim_speed_max = 4.22
+anim_offset_min = 0.2043
+anim_offset_max = 0.2043
 
 [node name="Explosion" type="GPUParticles2D"]
 modulate = Color(0.958909, 0.588704, 0.357349, 0.901961)
 scale = Vector2(2, 2)
 emitting = false
-amount = 50
+amount = 75
 process_material = SubResource("ParticleProcessMaterial_13oxb")
+lifetime = 1.5
 one_shot = true
-speed_scale = 0.65
+speed_scale = 2.0
 explosiveness = 1.0
-randomness = 0.49
+randomness = 0.65
+trail_lifetime = 0.59

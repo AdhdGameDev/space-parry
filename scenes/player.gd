@@ -9,9 +9,17 @@ class_name Player
 @onready var enemy_spawn_timer: Timer = $EnemySpawnTimer
 @onready var deflect_area: Area2D = $DeflectArea
 @onready var deflect_timer_buffer: Timer = $DeflectTimerBuffer
+@onready var laser_cooldown_timer: Timer = $LaserCooldownTimer
+
+@export var enemy_max_count: int = 5
+var current_enemy_count: int = 0
+
+
+var can_laser: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	SignalBus.enemy_destroyed.connect(enemy_destroyed)
 	enemy_spawn_timer.start()
 
 
@@ -28,12 +36,16 @@ func _process(delta: float) -> void:
 		deflect_timer_buffer.start()
 		try_to_deflect()
 	if Input.is_action_just_pressed("LaserFirePlayer"):
-		open_fire(player_image.rotation)
+		if can_laser:
+			open_fire(player_image.rotation)
+			
+func enemy_destroyed(points: int) -> void:
+	current_enemy_count = current_enemy_count - 1
 	
 func try_to_deflect() -> void:
 	if deflect_timer_buffer.time_left > 0:
 		for projectile in deflect_area.get_overlapping_areas():
-			if !projectile.is_in_group("player"):
+			if !projectile.is_in_group("player") and !projectile.is_in_group("laser"):
 				var current_projectile: BasicProjectile = projectile
 				current_projectile.reflected = true
 				deflect_area.modulate = Color.BLACK
@@ -41,6 +53,8 @@ func try_to_deflect() -> void:
 				current_projectile.velocity = new_velocity
 		
 func open_fire(rotation: float) -> void:
+	laser_cooldown_timer.start()
+	can_laser = !can_laser
 	var laser_instance = laser.instantiate()
 	var forward_offset = Vector2(0, -40).rotated(player_image.rotation)  
 	laser_instance.global_position = player_image.position + forward_offset
@@ -56,24 +70,29 @@ func open_fire(rotation: float) -> void:
 	$AudioStreamPlayer.play()
 
 func _on_enemy_spawn_timer_timeout() -> void:
-	var player_position = player_image.global_position
+	if enemy_max_count > current_enemy_count:
+		var player_position = player_image.global_position
 		# Generate a random angle in radians
-	var random_angle = randf() * TAU  # TAU is 2 * PI (full circle)
+		var random_angle = randf() * TAU  # TAU is 2 * PI (full circle)
 
 		# Calculate the position on the circle
-	var spawn_x = player_position.x + 500 * cos(random_angle)
-	var spawn_y = player_position.y + 500 * sin(random_angle)
+		var spawn_x = player_position.x + 500 * cos(random_angle)
+		var spawn_y = player_position.y + 500 * sin(random_angle)
 
-	var spawn_position = Vector2(spawn_x, spawn_y)
+		var spawn_position = Vector2(spawn_x, spawn_y)
 
 		# Instance the enemy and set its position
-	var enemy_instance: Enemy = enemy.instantiate()
-	enemy_instance.global_position = spawn_position
-	enemy_instance.center_position = player_position
-	enemy_instance.current_angle = random_angle
+		var enemy_instance: Enemy = enemy.instantiate()
+		enemy_instance.global_position = spawn_position
+		enemy_instance.center_position = player_position
+		enemy_instance.current_angle = random_angle
 
 		# Add the enemy to the scene
-	add_child(enemy_instance)
+		add_child(enemy_instance)
 	
+		current_enemy_count = current_enemy_count + 1
 	
-	
+
+
+func _on_laser_cooldown_timer_timeout() -> void:
+	can_laser = !can_laser

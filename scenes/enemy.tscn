@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://bjm5awditly3x"]
 
 [ext_resource type="Script" path="res://scenes/enemy.gd" id="1_bsnem"]
-[ext_resource type="Texture2D" uid="uid://bqw5xa4q18ak2" path="res://icon.svg" id="1_wrhkj"]
 [ext_resource type="PackedScene" uid="uid://cpg7fworn2gp3" path="res://scenes/basic_projectile.tscn" id="2_m77s2"]
 [ext_resource type="PackedScene" uid="uid://c8w0dawifubjw" path="res://scenes/gpu_particles_2d.tscn" id="3_7ro81"]
+[ext_resource type="Texture2D" uid="uid://c0rbtjrpwecmp" path="res://assets/PNG/Enemies/enemyRed1.png" id="4_cq5wm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5qbt"]
 size = Vector2(59, 53)
@@ -20,16 +20,11 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_wrhkj")
+texture = ExtResource("4_cq5wm")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
 
-[node name="LiveTimer" type="Timer" parent="."]
-wait_time = 10.0
-one_shot = true
-
 [connection signal="area_entered" from="." to="." method="_on_enemy_hit"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="LiveTimer" to="." method="_on_live_timer_timeout"]
