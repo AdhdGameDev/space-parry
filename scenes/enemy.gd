@@ -62,7 +62,6 @@ func spawn_projectile() -> void:
 					
 func _on_enemy_hit(area: Area2D) -> void:
 	if area.is_in_group("projectile"):
-		print("yep")
 		var current_projectile: BasicProjectile = area as BasicProjectile
 		if current_projectile.reflected:
 			SignalBus.enemy_destroyed.emit(10)
@@ -71,7 +70,6 @@ func _on_enemy_hit(area: Area2D) -> void:
 			current_projectile.queue_free()  # Optionally remove the projectile		
 	if area.is_in_group("laser"):
 		SignalBus.enemy_destroyed.emit(10)
-		var current_projectile: BasicProjectile = area as BasicProjectile
 		queue_free()
 		explode()
 	if area.is_in_group("enemy"):

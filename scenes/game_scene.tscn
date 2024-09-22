@@ -19,6 +19,8 @@ adjustment_saturation = 1.6
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_ddm13")
+radius = null
+circle_color = null
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_a5hil")

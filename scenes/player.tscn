@@ -1,30 +1,103 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3yoi5ia0ewu2"]
+[gd_scene load_steps=17 format=3 uid="uid://b3yoi5ia0ewu2"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_vorp1"]
 [ext_resource type="PackedScene" uid="uid://bjm5awditly3x" path="res://scenes/enemy.tscn" id="2_o7w06"]
 [ext_resource type="PackedScene" uid="uid://dsdome0t6utyc" path="res://scenes/player_laser.tscn" id="3_2kcdo"]
 [ext_resource type="Texture2D" uid="uid://drypebh6u88v2" path="res://assets/spaceShips_005.png" id="3_7yqc1"]
+[ext_resource type="PackedScene" uid="uid://b7p1kpvpvjril" path="res://shield_explosion.tscn" id="4_38wwn"]
 [ext_resource type="AudioStream" uid="uid://b5x0jb5wimtmt" path="res://assets/sfx_laser1.ogg" id="5_cek4k"]
-[ext_resource type="Texture2D" uid="uid://bowshtjedddr1" path="res://assets/PNG/Effects/shield3.png" id="6_2k78k"]
+[ext_resource type="Script" path="res://scenes/camera_2d.gd" id="7_gsn5i"]
+[ext_resource type="Texture2D" uid="uid://driu487wo6y4m" path="res://assets/PNG/spr_shield.png" id="7_up5bv"]
+[ext_resource type="Texture2D" uid="uid://1wavn0sjaoab" path="res://assets/PNG/Power-ups/powerupBlue.png" id="9_o8y4b"]
+[ext_resource type="Texture2D" uid="uid://cm7n4uyq81waj" path="res://assets/PNG/Power-ups/powerupBlue_shield.png" id="10_ekclw"]
+[ext_resource type="Texture2D" uid="uid://dvbmo17mkmomj" path="res://assets/PNG/Lasers/laserBlue01.png" id="11_qcgtc"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sykmj"]
-radius = 71.5542
+[sub_resource type="CircleShape2D" id="CircleShape2D_vdhl3"]
+radius = 43.6807
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jd2sv"]
 size = Vector2(217, 71.5)
+
+[sub_resource type="Animation" id="Animation_s0ocm"]
+resource_name = "overcharge"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.566667, 0.866667, 1.16667, 1.53333, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.3, 0.3), Vector2(0.4, 0.4), Vector2(0.3, 0.3), Vector2(0.4, 0.4), Vector2(0.3, 0.3), Vector2(0.4, 0.4), Vector2(0.4, 0.4)]
+}
+
+[sub_resource type="Animation" id="Animation_1nhbr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.3, 0.3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o3dj8"]
+_data = {
+"RESET": SubResource("Animation_1nhbr"),
+"overcharge": SubResource("Animation_s0ocm")
+}
 
 [node name="Player" type="Area2D" groups=["player"]]
 script = ExtResource("1_vorp1")
 enemy = ExtResource("2_o7w06")
 laser = ExtResource("3_2kcdo")
+shield_explosion = ExtResource("4_38wwn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="ShipCollision" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)
-shape = SubResource("CircleShape2D_sykmj")
+shape = SubResource("CircleShape2D_vdhl3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["player"]]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_7yqc1")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]
+visible = false
+position = Vector2(0, 20)
+scale = Vector2(1.86275, 1.76768)
+texture = ExtResource("9_o8y4b")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprite2D"]
+visible = false
+position = Vector2(-66.6667, -103.333)
+scale = Vector2(1, 0.946667)
+texture = ExtResource("10_ekclw")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Sprite2D"]
+visible = false
+position = Vector2(-66.6667, -133.333)
+scale = Vector2(1, 0.946667)
+texture = ExtResource("11_qcgtc")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Sprite2D"]
+visible = false
+position = Vector2(66.6667, -130)
+scale = Vector2(1, 0.946667)
+texture = ExtResource("11_qcgtc")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Sprite2D"]
+visible = false
+position = Vector2(66.6667, -103.333)
+scale = Vector2(1, 0.946667)
+texture = ExtResource("10_ekclw")
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 wait_time = 3.0
@@ -32,7 +105,7 @@ autostart = true
 
 [node name="DeflectArea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DeflectArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeflectArea" groups=["player"]]
 position = Vector2(2.5, -108.25)
 shape = SubResource("RectangleShape2D_jd2sv")
 
@@ -43,13 +116,32 @@ wait_time = 0.5
 stream = ExtResource("5_cek4k")
 
 [node name="LaserCooldownTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 1.5
 one_shot = true
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(2, -87)
-scale = Vector2(1.3, 1.3)
-texture = ExtResource("6_2k78k")
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("7_gsn5i")
 
+[node name="Shield" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.298)
+texture = ExtResource("7_up5bv")
+
+[node name="ShieldTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="ShieldCooldownTimer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o3dj8")
+}
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="LaserCooldownTimer" to="." method="_on_laser_cooldown_timer_timeout"]
+[connection signal="timeout" from="ShieldTimer" to="." method="_on_shield_end"]
+[connection signal="timeout" from="ShieldCooldownTimer" to="." method="_on_shield_cooldown_passed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
