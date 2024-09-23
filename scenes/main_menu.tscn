@@ -1,9 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://digu0geow8wmw"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_3175k"]
-[ext_resource type="Texture2D" uid="uid://b7p4fq4jvb6hh" path="res://assets/Backgrounds/purple.png" id="1_ex14y"]
 [ext_resource type="LabelSettings" uid="uid://cjlptd0a1wqyj" path="res://assets/fonts/new_label_settings.tres" id="2_si1pi"]
 [ext_resource type="FontFile" uid="uid://bpo08sdyanq62" path="res://assets/Bonus/kenvector_future.ttf" id="3_si4ws"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cdmw3"]
+load_path = "res://.godot/imported/purple.png-52c0cdc1e489e32101e2b2181245fb84.ctex"
 
 [sub_resource type="LabelSettings" id="LabelSettings_fejfb"]
 font = ExtResource("3_si4ws")
@@ -48,7 +50,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ex14y")
+texture = SubResource("CompressedTexture2D_cdmw3")
 expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

@@ -1,9 +1,11 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1727019051
+::res://::1727114774
+elite_enemy.gd::GDScript::-1::1727107006::0::1::::<>BasicEnemy<>::
+elite_enemy.tscn::PackedScene::2694457749614612828::1727114722::0::1::::<><>::res://elite_enemy.gd<>uid://h1yu104a5hd1::::res://scenes/elite_projectile.tscn<>uid://hxh87mlsystq::::res://assets/PNG/Effects/fire14.png<>uid://c8w0dawifubjw::::res://scenes/gpu_particles_2d.tscn<>uid://bt7sjrlrgndwa::::res://assets/recent/Enemies/Kla'ed/Base/PNGs/Kla'ed - Bomber - Base.png
 icon.svg::CompressedTexture2D::3556721121096077783::1726671702::1726671707::1::::<><>::
 shield_explosion.gd::GDScript::-1::1727016436::0::1::::<>AnimatedSprite2D<>::
 shield_explosion.tscn::PackedScene::4665026667173123991::1727016436::0::1::::<><>::uid://df0wfpepa4eae::::res://assets/recent/hit - yellow.png<>res://shield_explosion.gd
-::res://assets/::1727010740
+::res://assets/::1727112523
 atlas_17.png::CompressedTexture2D::4791753202657669557::1726766257::1726766258::1::::<><>::
 chip-mode-danijel-zambo-main-version-1431-02-05.mp3::AudioStreamMP3::5256194561275316761::1726853922::1726853922::1::::<><>::
 craiyon_141502_space_background_2d_cartoon.png::CompressedTexture2D::7374348591999650148::1726853878::1726830954::1::::<><>::
@@ -16,11 +18,6 @@ shield3.png::CompressedTexture2D::2924126924408388982::1726850672::1726765929::1
 spaceShips_005.png::CompressedTexture2D::8402935421863946705::1726765292::1726765292::1::::<><>::
 spaceStation_026.png::CompressedTexture2D::6880384778893918130::1726765195::1726765196::1::::<><>::
 spr_shield.png::CompressedTexture2D::1913862257058713737::1727010739::1727010740::1::::<><>::
-::res://assets/Backgrounds/::1726915818
-black.png::CompressedTexture2D::4045185679121019921::1726915809::1726915818::1::::<><>::
-blue.png::CompressedTexture2D::4004109504954524166::1726915809::1726915818::1::::<><>::
-darkPurple.png::CompressedTexture2D::5918529059241312638::1726915809::1726915818::1::::<><>::
-purple.png::CompressedTexture2D::4665199953790773545::1726915809::1726915818::1::::<><>::
 ::res://assets/Bonus/::1726915817
 kenvector_future.ttf::FontFile::3469732433984143393::1726915809::1726915817::1::::<><>::
 kenvector_future_thin.ttf::FontFile::1698788965660676216::1726915809::1726915817::1::::<><>::
@@ -337,31 +334,168 @@ playerLife3_blue.png::CompressedTexture2D::312646927379101503::1726915813::17269
 playerLife3_green.png::CompressedTexture2D::9096330157790803703::1726915813::1726915817::1::::<><>::
 playerLife3_orange.png::CompressedTexture2D::7288241472245552728::1726915813::1726915817::1::::<><>::
 playerLife3_red.png::CompressedTexture2D::4041636053900169037::1726915813::1726915817::1::::<><>::
-::res://assets/recent/::1727011891
+::res://assets/recent/::1727114774
 hit - yellow.png::CompressedTexture2D::7563161210643491804::1727011887::1727011891::1::::<><>::
+::res://assets/recent/Enemies/::1727114723
+Kla'ed - Ships Preview.png::CompressedTexture2D::8749141991642563193::1727112550::1727114723::1::::<><>::
+Readme.txt::TextFile::-1::1727112550::0::1::::<><>::
+::res://assets/recent/Enemies/_Previews/::1727112552
+::res://assets/recent/Enemies/_Previews/Kla'ed/::1727112552
+::res://assets/recent/Enemies/_Previews/Kla'ed/Bases/::1727114723
+Kla'ed - Battlecruiser - Base.png::CompressedTexture2D::1459897695501493833::1727112552::1727114723::1::::<><>::
+Kla'ed - Bomber - Base.png::CompressedTexture2D::3421713982144947482::1727112552::1727114722::1::::<><>::
+Kla'ed - Dreadnought - Base.png::CompressedTexture2D::4148124067389465656::1727112552::1727114723::1::::<><>::
+Kla'ed - Fighter - Base.png::CompressedTexture2D::6992554955355225905::1727112552::1727114723::1::::<><>::
+Kla'ed - Frigate - Base.png::CompressedTexture2D::455587429914588324::1727112552::1727114723::1::::<><>::
+Kla'ed - Scout - Base.png::CompressedTexture2D::6091356459151868314::1727112552::1727114723::1::::<><>::
+Kla'ed - Support ship - Base.png::CompressedTexture2D::3169341676319322129::1727112552::1727114723::1::::<><>::
+Kla'ed - Torpedo Ship - Base.png::CompressedTexture2D::5413721286570829277::1727112552::1727114723::1::::<><>::
+::res://assets/recent/Enemies/_Previews/Kla'ed/Destruction/::1727112552
+::res://assets/recent/Enemies/_Previews/Kla'ed/Engine/::1727112552
+::res://assets/recent/Enemies/_Previews/Kla'ed/Projectiles/::1727112552
+::res://assets/recent/Enemies/_Previews/Kla'ed/Shield/::1727112552
+::res://assets/recent/Enemies/_Previews/Kla'ed/Weapons/::1727112552
+::res://assets/recent/Enemies/Kla'ed/::1727112552
+::res://assets/recent/Enemies/Kla'ed/Base/::1727112551
+::res://assets/recent/Enemies/Kla'ed/Base/Aseprite/::1727112551
+::res://assets/recent/Enemies/Kla'ed/Base/PNGs/::1727114723
+Kla'ed - Battlecruiser - Base.png::CompressedTexture2D::8108759143398119232::1727112551::1727114723::1::::<><>::
+Kla'ed - Bomber - Base.png::CompressedTexture2D::3787178689631306016::1727112551::1727114723::1::::<><>::
+Kla'ed - Dreadnought - Base.png::CompressedTexture2D::3135475189578262445::1727112551::1727114723::1::::<><>::
+Kla'ed - Fighter - Base.png::CompressedTexture2D::9148407157099606242::1727112551::1727114723::1::::<><>::
+Kla'ed - Frigate - Base.png::CompressedTexture2D::6436694880303548634::1727112551::1727114723::1::::<><>::
+Kla'ed - Scout - Base.png::CompressedTexture2D::9026672115805142131::1727112551::1727114723::1::::<><>::
+Kla'ed - Support ship - Base.png::CompressedTexture2D::2464287393670373997::1727112551::1727114723::1::::<><>::
+Kla'ed - Torpedo Ship - Base.png::CompressedTexture2D::7686189345296269989::1727112551::1727114723::1::::<><>::
+::res://assets/recent/Enemies/Kla'ed/Destruction/::1727112551
+::res://assets/recent/Enemies/Kla'ed/Destruction/Aseprite/::1727112551
+::res://assets/recent/Enemies/Kla'ed/Destruction/PNGs/::1727114723
+Kla'ed - Battlecruiser - Destruction.png::CompressedTexture2D::5712680510968411437::1727112551::1727114723::1::::<><>::
+Kla'ed - Bomber - Destruction.png::CompressedTexture2D::7803036741931776694::1727112551::1727114723::1::::<><>::
+Kla'ed - Dreadnought - Destruction.png::CompressedTexture2D::2724614063327510093::1727112551::1727114723::1::::<><>::
+Kla'ed - Fighter - Destruction.png::CompressedTexture2D::5891389571411028055::1727112551::1727114723::1::::<><>::
+Kla'ed - Frigate - Destruction.png::CompressedTexture2D::6288921586766405869::1727112551::1727114723::1::::<><>::
+Kla'ed - Scout - Destruction.png::CompressedTexture2D::3724121860773914573::1727112551::1727114723::1::::<><>::
+Kla'ed - Support ship - Destruction.png::CompressedTexture2D::4105569440016862290::1727112551::1727114723::1::::<><>::
+Kla'ed - Torpedo Ship - Destruction.png::CompressedTexture2D::1682842154995838685::1727112551::1727114723::1::::<><>::
+::res://assets/recent/Enemies/Kla'ed/Engine/::1727112551
+::res://assets/recent/Enemies/Kla'ed/Engine/Aseprite/::1727112551
+::res://assets/recent/Enemies/Kla'ed/Engine/PNGs/::1727114723
+Kla'ed - Battlecruiser - Engine.png::CompressedTexture2D::1063971977321374158::1727112551::1727114723::1::::<><>::
+Kla'ed - Bomber - Engine.png::CompressedTexture2D::8178087790747057181::1727112551::1727114723::1::::<><>::
+Kla'ed - Dreadnought - Engine.png::CompressedTexture2D::5394565868600223863::1727112551::1727114722::1::::<><>::
+Kla'ed - Fighter - Engine.png::CompressedTexture2D::2437270799668248856::1727112551::1727114722::1::::<><>::
+Kla'ed - Frigate - Engine.png::CompressedTexture2D::8943308298913029857::1727112551::1727114722::1::::<><>::
+Kla'ed - Scout - Engine.png::CompressedTexture2D::994744486205126032::1727112551::1727114722::1::::<><>::
+Kla'ed - Support ship - Engine.png::CompressedTexture2D::5065414269264883703::1727112551::1727114722::1::::<><>::
+Kla'ed - Torpedo Ship - Engine.png::CompressedTexture2D::8794434968619365531::1727112551::1727114722::1::::<><>::
+::res://assets/recent/Enemies/Kla'ed/Projectiles/::1727112551
+::res://assets/recent/Enemies/Kla'ed/Projectiles/Aseprite/::1727112551
+::res://assets/recent/Enemies/Kla'ed/Projectiles/PNGs/::1727114722
+Kla'ed - Big Bullet.png::CompressedTexture2D::9037918005339482785::1727112551::1727114722::1::::<><>::
+Kla'ed - Bullet.png::CompressedTexture2D::7235433509797251576::1727112551::1727114722::1::::<><>::
+Kla'ed - Ray.png::CompressedTexture2D::1415091651253680164::1727112551::1727114722::1::::<><>::
+Kla'ed - Torpedo.png::CompressedTexture2D::3155475734357051385::1727112551::1727114722::1::::<><>::
+Kla'ed - Wave.png::CompressedTexture2D::4298282004187328793::1727112551::1727114722::1::::<><>::
+::res://assets/recent/Enemies/Kla'ed/Shield/::1727112552
+::res://assets/recent/Enemies/Kla'ed/Shield/Aseprite/::1727112551
+::res://assets/recent/Enemies/Kla'ed/Shield/PNGs/::1727114723
+Kla'ed - Battlecruiser - Shield.png::CompressedTexture2D::5848186099607338312::1727112552::1727114722::1::::<><>::
+Kla'ed - Bomber - Shield.png::CompressedTexture2D::4879358718130239277::1727112552::1727114722::1::::<><>::
+Kla'ed - Dreadnought - Shield.png::CompressedTexture2D::8091327615235854146::1727112552::1727114722::1::::<><>::
+Kla'ed - Fighter - Shield.png::CompressedTexture2D::5448728455167199028::1727112552::1727114722::1::::<><>::
+Kla'ed - Frigate - Shield.png::CompressedTexture2D::58922423772966151::1727112552::1727114722::1::::<><>::
+Kla'ed - Scout - Shield.png::CompressedTexture2D::1399358653292222053::1727112552::1727114722::1::::<><>::
+Kla'ed - Torpedo Ship - Shield.png::CompressedTexture2D::9133289775140892906::1727112552::1727114722::1::::<><>::
+::res://assets/recent/Enemies/Kla'ed/Weapons/::1727112552
+::res://assets/recent/Enemies/Kla'ed/Weapons/Aseprite/::1727112552
+::res://assets/recent/Enemies/Kla'ed/Weapons/PNGs/::1727114723
+Kla'ed - Battlecruiser - Weapons.png::CompressedTexture2D::9012281502338053294::1727112552::1727114723::1::::<><>::
+Kla'ed - Dreadnought - Weapons.png::CompressedTexture2D::183420489954438685::1727112552::1727114723::1::::<><>::
+Kla'ed - Fighter - Weapons.png::CompressedTexture2D::7664728283838152044::1727112552::1727114722::1::::<><>::
+Kla'ed - Frigate - Weapons.png::CompressedTexture2D::7933729262306207458::1727112552::1727114722::1::::<><>::
+Kla'ed - Scout - Weapons.png::CompressedTexture2D::1348150931413338811::1727112552::1727114722::1::::<><>::
+Kla'ed - Torpedo Ship - Weapons.png::CompressedTexture2D::3661947083241771347::1727112552::1727114722::1::::<><>::
+::res://assets/recent/Player/::1727114750
+Readme.txt::TextFile::-1::1727114749::0::1::::<><>::
+::res://assets/recent/Player/Main Ship/::1727114750
+::res://assets/recent/Player/Main Ship/Main Ship - Bases/::1727114749
+::res://assets/recent/Player/Main Ship/Main Ship - Bases/Aseprite/::1727114749
+::res://assets/recent/Player/Main Ship/Main Ship - Bases/PNGs/::1727114766
+Main Ship - Base - Damaged.png::CompressedTexture2D::3435975464128218548::1727114749::1727114775::1::::<><>::
+Main Ship - Base - Full health.png::CompressedTexture2D::5649557000392286953::1727114749::1727114775::1::::<><>::
+Main Ship - Base - Slight damage.png::CompressedTexture2D::2488023751929502924::1727114749::1727114775::1::::<><>::
+Main Ship - Base - Very damaged.png::CompressedTexture2D::4517011591586975769::1727114749::1727114775::1::::<><>::
+::res://assets/recent/Player/Main Ship/Main Ship - Engine Effects/::1727114749
+::res://assets/recent/Player/Main Ship/Main Ship - Engine Effects/Aseprite/::1727114749
+::res://assets/recent/Player/Main Ship/Main Ship - Engine Effects/PNGs/::1727114766
+Main Ship - Engines - Base Engine - Idle.png::CompressedTexture2D::2718757370268453798::1727114749::1727114775::1::::<><>::
+Main Ship - Engines - Base Engine - Powering.png::CompressedTexture2D::8075156407240263513::1727114749::1727114775::1::::<><>::
+Main Ship - Engines - Base Engine - Spritesheet.png::CompressedTexture2D::3433609192981541102::1727114749::1727114775::1::::<><>::
+Main Ship - Engines - Big Pulse Engine - Idle.png::CompressedTexture2D::2075293580236762911::1727114749::1727114775::1::::<><>::
+Main Ship - Engines - Big Pulse Engine - Powering.png::CompressedTexture2D::7857598284281784888::1727114749::1727114775::1::::<><>::
+Main Ship - Engines - Big Pulse Engine - Spritesheet.png::CompressedTexture2D::6407177725416541364::1727114749::1727114775::1::::<><>::
+Main Ship - Engines - Burst Engine - Idle.png::CompressedTexture2D::1968096455834857691::1727114749::1727114775::1::::<><>::
+Main Ship - Engines - Burst Engine - Powering.png::CompressedTexture2D::5114002671211940137::1727114749::1727114775::1::::<><>::
+Main Ship - Engines - Burst Engine - Spritesheet.png::CompressedTexture2D::6392598742667467393::1727114749::1727114775::1::::<><>::
+Main Ship - Engines - Supercharged Engine - Idle.png::CompressedTexture2D::5365208883149964812::1727114749::1727114775::1::::<><>::
+Main Ship - Engines - Supercharged Engine - Powering.png::CompressedTexture2D::5350293926379666507::1727114749::1727114775::1::::<><>::
+Main Ship - Engines - Supercharged Engine - Spritesheet.png::CompressedTexture2D::6576323605965045316::1727114749::1727114775::1::::<><>::
+::res://assets/recent/Player/Main Ship/Main Ship - Engines/::1727114749
+::res://assets/recent/Player/Main Ship/Main Ship - Engines/Aseprite/::1727114749
+::res://assets/recent/Player/Main Ship/Main Ship - Engines/PNGs/::1727114766
+Main Ship - Engines - Base Engine.png::CompressedTexture2D::4350265675899905760::1727114749::1727114775::1::::<><>::
+Main Ship - Engines - Big Pulse Engine.png::CompressedTexture2D::2997395074678016317::1727114749::1727114775::1::::<><>::
+Main Ship - Engines - Burst Engine.png::CompressedTexture2D::2318384786946611041::1727114749::1727114775::1::::<><>::
+Main Ship - Engines - Supercharged Engine.png::CompressedTexture2D::6019602721346717364::1727114749::1727114775::1::::<><>::
+::res://assets/recent/Player/Main Ship/Main Ship - Shields/::1727114750
+::res://assets/recent/Player/Main Ship/Main Ship - Shields/Aseprite/::1727114750
+::res://assets/recent/Player/Main Ship/Main Ship - Shields/PNGs/::1727114766
+Main Ship - Shields - Front and Side Shield.png::CompressedTexture2D::5247869414288293433::1727114750::1727114775::1::::<><>::
+Main Ship - Shields - Front Shield.png::CompressedTexture2D::2179074405931198822::1727114750::1727114775::1::::<><>::
+Main Ship - Shields - Invincibility Shield.png::CompressedTexture2D::7606202183725905111::1727114750::1727114775::1::::<><>::
+Main Ship - Shields - Round Shield.png::CompressedTexture2D::3517467324174906205::1727114750::1727114775::1::::<><>::
+::res://assets/recent/Player/Main Ship/Main Ship - Weapons/::1727114750
+::res://assets/recent/Player/Main Ship/Main Ship - Weapons/Aseprite/::1727114750
+::res://assets/recent/Player/Main Ship/Main Ship - Weapons/PNGs/::1727114766
+Main Ship - Weapons - Auto Cannon.png::CompressedTexture2D::6436790815601121982::1727114750::1727114775::1::::<><>::
+Main Ship - Weapons - Big Space Gun.png::CompressedTexture2D::5346201205832735496::1727114750::1727114775::1::::<><>::
+Main Ship - Weapons - Rockets.png::CompressedTexture2D::3904261346684411440::1727114750::1727114775::1::::<><>::
+Main Ship - Weapons - Zapper.png::CompressedTexture2D::2578849136207543290::1727114750::1727114775::1::::<><>::
+::res://assets/recent/Player/Main ship weapons/::1727114750
+::res://assets/recent/Player/Main ship weapons/Aseprite/::1727114750
+::res://assets/recent/Player/Main ship weapons/PNGs/::1727114765
+Main ship weapon - Projectile - Auto cannon bullet.png::CompressedTexture2D::7722005868097506745::1727114750::1727114775::1::::<><>::
+Main ship weapon - Projectile - Big Space Gun.png::CompressedTexture2D::4000929720733997236::1727114750::1727114775::1::::<><>::
+Main ship weapon - Projectile - Rocket.png::CompressedTexture2D::2240181456944249810::1727114750::1727114775::1::::<><>::
+Main ship weapon - Projectile - Zapper.png::CompressedTexture2D::2236121489292864361::1727114750::1727114775::1::::<><>::
 ::res://assets/Spritesheet/::1726915818
 sheet.png::CompressedTexture2D::7566407576472208420::1726915813::1726915818::1::::<><>::
 sheet.xml::TextFile::-1::1726915813::0::1::::<><>::
 ::res://assets/Vector/::1726915818
 sheet.svg::CompressedTexture2D::2074611111678125940::1726915813::1726915818::1::::<><>::
-::res://config/::1727012790
-SignalBus.gd::GDScript::-1::1727012790::0::1::::<>Node<>::
-::res://scenes/::1727021812
+::res://config/::1727027031
+SignalBus.gd::GDScript::-1::1727027031::0::1::::<>Node<>::
+::res://scenes/::1727114722
 basic_projectile.gd::GDScript::-1::1727013236::0::1::::BasicProjectile<>Area2D<>::
-basic_projectile.tscn::PackedScene::5840013339150906106::1727021678::0::1::::<><>::res://scenes/basic_projectile.gd<>uid://dexcftqwj4se5::::res://assets/PNG/Lasers/laserRed04.png
+basic_projectile.tscn::PackedScene::5840013339150906106::1727099032::0::1::::<><>::res://scenes/basic_projectile.gd<>uid://dexcftqwj4se5::::res://assets/PNG/Lasers/laserRed04.png
 camera_2d.gd::GDScript::-1::1726937218::0::1::::<>Camera2D<>::
+elite_projectile.gd::GDScript::-1::1727099628::0::1::::EliteProjectile<>BasicProjectile<>::
+elite_projectile.tscn::PackedScene::546490056322302700::1727114456::0::1::::<><>::uid://cpg7fworn2gp3::::res://scenes/basic_projectile.tscn<>res://scenes/elite_projectile.gd<>uid://b34dj582n8hen::::res://assets/PNG/Lasers/laserRed10.png
 enemy.gd::GDScript::-1::1727021812::0::1::::Enemy<>Area2D<>::
-enemy.tscn::PackedScene::3044715479804554999::1727021678::0::1::::<><>::res://scenes/enemy.gd<>uid://cpg7fworn2gp3::::res://scenes/basic_projectile.tscn<>uid://c8w0dawifubjw::::res://scenes/gpu_particles_2d.tscn<>uid://c0rbtjrpwecmp::::res://assets/PNG/Enemies/enemyRed1.png
-game_scene.gd::GDScript::-1::1726833318::0::1::::<>Node2D<>::
-game_scene.tscn::PackedScene::5865102798262780081::1727021679::0::1::::<><>::res://scenes/game_scene.gd<>uid://ddcgpdfhpuft1::::res://assets/craiyon_141502_space_background_2d_cartoon.png<>uid://b3yoi5ia0ewu2::::res://scenes/player.tscn<>uid://wfnpdlgrmtni::::res://scenes/ui.tscn<>uid://cg5e0yq4td0gb::::res://assets/chip-mode-danijel-zambo-main-version-1431-02-05.mp3
-gpu_particles_2d.tscn::PackedScene::7136012834588111932::1727021679::0::1::::<><>::
+enemy.tscn::PackedScene::3044715479804554999::1727114722::0::1::::<><>::res://scenes/enemy.gd<>uid://cpg7fworn2gp3::::res://scenes/basic_projectile.tscn<>uid://c8w0dawifubjw::::res://scenes/gpu_particles_2d.tscn<>uid://d3ls6uimg51fa::::res://assets/recent/Enemies/Kla'ed/Base/PNGs/Kla'ed - Fighter - Base.png
+game_scene.gd::GDScript::-1::1727113208::0::1::::<>Node2D<>::
+game_scene.tscn::PackedScene::5865102798262780081::1727114456::0::1::::<><>::res://scenes/game_scene.gd<>uid://ddcgpdfhpuft1::::res://assets/craiyon_141502_space_background_2d_cartoon.png<>uid://b3yoi5ia0ewu2::::res://scenes/player.tscn<>uid://wfnpdlgrmtni::::res://scenes/ui.tscn<>uid://cg5e0yq4td0gb::::res://assets/chip-mode-danijel-zambo-main-version-1431-02-05.mp3
+gpu_particles_2d.tscn::PackedScene::7136012834588111932::1727099032::0::1::::<><>::
 main_menu.gd::GDScript::-1::1726917999::0::1::::<>Control<>::
-main_menu.tscn::PackedScene::7734418373397009326::1727021679::0::1::::<><>::res://scenes/main_menu.gd<>uid://b7p4fq4jvb6hh::::res://assets/Backgrounds/purple.png<>uid://cjlptd0a1wqyj::::res://assets/fonts/new_label_settings.tres<>uid://bpo08sdyanq62::::res://assets/Bonus/kenvector_future.ttf
-player.gd::GDScript::-1::1727021677::0::1::::Player<>Area2D<>::
-player.tscn::PackedScene::4402119283997943499::1727021812::0::1::::<><>::res://scenes/player.gd<>uid://bjm5awditly3x::::res://scenes/enemy.tscn<>uid://dsdome0t6utyc::::res://scenes/player_laser.tscn<>uid://drypebh6u88v2::::res://assets/spaceShips_005.png<>uid://b7p1kpvpvjril::::res://shield_explosion.tscn<>uid://b5x0jb5wimtmt::::res://assets/sfx_laser1.ogg<>res://scenes/camera_2d.gd<>uid://driu487wo6y4m::::res://assets/PNG/spr_shield.png<>uid://1wavn0sjaoab::::res://assets/PNG/Power-ups/powerupBlue.png<>uid://cm7n4uyq81waj::::res://assets/PNG/Power-ups/powerupBlue_shield.png<>uid://dvbmo17mkmomj::::res://assets/PNG/Lasers/laserBlue01.png
+main_menu.tscn::PackedScene::7734418373397009326::1727114456::0::1::::<><>::res://scenes/main_menu.gd<>uid://cjlptd0a1wqyj::::res://assets/fonts/new_label_settings.tres<>uid://bpo08sdyanq62::::res://assets/Bonus/kenvector_future.ttf
+player.gd::GDScript::-1::1727114721::0::1::::Player<>Area2D<>::
+player.tscn::PackedScene::4402119283997943499::1727114722::0::1::::<><>::res://scenes/player.gd<>uid://bjm5awditly3x::::res://scenes/enemy.tscn<>uid://dsdome0t6utyc::::res://scenes/player_laser.tscn<>uid://benhlcikss48w::::res://elite_enemy.tscn<>uid://b7p1kpvpvjril::::res://shield_explosion.tscn<>uid://b5x0jb5wimtmt::::res://assets/sfx_laser1.ogg<>uid://cxx8ooplslr5c::::res://assets/recent/Enemies/Kla'ed/Base/PNGs/Kla'ed - Frigate - Base.png<>res://scenes/camera_2d.gd<>uid://driu487wo6y4m::::res://assets/PNG/spr_shield.png<>uid://dlbfmki5gt3q1::::res://assets/recent/Enemies/Kla'ed/Weapons/PNGs/Kla'ed - Frigate - Weapons.png<>uid://d0og8mdfvtpr2::::res://assets/recent/Enemies/Kla'ed/Engine/PNGs/Kla'ed - Frigate - Engine.png
 player_laser.gd::GDScript::-1::1726857960::0::1::::<>Area2D<>::
-player_laser.tscn::PackedScene::8429726086870673966::1727021679::0::1::::<><>::res://scenes/player_laser.gd<>uid://bvffy0a8q3qnj::::res://assets/laserBlue03.png
+player_laser.tscn::PackedScene::8429726086870673966::1727114456::0::1::::<><>::res://scenes/player_laser.gd<>uid://bvffy0a8q3qnj::::res://assets/laserBlue03.png
 ui.gd::GDScript::-1::1726938504::0::1::::<>Control<>::
-ui.tscn::PackedScene::1555292731480272126::1727021679::0::1::::<><>::res://scenes/ui.gd<>uid://bpo08sdyanq62::::res://assets/Bonus/kenvector_future.ttf
+ui.tscn::PackedScene::1555292731480272126::1727099032::0::1::::<><>::res://scenes/ui.gd<>uid://bpo08sdyanq62::::res://assets/Bonus/kenvector_future.ttf
+::res://scripts/::1727098259
+BasicEnemy.gd::GDScript::-1::1727098259::0::1::::BasicEnemy<>Area2D<>::
 ::res://SpaceParry/::1726686542
 README.md::TextFile::-1::1726686542::0::1::::<><>::

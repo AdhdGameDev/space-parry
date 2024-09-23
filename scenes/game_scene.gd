@@ -8,9 +8,11 @@ var rotation_speed: float = PI/16
 var current_angle: float = 0  
 var enemies_defeated_count: int = 0      
 
+func _ready() -> void:
+	SignalBus.enemy_destroyed.connect(on_enemy_destroyed)
+
 # Called every frame to ensure the circle is redrawn
 func _process(delta: float) -> void:
-	SignalBus.enemy_destroyed.connect(on_enemy_destroyed)
 	current_angle += rotation_speed * delta
 	# Apply the rotation to the background sprite
 	background.rotation = current_angle
@@ -24,5 +26,5 @@ func _draw() -> void:
 func on_enemy_destroyed(points: int) -> void:
 	enemies_defeated_count = enemies_defeated_count + 1
 	if enemies_defeated_count % 10 == 0:
-		SignalBus.
+		SignalBus.enemy_group_defeated.emit(10)
 		

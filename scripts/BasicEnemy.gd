@@ -1,5 +1,8 @@
 extends Area2D
 
+class_name BasicEnemy
+
+@export var explosion_particle: PackedScene
 var center_position: Vector2
 var current_angle: float
 @export var rotation_speed: float = 0.4
@@ -28,3 +31,8 @@ func _process(delta: float) -> void:
 
 	global_position = Vector2(new_x, new_y)
 	
+func explode() -> void:
+	var explosion = explosion_particle.instantiate()
+	explosion.global_position = self.global_position
+	get_tree().root.add_child(explosion)  # Add it to the scene root, not as a child of Enemy
+	explosion.emitting = true

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/enemy.gd" id="1_bsnem"]
 [ext_resource type="PackedScene" uid="uid://cpg7fworn2gp3" path="res://scenes/basic_projectile.tscn" id="2_m77s2"]
 [ext_resource type="PackedScene" uid="uid://c8w0dawifubjw" path="res://scenes/gpu_particles_2d.tscn" id="3_7ro81"]
-[ext_resource type="Texture2D" uid="uid://c0rbtjrpwecmp" path="res://assets/PNG/Enemies/enemyRed1.png" id="4_cq5wm"]
+[ext_resource type="Texture2D" uid="uid://d3ls6uimg51fa" path="res://assets/recent/Enemies/Kla'ed/Base/PNGs/Kla'ed - Fighter - Base.png" id="4_hxga3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5qbt"]
 size = Vector2(59, 53)
@@ -19,8 +19,8 @@ shape = SubResource("RectangleShape2D_x5qbt")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_cq5wm")
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("4_hxga3")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0

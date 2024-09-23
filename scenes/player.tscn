@@ -1,53 +1,188 @@
-[gd_scene load_steps=17 format=3 uid="uid://b3yoi5ia0ewu2"]
+[gd_scene load_steps=41 format=3 uid="uid://b3yoi5ia0ewu2"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_vorp1"]
 [ext_resource type="PackedScene" uid="uid://bjm5awditly3x" path="res://scenes/enemy.tscn" id="2_o7w06"]
 [ext_resource type="PackedScene" uid="uid://dsdome0t6utyc" path="res://scenes/player_laser.tscn" id="3_2kcdo"]
-[ext_resource type="Texture2D" uid="uid://drypebh6u88v2" path="res://assets/spaceShips_005.png" id="3_7yqc1"]
+[ext_resource type="PackedScene" uid="uid://benhlcikss48w" path="res://elite_enemy.tscn" id="3_udoea"]
 [ext_resource type="PackedScene" uid="uid://b7p1kpvpvjril" path="res://shield_explosion.tscn" id="4_38wwn"]
 [ext_resource type="AudioStream" uid="uid://b5x0jb5wimtmt" path="res://assets/sfx_laser1.ogg" id="5_cek4k"]
 [ext_resource type="Script" path="res://scenes/camera_2d.gd" id="7_gsn5i"]
 [ext_resource type="Texture2D" uid="uid://driu487wo6y4m" path="res://assets/PNG/spr_shield.png" id="7_up5bv"]
-[ext_resource type="Texture2D" uid="uid://1wavn0sjaoab" path="res://assets/PNG/Power-ups/powerupBlue.png" id="9_o8y4b"]
-[ext_resource type="Texture2D" uid="uid://cm7n4uyq81waj" path="res://assets/PNG/Power-ups/powerupBlue_shield.png" id="10_ekclw"]
-[ext_resource type="Texture2D" uid="uid://dvbmo17mkmomj" path="res://assets/PNG/Lasers/laserBlue01.png" id="11_qcgtc"]
+[ext_resource type="Texture2D" uid="uid://b28kifs5xav4c" path="res://assets/recent/Player/Main Ship/Main Ship - Engines/PNGs/Main Ship - Engines - Base Engine.png" id="10_auhe4"]
+[ext_resource type="Texture2D" uid="uid://bey8sinnkxr6m" path="res://assets/recent/Player/Main Ship/Main Ship - Engine Effects/PNGs/Main Ship - Engines - Base Engine - Idle.png" id="11_es8o8"]
+[ext_resource type="Texture2D" uid="uid://bc0hjenctgqgo" path="res://assets/recent/Player/Main Ship/Main Ship - Weapons/PNGs/Main Ship - Weapons - Zapper.png" id="12_2bk76"]
+[ext_resource type="Texture2D" uid="uid://cmqxm4ocvw7x2" path="res://assets/recent/Player/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Full health.png" id="12_bptgy"]
+[ext_resource type="Texture2D" uid="uid://bbphngf0m8ca3" path="res://assets/recent/Player/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Slight damage.png" id="13_t300a"]
+[ext_resource type="Texture2D" uid="uid://bo7oaqcaida57" path="res://assets/recent/Player/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Damaged.png" id="14_ugakq"]
+[ext_resource type="Texture2D" uid="uid://b5mcryigxcdrl" path="res://assets/recent/Player/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Very damaged.png" id="15_c1bvp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vdhl3"]
 radius = 43.6807
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_r0rww"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_bptgy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_t300a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ugakq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_c1bvp")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfxge"]
+atlas = ExtResource("11_es8o8")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khlea"]
+atlas = ExtResource("11_es8o8")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvqvq"]
+atlas = ExtResource("11_es8o8")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jcsjp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfxge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khlea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvqvq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2eyj0"]
+atlas = ExtResource("12_2bk76")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4o8oo"]
+atlas = ExtResource("12_2bk76")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wlyj"]
+atlas = ExtResource("12_2bk76")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dcmw"]
+atlas = ExtResource("12_2bk76")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lanlv"]
+atlas = ExtResource("12_2bk76")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tv2sh"]
+atlas = ExtResource("12_2bk76")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wq4t"]
+atlas = ExtResource("12_2bk76")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aovjh"]
+atlas = ExtResource("12_2bk76")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lh24"]
+atlas = ExtResource("12_2bk76")
+region = Rect2(384, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gar2"]
+atlas = ExtResource("12_2bk76")
+region = Rect2(432, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1e15v"]
+atlas = ExtResource("12_2bk76")
+region = Rect2(480, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvdon"]
+atlas = ExtResource("12_2bk76")
+region = Rect2(528, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0ev7"]
+atlas = ExtResource("12_2bk76")
+region = Rect2(576, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yf2s"]
+atlas = ExtResource("12_2bk76")
+region = Rect2(624, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_687ye"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2eyj0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4o8oo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wlyj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dcmw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lanlv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tv2sh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wq4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aovjh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lh24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gar2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1e15v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvdon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0ev7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5yf2s")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 40.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jd2sv"]
 size = Vector2(217, 71.5)
+
+[sub_resource type="Animation" id="Animation_1nhbr"]
+length = 0.001
 
 [sub_resource type="Animation" id="Animation_s0ocm"]
 resource_name = "overcharge"
 length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.266667, 0.566667, 0.866667, 1.16667, 1.53333, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0.3, 0.3), Vector2(0.4, 0.4), Vector2(0.3, 0.3), Vector2(0.4, 0.4), Vector2(0.3, 0.3), Vector2(0.4, 0.4), Vector2(0.4, 0.4)]
-}
-
-[sub_resource type="Animation" id="Animation_1nhbr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.3, 0.3)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o3dj8"]
 _data = {
@@ -58,6 +193,7 @@ _data = {
 [node name="Player" type="Area2D" groups=["player"]]
 script = ExtResource("1_vorp1")
 enemy = ExtResource("2_o7w06")
+eliteEnemy = ExtResource("3_udoea")
 laser = ExtResource("3_2kcdo")
 shield_explosion = ExtResource("4_38wwn")
 
@@ -65,39 +201,29 @@ shield_explosion = ExtResource("4_38wwn")
 position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_vdhl3")
 
-[node name="Sprite2D" type="Sprite2D" parent="." groups=["player"]]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("3_7yqc1")
+[node name="NewDesignShip" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_r0rww")
+animation = &"idle"
 
-[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]
-visible = false
-position = Vector2(0, 20)
-scale = Vector2(1.86275, 1.76768)
-texture = ExtResource("9_o8y4b")
+[node name="Engine" type="Sprite2D" parent="NewDesignShip"]
+position = Vector2(0, 7.5)
+texture = ExtResource("10_auhe4")
 
-[node name="Sprite2D3" type="Sprite2D" parent="Sprite2D"]
-visible = false
-position = Vector2(-66.6667, -103.333)
-scale = Vector2(1, 0.946667)
-texture = ExtResource("10_ekclw")
+[node name="EngineEffect" type="AnimatedSprite2D" parent="NewDesignShip"]
+position = Vector2(0, 9.5)
+sprite_frames = SubResource("SpriteFrames_jcsjp")
+frame_progress = 0.742365
 
-[node name="Sprite2D4" type="Sprite2D" parent="Sprite2D"]
-visible = false
-position = Vector2(-66.6667, -133.333)
-scale = Vector2(1, 0.946667)
-texture = ExtResource("11_qcgtc")
-
-[node name="Sprite2D6" type="Sprite2D" parent="Sprite2D"]
-visible = false
-position = Vector2(66.6667, -130)
-scale = Vector2(1, 0.946667)
-texture = ExtResource("11_qcgtc")
-
-[node name="Sprite2D5" type="Sprite2D" parent="Sprite2D"]
-visible = false
-position = Vector2(66.6667, -103.333)
-scale = Vector2(1, 0.946667)
-texture = ExtResource("10_ekclw")
+[node name="LaserGun" type="AnimatedSprite2D" parent="NewDesignShip"]
+show_behind_parent = true
+position = Vector2(0, -5.5)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_687ye")
+animation = &"fire"
+frame = 13
+frame_progress = 1.0
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 wait_time = 3.0

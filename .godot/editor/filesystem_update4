@@ -15,3 +15,7 @@ res://shield_explosion.gd
 res://scenes/enemy.gd
 res://scripts/BasicEnemy.gd
 res://scenes/game_scene.gd
+res://elite_enemy.tscn
+res://elite_enemy.gd
+res://scenes/elite_projectile.tscn
+res://scenes/elite_projectile.gd
