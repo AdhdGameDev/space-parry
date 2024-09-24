@@ -29,12 +29,13 @@ scale = Vector2(1.92578, 1.89748)
 texture = ExtResource("2_l4hx0")
 
 [node name="Player" parent="." instance=ExtResource("3_p7p6y")]
-position = Vector2(610, 595)
+position = Vector2(600, 600)
 
 [node name="Control" parent="." instance=ExtResource("4_xcf3s")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_de8fj")
+volume_db = -11.243
 autoplay = true
 
 [connection signal="area_entered" from="Player" to="." method="_on_enemy_hit"]

@@ -14,13 +14,12 @@ var is_turned: bool = false
 var is_stopped: bool = false
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	move(delta)
+
+	
+func move(delta: float) -> void:
 	current_angle += rotation_speed * delta * direction
 	var new_x = center_position.x + radius * cos(current_angle)
 	var new_y = center_position.y + radius * sin(current_angle)
@@ -30,6 +29,7 @@ func _process(delta: float) -> void:
 		rotation = lerp_angle(rotation, current_angle, 0.1)  # Rotate smoothly to the original angle
 
 	global_position = Vector2(new_x, new_y)
+	
 	
 func explode() -> void:
 	var explosion = explosion_particle.instantiate()

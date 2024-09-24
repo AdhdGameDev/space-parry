@@ -19,3 +19,14 @@ res://elite_enemy.tscn
 res://elite_enemy.gd
 res://scenes/elite_projectile.tscn
 res://scenes/elite_projectile.gd
+res://config/EnemyFactory.gd
+res://scenes/elite_enemy.tscn
+res://scenes/player_laser.gd
+res://assets/recent/Enemies/Readme.txt
+res://scenes/first_boss/first_boss.tscn
+res://scenes/first_boss/first_boss.gd
+res://scenes/enemies/simple_enemy.tscn
+res://scenes/enemies/elite_enemy.tscn
+res://scenes/projectiles/elite_projectile.tscn
+res://boss_rocket.gd
+res://scenes/projectiles/boss_rocket.tscn

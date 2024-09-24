@@ -1,17 +1,17 @@
 [gd_scene load_steps=6 format=3 uid="uid://bjm5awditly3x"]
 
-[ext_resource type="Script" path="res://scenes/enemy.gd" id="1_bsnem"]
-[ext_resource type="PackedScene" uid="uid://cpg7fworn2gp3" path="res://scenes/basic_projectile.tscn" id="2_m77s2"]
-[ext_resource type="PackedScene" uid="uid://c8w0dawifubjw" path="res://scenes/gpu_particles_2d.tscn" id="3_7ro81"]
-[ext_resource type="Texture2D" uid="uid://d3ls6uimg51fa" path="res://assets/recent/Enemies/Kla'ed/Base/PNGs/Kla'ed - Fighter - Base.png" id="4_hxga3"]
+[ext_resource type="Script" path="res://scenes/enemies/simple_enemy.gd" id="1_n1w5y"]
+[ext_resource type="PackedScene" uid="uid://cpg7fworn2gp3" path="res://scenes/projectiles/basic_projectile.tscn" id="2_kpk84"]
+[ext_resource type="PackedScene" uid="uid://c8w0dawifubjw" path="res://scenes/gpu_particles_2d.tscn" id="3_fjm8h"]
+[ext_resource type="Texture2D" uid="uid://d3ls6uimg51fa" path="res://assets/recent/Enemies/Kla'ed/Base/PNGs/Kla'ed - Fighter - Base.png" id="4_4fkv2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5qbt"]
 size = Vector2(59, 53)
 
 [node name="Enemy" type="Area2D" groups=["enemy"]]
-script = ExtResource("1_bsnem")
-projectile = ExtResource("2_m77s2")
-explosion_particle = ExtResource("3_7ro81")
+script = ExtResource("1_n1w5y")
+projectile = ExtResource("2_kpk84")
+explosion_particle = ExtResource("3_fjm8h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 1.5)
@@ -20,7 +20,7 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(1.6, 1.6)
-texture = ExtResource("4_hxga3")
+texture = ExtResource("4_4fkv2")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0

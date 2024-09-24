@@ -18,6 +18,7 @@ class_name Player
 @onready var new_design_ship: AnimatedSprite2D = $NewDesignShip
 @onready var engine_effect: AnimatedSprite2D = $NewDesignShip/EngineEffect
 @onready var laser_gun: AnimatedSprite2D = $NewDesignShip/LaserGun
+@onready var deflect_shield: AnimatedSprite2D = $NewDesignShip/DeflectShield
 
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var shield: Sprite2D = $Shield
@@ -33,6 +34,8 @@ var can_laser: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	EnemyFactory.spawn_boss(EnemyFactory.BossType.FIRST_BOSS)
+	deflect_shield.visible = false
 	shield.visible = false
 	SignalBus.enemy_destroyed.connect(enemy_destroyed)
 	SignalBus.player_collision_hit.connect(on_player_collision_hit)
@@ -51,6 +54,9 @@ func _process(delta: float) -> void:
 	# Sync the deflect area rotation with the player
 	deflect_area.rotation = new_design_ship.rotation
 	if Input.is_action_just_pressed("Deflect"):
+		deflect_shield.visible = true
+		deflect_shield.play("deflect")
+		
 		deflect_timer_buffer.start()
 		try_to_deflect()
 	if Input.is_action_just_pressed("LaserFirePlayer"):
@@ -76,17 +82,17 @@ func try_to_deflect() -> void:
 	if deflect_timer_buffer.time_left > 0:
 		for projectile in deflect_area.get_overlapping_areas():
 			if !projectile.is_in_group("player") and !projectile.is_in_group("laser"):
+				$DeflectSound.play()
 				var current_projectile: BasicProjectile = projectile
 				current_projectile.reflected = true
+				current_projectile.direction = current_projectile.direction * -1
+				current_projectile.flip()
 				deflect_area.modulate = Color.BLACK
-				var new_velocity = (get_global_mouse_position() - global_position).normalized() * 600
-				current_projectile.velocity = new_velocity
+				var new_velocity = (get_global_mouse_position() - global_position).normalized()
+				current_projectile.velocity = new_velocity * current_projectile.velocity.length()
 				overcharge()
 		
 func overcharge() -> void:
-	#for child in player_image.get_children():
-		#child.visible = !child.visible
-	#$AnimationPlayer.play("overcharge")
 	laser_cooldown_timer.wait_time = laser_cooldown_timer.wait_time / 4
 
 	
@@ -105,32 +111,13 @@ func open_fire(rotation: float) -> void:
 	laser_instance.velocity = direction * 600  # Adjust speed as needed
 	laser_instance.add_to_group("laser")
 	add_child(laser_instance)
-	$AudioStreamPlayer.play()
+	$LaserSound.play()
 	laser_gun.play("fire")
 
 func _on_enemy_spawn_timer_timeout() -> void:
 	if enemy_max_count > current_enemy_count:
-		var player_position = new_design_ship.global_position
-		# Generate a random angle in radians
-		var random_angle = randf() * TAU  # TAU is 2 * PI (full circle)
-
-		# Calculate the position on the circle
-		var spawn_x = player_position.x + 500 * cos(random_angle)
-		var spawn_y = player_position.y + 500 * sin(random_angle)
-
-		var spawn_position = Vector2(spawn_x, spawn_y)
-
-		# Instance the enemy and set its position
-		var enemy_instance: Enemy = enemy.instantiate()
-		enemy_instance.global_position = spawn_position
-		enemy_instance.center_position = player_position
-		enemy_instance.current_angle = random_angle
-
-		# Add the enemy to the scene
-		add_child(enemy_instance)
-	
+		EnemyFactory.spawn_enemy(EnemyFactory.EnemyType.REGULAR_ENEMY)
 		current_enemy_count = current_enemy_count + 1
-
 
 
 func _on_laser_cooldown_timer_timeout() -> void:
@@ -164,24 +151,16 @@ func _on_shield_cooldown_passed() -> void:
 	
 func on_group_defeated(count: int) -> void:
 	if count % 10 == 0:
-		var player_position = new_design_ship.global_position
-		# Generate a random angle in radians
-		var random_angle = randf() * TAU  # TAU is 2 * PI (full circle)
-
-		# Calculate the position on the circle
-		var spawn_x = player_position.x + 500 * cos(random_angle)
-		var spawn_y = player_position.y + 500 * sin(random_angle)
-
-		var spawn_position = Vector2(spawn_x, spawn_y)
-
-		# Instance the enemy and set its position
-		var elite_enemy_instance = eliteEnemy.instantiate()
-		elite_enemy_instance.global_position = spawn_position
-		elite_enemy_instance.center_position = player_position
-		elite_enemy_instance.current_angle = random_angle
-		call_deferred("add_child", elite_enemy_instance)
+		EnemyFactory.spawn_enemy(EnemyFactory.EnemyType.ELITE_ENEMY)
+	if count == 15:
+		print("count 15")
+		EnemyFactory.spawn_boss(EnemyFactory.BossType.FIRST_BOSS)
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	$AnimationPlayer.stop()
 	laser_cooldown_timer.wait_time = laser_cooldown_timer.wait_time * 4
+
+
+func _on_deflect_end() -> void:
+	deflect_shield.visible = false

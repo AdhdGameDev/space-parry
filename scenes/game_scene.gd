@@ -25,6 +25,9 @@ func _draw() -> void:
 
 func on_enemy_destroyed(points: int) -> void:
 	enemies_defeated_count = enemies_defeated_count + 1
-	if enemies_defeated_count % 10 == 0:
-		SignalBus.enemy_group_defeated.emit(10)
+	#if enemies_defeated_count % 10 == 0:
+		#SignalBus.enemy_group_defeated.emit(10)
+	if enemies_defeated_count > 1:
+		print("sfsafdsf")
+		SignalBus.enemy_group_defeated.emit(15)
 		

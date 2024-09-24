@@ -1,10 +1,10 @@
-[gd_scene load_steps=41 format=3 uid="uid://b3yoi5ia0ewu2"]
+[gd_scene load_steps=54 format=3 uid="uid://b3yoi5ia0ewu2"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_vorp1"]
-[ext_resource type="PackedScene" uid="uid://bjm5awditly3x" path="res://scenes/enemy.tscn" id="2_o7w06"]
-[ext_resource type="PackedScene" uid="uid://dsdome0t6utyc" path="res://scenes/player_laser.tscn" id="3_2kcdo"]
-[ext_resource type="PackedScene" uid="uid://benhlcikss48w" path="res://elite_enemy.tscn" id="3_udoea"]
-[ext_resource type="PackedScene" uid="uid://b7p1kpvpvjril" path="res://shield_explosion.tscn" id="4_38wwn"]
+[ext_resource type="PackedScene" uid="uid://bjm5awditly3x" path="res://scenes/enemies/simple_enemy.tscn" id="2_o7w06"]
+[ext_resource type="PackedScene" uid="uid://dsdome0t6utyc" path="res://scenes/projectiles/player_laser.tscn" id="3_2kcdo"]
+[ext_resource type="PackedScene" uid="uid://benhlcikss48w" path="res://scenes/enemies/elite_enemy.tscn" id="3_udoea"]
+[ext_resource type="PackedScene" uid="uid://b7p1kpvpvjril" path="res://scenes/shield_explosion.tscn" id="4_38wwn"]
 [ext_resource type="AudioStream" uid="uid://b5x0jb5wimtmt" path="res://assets/sfx_laser1.ogg" id="5_cek4k"]
 [ext_resource type="Script" path="res://scenes/camera_2d.gd" id="7_gsn5i"]
 [ext_resource type="Texture2D" uid="uid://driu487wo6y4m" path="res://assets/PNG/spr_shield.png" id="7_up5bv"]
@@ -13,8 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://bc0hjenctgqgo" path="res://assets/recent/Player/Main Ship/Main Ship - Weapons/PNGs/Main Ship - Weapons - Zapper.png" id="12_2bk76"]
 [ext_resource type="Texture2D" uid="uid://cmqxm4ocvw7x2" path="res://assets/recent/Player/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Full health.png" id="12_bptgy"]
 [ext_resource type="Texture2D" uid="uid://bbphngf0m8ca3" path="res://assets/recent/Player/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Slight damage.png" id="13_t300a"]
+[ext_resource type="Texture2D" uid="uid://6btbi5evxvw5" path="res://assets/recent/Player/Main Ship/Main Ship - Shields/PNGs/Main Ship - Shields - Front Shield.png" id="13_ug7ca"]
 [ext_resource type="Texture2D" uid="uid://bo7oaqcaida57" path="res://assets/recent/Player/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Damaged.png" id="14_ugakq"]
 [ext_resource type="Texture2D" uid="uid://b5mcryigxcdrl" path="res://assets/recent/Player/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Very damaged.png" id="15_c1bvp"]
+[ext_resource type="AudioStream" uid="uid://b64hk1kpr2op2" path="res://assets/Bonus/sfx_zap.ogg" id="15_punmw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vdhl3"]
 radius = 43.6807
@@ -174,8 +176,86 @@ animations = [{
 "speed": 40.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvoji"]
+atlas = ExtResource("13_ug7ca")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkiyg"]
+atlas = ExtResource("13_ug7ca")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrk6j"]
+atlas = ExtResource("13_ug7ca")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqtq7"]
+atlas = ExtResource("13_ug7ca")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tt1q"]
+atlas = ExtResource("13_ug7ca")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ym5lu"]
+atlas = ExtResource("13_ug7ca")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cj7hk"]
+atlas = ExtResource("13_ug7ca")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j34gj"]
+atlas = ExtResource("13_ug7ca")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yb7ja"]
+atlas = ExtResource("13_ug7ca")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tlpry"]
+atlas = ExtResource("13_ug7ca")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k21jb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvoji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkiyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrk6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqtq7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4tt1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ym5lu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cj7hk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j34gj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yb7ja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlpry")
+}],
+"loop": true,
+"name": &"deflect",
+"speed": 20.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jd2sv"]
-size = Vector2(217, 71.5)
+size = Vector2(168, 71.5)
 
 [sub_resource type="Animation" id="Animation_1nhbr"]
 length = 0.001
@@ -214,7 +294,7 @@ texture = ExtResource("10_auhe4")
 [node name="EngineEffect" type="AnimatedSprite2D" parent="NewDesignShip"]
 position = Vector2(0, 9.5)
 sprite_frames = SubResource("SpriteFrames_jcsjp")
-frame_progress = 0.742365
+frame_progress = 0.900598
 
 [node name="LaserGun" type="AnimatedSprite2D" parent="NewDesignShip"]
 show_behind_parent = true
@@ -225,21 +305,30 @@ animation = &"fire"
 frame = 13
 frame_progress = 1.0
 
+[node name="DeflectShield" type="AnimatedSprite2D" parent="NewDesignShip"]
+position = Vector2(0, -12.8)
+sprite_frames = SubResource("SpriteFrames_k21jb")
+animation = &"deflect"
+frame_progress = 0.269813
+
 [node name="EnemySpawnTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 60.0
 autostart = true
 
 [node name="DeflectArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeflectArea" groups=["player"]]
-position = Vector2(2.5, -108.25)
+position = Vector2(1, -78)
 shape = SubResource("RectangleShape2D_jd2sv")
 
 [node name="DeflectTimerBuffer" type="Timer" parent="."]
 wait_time = 0.5
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="LaserSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_cek4k")
+
+[node name="DeflectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_punmw")
 
 [node name="LaserCooldownTimer" type="Timer" parent="."]
 wait_time = 1.5
@@ -267,6 +356,7 @@ libraries = {
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
+[connection signal="timeout" from="DeflectTimerBuffer" to="." method="_on_deflect_end"]
 [connection signal="timeout" from="LaserCooldownTimer" to="." method="_on_laser_cooldown_timer_timeout"]
 [connection signal="timeout" from="ShieldTimer" to="." method="_on_shield_end"]
 [connection signal="timeout" from="ShieldCooldownTimer" to="." method="_on_shield_cooldown_passed"]

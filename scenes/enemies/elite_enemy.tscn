@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://benhlcikss48w"]
 
-[ext_resource type="Script" path="res://elite_enemy.gd" id="1_c226n"]
-[ext_resource type="PackedScene" uid="uid://h1yu104a5hd1" path="res://scenes/elite_projectile.tscn" id="2_djjpf"]
-[ext_resource type="Texture2D" uid="uid://hxh87mlsystq" path="res://assets/PNG/Effects/fire14.png" id="3_i03cd"]
-[ext_resource type="PackedScene" uid="uid://c8w0dawifubjw" path="res://scenes/gpu_particles_2d.tscn" id="3_qwb6b"]
-[ext_resource type="Texture2D" uid="uid://bt7sjrlrgndwa" path="res://assets/recent/Enemies/Kla'ed/Base/PNGs/Kla'ed - Bomber - Base.png" id="4_bdvu0"]
+[ext_resource type="Script" path="res://scenes/enemies/elite_enemy.gd" id="1_kvgb1"]
+[ext_resource type="PackedScene" uid="uid://h1yu104a5hd1" path="res://scenes/projectiles/elite_projectile.tscn" id="2_8n03e"]
+[ext_resource type="PackedScene" uid="uid://c8w0dawifubjw" path="res://scenes/gpu_particles_2d.tscn" id="3_obl2c"]
+[ext_resource type="Texture2D" uid="uid://bt7sjrlrgndwa" path="res://assets/recent/Enemies/Kla'ed/Base/PNGs/Kla'ed - Bomber - Base.png" id="4_aiif5"]
+[ext_resource type="Texture2D" uid="uid://hxh87mlsystq" path="res://assets/PNG/Effects/fire14.png" id="5_ivny4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vys6y"]
 radius = 45.2217
@@ -72,21 +72,21 @@ _data = {
 
 [node name="EliteEnemy" type="Area2D" groups=["enemy"]]
 scale = Vector2(1.3, 1.3)
-script = ExtResource("1_c226n")
-energy_sphere = ExtResource("2_djjpf")
-explosion_particle = ExtResource("3_qwb6b")
+script = ExtResource("1_kvgb1")
+energy_sphere = ExtResource("2_8n03e")
+explosion_particle = ExtResource("3_obl2c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vys6y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
-texture = ExtResource("4_bdvu0")
+texture = ExtResource("4_aiif5")
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
 position = Vector2(-0.384615, -34.6154)
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("3_i03cd")
+texture = ExtResource("5_ivny4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

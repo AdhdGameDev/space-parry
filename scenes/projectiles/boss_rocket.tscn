@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://bpg7agf87jvm2"]
+
+[ext_resource type="Script" path="res://boss_rocket.gd" id="1_cshav"]
+[ext_resource type="Texture2D" uid="uid://bk7shvk3l76vd" path="res://assets/recent/Enemies/Kla'ed/Projectiles/PNGs/Kla'ed - Torpedo.png" id="2_vpy3m"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dkejg"]
+radius = 3.0
+height = 22.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dr81b"]
+atlas = ExtResource("2_vpy3m")
+region = Rect2(0, 0, 11, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwxdi"]
+atlas = ExtResource("2_vpy3m")
+region = Rect2(11, 0, 11, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jd8ks"]
+atlas = ExtResource("2_vpy3m")
+region = Rect2(22, 0, 11, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_shkge"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dr81b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwxdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jd8ks")
+}],
+"loop": true,
+"name": &"rocket",
+"speed": 10.0
+}]
+
+[node name="BossRocket" type="Area2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_cshav")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_dkejg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_shkge")
+animation = &"rocket"
+frame_progress = 0.328928

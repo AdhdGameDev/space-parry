@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://h1yu104a5hd1"]
+
+[ext_resource type="PackedScene" uid="uid://cpg7fworn2gp3" path="res://scenes/projectiles/basic_projectile.tscn" id="1_sfnwp"]
+[ext_resource type="Script" path="res://scenes/projectiles/elite_projectile.gd" id="2_rrhi5"]
+[ext_resource type="Texture2D" uid="uid://b34dj582n8hen" path="res://assets/PNG/Lasers/laserRed10.png" id="3_lustx"]
+
+[sub_resource type="Animation" id="Animation_nbt2x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.4, 1.102)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_g22q4"]
+resource_name = "pulse"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.966667, 1.53333, 2, 2.5, 3, 3.5, 4.02, 4.51, 4.98),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 1.574), Vector2(2.5, 1.968), Vector2(2, 1.574), Vector2(2.5, 1.968), Vector2(2, 1.574), Vector2(2.5, 1.968), Vector2(2, 1.574), Vector2(2.5, 1.968), Vector2(2, 1.574), Vector2(2.5, 1.968), Vector2(2, 1.574)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.03333, 1.5, 2, 2.46667, 3.01, 3.53333, 4, 4.53333, 4.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.523599, 1.0472, 1.5708, 2.0944, 2.61799, 3.14159, 3.66519, 4.18879, 4.71239, 5.23599]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4s3nr"]
+_data = {
+"RESET": SubResource("Animation_nbt2x"),
+"pulse": SubResource("Animation_g22q4")
+}
+
+[node name="EliteProjectile" groups=["elite_projectile", "projectile"] instance=ExtResource("1_sfnwp")]
+script = ExtResource("2_rrhi5")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("3_lustx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_4s3nr")
+}
