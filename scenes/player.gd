@@ -28,6 +28,8 @@ class_name Player
 @export var enemy_max_count: int = 5
 var current_enemy_count: int = 0
 
+var player_speed: float = 250.0
+
 var shield_active: bool = false
 var shield_cooldown_passed: bool = true
 var can_laser: bool = true
@@ -64,8 +66,16 @@ func _process(delta: float) -> void:
 			open_fire(new_design_ship.rotation)
 	if Input.is_action_just_pressed("Shield"):
 		activate_shield()
+		
+	#if GameManager.game_mode == GameManager.GameMode.BOSS_LEVEL_1:
+	move(delta)
 	
-			
+
+func move(delta: float) -> void:
+	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var velocity = input_direction * player_speed
+	position += velocity * delta
+	
 func enemy_destroyed(points: int) -> void:
 	current_enemy_count = current_enemy_count - 1
 	
@@ -81,7 +91,7 @@ func activate_shield() -> void:
 func try_to_deflect() -> void:
 	if deflect_timer_buffer.time_left > 0:
 		for projectile in deflect_area.get_overlapping_areas():
-			if !projectile.is_in_group("player") and !projectile.is_in_group("laser"):
+			if !projectile.is_in_group("player") and !projectile.is_in_group("laser") and !projectile.is_in_group("beam"):
 				$DeflectSound.play()
 				var current_projectile: BasicProjectile = projectile
 				current_projectile.reflected = true
@@ -125,6 +135,8 @@ func _on_laser_cooldown_timer_timeout() -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("beam") and !shield_active:
+		SignalBus.player_death.emit()
 	if !area.is_in_group("laser"):
 		if !shield_active:
 			health = health - 1

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyrvyqpsd8106"]
+
+[ext_resource type="PackedScene" uid="uid://cptdneovd2ovh" path="res://scenes/game_scene.tscn" id="1_yei7m"]
+[ext_resource type="Texture2D" uid="uid://cxse64mop6pa4" path="res://assets/backgrounds/Small 512x512/Purple Nebula/Purple_Nebula_08-512x512.png" id="2_repoe"]
+
+[node name="first_boss_arena" instance=ExtResource("1_yei7m")]
+
+[node name="Background" parent="." index="1"]
+position = Vector2(632, 670)
+scale = Vector2(3.13281, 2.72508)
+texture = ExtResource("2_repoe")
+
+[node name="Control" parent="." index="3"]
+offset_left = 74.0
+offset_top = 72.0
+offset_right = 74.0
+offset_bottom = 72.0

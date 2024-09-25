@@ -11,7 +11,7 @@ enum BossType {
 
 const PLAYER_POSITION: Vector2 = Vector2(600, 600)
 const RADIUS: int = 500
-const BOSS_RADIUS: int = 675
+const BOSS_RADIUS: int = 645
 
 @onready var enemy_types = [
 	preload("res://scenes/enemies/simple_enemy.tscn"),

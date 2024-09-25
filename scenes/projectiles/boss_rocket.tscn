@@ -46,4 +46,9 @@ shape = SubResource("CapsuleShape2D_dkejg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_shkge")
 animation = &"rocket"
-frame_progress = 0.328928
+frame_progress = 0.073521
+
+[node name="AimingTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="AimingTimer" to="." method="_on_aiming_timer_timeout"]

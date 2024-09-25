@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://cmwa0mh7vfd1j"]
+[gd_scene load_steps=69 format=3 uid="uid://cmwa0mh7vfd1j"]
 
 [ext_resource type="Script" path="res://scenes/first_boss/first_boss.gd" id="1_cjwql"]
 [ext_resource type="PackedScene" uid="uid://bpg7agf87jvm2" path="res://scenes/projectiles/boss_rocket.tscn" id="2_6lh6p"]
@@ -7,6 +7,44 @@
 [ext_resource type="Texture2D" uid="uid://dhrioem2m2ohh" path="res://assets/recent/Enemies/Kla'ed/Base/PNGs/Kla'ed - Torpedo Ship - Base.png" id="4_hrkta"]
 [ext_resource type="Texture2D" uid="uid://d3eh7iekekjdq" path="res://assets/recent/Enemies/Kla'ed/Shield/PNGs/Kla'ed - Torpedo Ship - Shield.png" id="5_p0k5r"]
 [ext_resource type="Texture2D" uid="uid://dxkdcai521ijj" path="res://assets/recent/Enemies/Kla'ed/Engine/PNGs/Kla'ed - Torpedo Ship - Engine.png" id="6_ldltq"]
+[ext_resource type="Texture2D" uid="uid://ufql81o0n2hs" path="res://assets/recent/Enemies/Kla'ed/Projectiles/PNGs/Kla'ed - Ray.png" id="8_3fhdl"]
+
+[sub_resource type="Animation" id="Animation_uk133"]
+resource_name = "energy_beam"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 2, 4.96667, 5.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 2.0944, -1.5708, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_lg71o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qyfte"]
+_data = {
+"RESET": SubResource("Animation_lg71o"),
+"energy_beam": SubResource("Animation_uk133")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2rylg"]
 atlas = ExtResource("2_u4quw")
@@ -367,6 +405,42 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1s3ui"]
+atlas = ExtResource("8_3fhdl")
+region = Rect2(0, 0, 18, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjo16"]
+atlas = ExtResource("8_3fhdl")
+region = Rect2(18, 0, 18, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkipa"]
+atlas = ExtResource("8_3fhdl")
+region = Rect2(36, 0, 18, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1n5m1"]
+atlas = ExtResource("8_3fhdl")
+region = Rect2(54, 0, 18, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s0mst"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1s3ui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjo16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkipa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1n5m1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w24kn"]
 size = Vector2(56, 8.5)
 
@@ -374,10 +448,18 @@ size = Vector2(56, 8.5)
 radius = 3.0
 height = 20.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htl8g"]
+size = Vector2(10.44, 38.104)
+
 [node name="FirstBoss" type="Area2D"]
 scale = Vector2(4, 4)
 script = ExtResource("1_cjwql")
 rocket = ExtResource("2_6lh6p")
+
+[node name="EnergyBeamAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qyfte")
+}
 
 [node name="Ship" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gnjei")
@@ -398,6 +480,13 @@ animation = &"engine"
 frame = 3
 frame_progress = 0.780143
 flip_v = true
+
+[node name="EnergyBeam" type="AnimatedSprite2D" parent="Ship"]
+visible = false
+position = Vector2(0.250001, 191.75)
+scale = Vector2(0.694444, 9.61842)
+sprite_frames = SubResource("SpriteFrames_s0mst")
+frame_progress = 0.274179
 
 [node name="GeneralCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.75)
@@ -424,5 +513,20 @@ position = Vector2(-14.5, 15)
 [node name="ShotSix" type="Marker2D" parent="."]
 position = Vector2(-20.5, 15)
 
+[node name="EnergyBeamTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="BeamArea" type="Area2D" parent="." groups=["beam"]]
+position = Vector2(-1.75, 12)
+
+[node name="BeamCollision" type="CollisionShape2D" parent="BeamArea"]
+position = Vector2(1.75, 180.75)
+scale = Vector2(0.694444, 9.61842)
+shape = SubResource("RectangleShape2D_htl8g")
+
+[connection signal="animation_finished" from="EnergyBeamAnimation" to="." method="_on_energy_beam_finished"]
 [connection signal="frame_changed" from="Ship" to="." method="_on_ship_frame_changed"]
 [connection signal="sprite_frames_changed" from="Ship" to="." method="_on_ship_sprite_frames_changed"]
+[connection signal="timeout" from="EnergyBeamTimer" to="." method="_on_energy_beam_readz"]
+[connection signal="area_entered" from="BeamArea" to="." method="_on_beam_area_area_entered"]

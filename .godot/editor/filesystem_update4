@@ -30,3 +30,7 @@ res://scenes/enemies/elite_enemy.tscn
 res://scenes/projectiles/elite_projectile.tscn
 res://boss_rocket.gd
 res://scenes/projectiles/boss_rocket.tscn
+res://scenes/projectiles/basic_projectile.gd
+res://globals/GameManager.gd
+res://scenes/first_boss_arena.gd
+res://scenes/first_boss/first_boss_arena.tscn

@@ -25,6 +25,6 @@ func _physics_process(delta):
 
 func _on_player_ara_entered(area: Area2D) -> void:
 	if area.is_in_group("player"):
-		SignalBus.player_collision_hit.emit(self.global_position)
+		SignalBus.player_collision_hit.emit(self.globa)
 		queue_free()
 	

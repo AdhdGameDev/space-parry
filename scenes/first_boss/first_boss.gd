@@ -4,9 +4,12 @@ class_name FirstBoss
 
 @export var rocket: PackedScene
 
+@onready var energy_beam_raycast: RayCast2D = $EnergyBeamRaycast
+@onready var energy_beam_timer: Timer = $EnergyBeamTimer
 @onready var ship: AnimatedSprite2D = $Ship
 @onready var engine: AnimatedSprite2D = $Ship/Engine
-@onready var rocket_barage_timer: Timer = $RocketBarageTimer
+@onready var energy_beam_animation: AnimationPlayer = $EnergyBeamAnimation
+@onready var energy_beam: AnimatedSprite2D = $Ship/EnergyBeam
 
 # Dictionary to map frames to shot markers
 @onready var shot_markers = {
@@ -19,14 +22,20 @@ class_name FirstBoss
 }
 
 var rocket_barage_active: bool = false
+var energy_beam_active: bool = false
 
 
 func _ready() -> void:
 	engine.play("engine")
-
+	$BeamArea/BeamCollision.disabled = true
+	
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Shield") and not rocket_barage_active:
 		start_rocket_barage()
+	if Input.is_action_just_pressed("ui_accept") and not energy_beam_active:
+		energy_beam_active = true
+		energy_beam_attack()
+		
 
 func start_rocket_barage() -> void:
 	rocket_barage_active = true
@@ -55,3 +64,19 @@ func _on_ship_frame_changed() -> void:
 func end_rocket_barage() -> void:
 	rocket_barage_active = false
 	ship.play("idle")
+	
+func energy_beam_attack() -> void:
+	energy_beam.pla
+	energy_beam_timer.start()
+	energy_beam_animation.play("energy_beam")
+	
+
+
+func _on_energy_beam_readz() -> void:
+	energy_beam.visible = true
+	$BeamArea/BeamCollision.disabled = false
+
+
+func _on_energy_beam_finished(anim_name: StringName) -> void:
+	energy_beam.visible = false
+	
