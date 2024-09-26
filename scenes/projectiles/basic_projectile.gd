@@ -7,6 +7,7 @@ var velocity = Vector2.ZERO
 
 var reflected: bool = false
 
+var direction: Vector2
 # Reference to the player (target)
 var target_position = Vector2.ZERO
 
@@ -15,16 +16,17 @@ func set_target(target_pos: Vector2):
 	target_position = target_pos
 	# Calculate the direction towards the target and normalize it
 	velocity = (target_position - global_position).normalized() * speed
-
+	
 func _physics_process(delta):
 	# Move the projectile towards the target
 	global_position += velocity * delta
 	
 	
-
+func flip() -> void:
+	$Sprite2D.flip_v = true
 
 func _on_player_ara_entered(area: Area2D) -> void:
 	if area.is_in_group("player"):
-		SignalBus.player_collision_hit.emit(self.globa)
+		SignalBus.player_collision_hit.emit(self.global_position)
 		queue_free()
 	

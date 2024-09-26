@@ -34,3 +34,8 @@ res://scenes/projectiles/basic_projectile.gd
 res://globals/GameManager.gd
 res://scenes/first_boss_arena.gd
 res://scenes/first_boss/first_boss_arena.tscn
+res://globals/EnemyFactory.gd
+res://globals/SignalBus.gd
+res://scenes/ui.gd
+res://globals/ProjectileFactory.gd
+res://scenes/projectiles/basic_projectile.tscn

@@ -486,7 +486,7 @@ visible = false
 position = Vector2(0.250001, 191.75)
 scale = Vector2(0.694444, 9.61842)
 sprite_frames = SubResource("SpriteFrames_s0mst")
-frame_progress = 0.154545
+frame_progress = 0.641373
 
 [node name="GeneralCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.75)

@@ -8,12 +8,13 @@ extends BasicProjectile
 
 var player: Player
 
-var direction: Vector2 = Vector2(0, 1)
+
 
 var aimed: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	direction = Vector2(0, 1)
 	player = get_tree().get_nodes_in_group("player")[0]
 	velocity = direction * initial_velocity
 	$AnimatedSprite2D.play("rocket")

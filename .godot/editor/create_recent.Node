@@ -1,6 +1,6 @@
+Timer
 TextureProgressBar
 Sprite2D
-Timer
 Area2D
 CharacterBody2D
 CollisionShape2D
@@ -12,4 +12,3 @@ BasicProjectile
 Camera2D
 TextureRect
 Label
-MarginContainer
