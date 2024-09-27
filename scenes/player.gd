@@ -36,12 +36,12 @@ var can_laser: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	EnemyFactory.spawn_boss(EnemyFactory.BossType.FIRST_BOSS)
 	deflect_shield.visible = false
 	shield.visible = false
 	SignalBus.enemy_destroyed.connect(enemy_destroyed)
 	SignalBus.player_collision_hit.connect(on_player_collision_hit)
 	SignalBus.enemy_group_defeated.connect(on_group_defeated)
+	SignalBus.rocked_exploded.connect(_on_rocket_exploded)
 	enemy_spawn_timer.start()
 
 
@@ -75,6 +75,7 @@ func move(delta: float) -> void:
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var velocity = input_direction * player_speed
 	position += velocity * delta
+	SignalBus.player_moved.emit(global_position)
 	
 func enemy_destroyed(points: int) -> void:
 	current_enemy_count = current_enemy_count - 1
@@ -96,10 +97,8 @@ func try_to_deflect() -> void:
 				var current_projectile: BasicProjectile = projectile
 				current_projectile.reflected = true
 				current_projectile.direction = current_projectile.direction * -1
+				current_projectile.velocity = current_projectile.velocity * -1
 				current_projectile.flip()
-				deflect_area.modulate = Color.BLACK
-				var new_velocity = (get_global_mouse_position() - global_position).normalized()
-				current_projectile.velocity = new_velocity * current_projectile.velocity.length()
 				overcharge()
 		
 func overcharge() -> void:
@@ -176,3 +175,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_deflect_end() -> void:
 	deflect_shield.visible = false
+	
+func _on_rocket_exploded(position: Vector2) -> void:
+	if global_position.distance_to(position) < 75:
+		SignalBus.player_death.emit()

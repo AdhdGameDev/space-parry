@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://cmwa0mh7vfd1j"]
+[gd_scene load_steps=72 format=3 uid="uid://cmwa0mh7vfd1j"]
 
 [ext_resource type="Script" path="res://scenes/first_boss/first_boss.gd" id="1_cjwql"]
 [ext_resource type="PackedScene" uid="uid://bpg7agf87jvm2" path="res://scenes/projectiles/boss_rocket.tscn" id="2_6lh6p"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://d3eh7iekekjdq" path="res://assets/recent/Enemies/Kla'ed/Shield/PNGs/Kla'ed - Torpedo Ship - Shield.png" id="5_p0k5r"]
 [ext_resource type="Texture2D" uid="uid://dxkdcai521ijj" path="res://assets/recent/Enemies/Kla'ed/Engine/PNGs/Kla'ed - Torpedo Ship - Engine.png" id="6_ldltq"]
 [ext_resource type="Texture2D" uid="uid://ufql81o0n2hs" path="res://assets/recent/Enemies/Kla'ed/Projectiles/PNGs/Kla'ed - Ray.png" id="8_3fhdl"]
+[ext_resource type="AudioStream" uid="uid://cjd50uwv1o1gp" path="res://assets/sounds/Audio/explosionCrunch_000.ogg" id="9_fyety"]
+[ext_resource type="AudioStream" uid="uid://cuybofev8f0k1" path="res://assets/sounds/Audio/lowFrequency_explosion_000.ogg" id="10_f18ll"]
+[ext_resource type="AudioStream" uid="uid://dncnebwrihqh0" path="res://assets/sounds/Audio/forceField_000.ogg" id="10_teisd"]
 
 [sub_resource type="Animation" id="Animation_uk133"]
 resource_name = "energy_beam"
@@ -238,7 +241,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"fire",
-"speed": 1.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -451,7 +454,7 @@ height = 20.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_htl8g"]
 size = Vector2(10.44, 38.104)
 
-[node name="FirstBoss" type="Area2D"]
+[node name="FirstBoss" type="Area2D" groups=["boss"]]
 scale = Vector2(4, 4)
 script = ExtResource("1_cjwql")
 rocket = ExtResource("2_6lh6p")
@@ -463,7 +466,7 @@ libraries = {
 
 [node name="Ship" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gnjei")
-animation = &"death"
+animation = &"fire"
 flip_v = true
 
 [node name="Shield" type="AnimatedSprite2D" parent="Ship"]
@@ -486,7 +489,7 @@ visible = false
 position = Vector2(0.250001, 191.75)
 scale = Vector2(0.694444, 9.61842)
 sprite_frames = SubResource("SpriteFrames_s0mst")
-frame_progress = 0.154545
+frame_progress = 0.645932
 
 [node name="GeneralCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.75)
@@ -534,11 +537,28 @@ wait_time = 5.0
 autostart = true
 
 [node name="LaserAttackTimer" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 0.2
 autostart = true
 
 [node name="RocketTimer" type="Timer" parent="."]
 wait_time = 10.0
+autostart = true
+
+[node name="RocketSound" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(0.25, 0.25)
+stream = ExtResource("9_fyety")
+
+[node name="RocketStartSound" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(0.25, 0.25)
+stream = ExtResource("10_f18ll")
+
+[node name="ShieldSound" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(0.25, 0.25)
+stream = ExtResource("10_teisd")
+
+[node name="LaserBarageTimerEnd" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
 autostart = true
 
 [connection signal="area_entered" from="." to="." method="_on_boss_attacked"]
@@ -551,3 +571,4 @@ autostart = true
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer"]
 [connection signal="timeout" from="LaserAttackTimer" to="." method="_on_laser_attack_cooldown"]
 [connection signal="timeout" from="RocketTimer" to="." method="_on_rocket_timer"]
+[connection signal="timeout" from="LaserBarageTimerEnd" to="." method="_on_laser_barage_end"]

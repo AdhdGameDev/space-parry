@@ -1,0 +1,81 @@
+[gd_scene load_steps=7 format=3 uid="uid://d0bn44ojl7lcf"]
+
+[ext_resource type="PackedScene" uid="uid://cpg7fworn2gp3" path="res://scenes/projectiles/basic_projectile.tscn" id="1_nho4r"]
+[ext_resource type="Script" path="res://boss_large_laser_projectile.gd" id="2_vf6vf"]
+[ext_resource type="Texture2D" uid="uid://1kmc68cihpac" path="res://assets/PNG/Lasers/laserRed16.png" id="3_hys3u"]
+
+[sub_resource type="Animation" id="Animation_kl5j8"]
+resource_name = "scale"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 1.03333, 2.03333, 2.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(3.5, 2.755), Vector2(3, 2.361), Vector2(3.5, 2.755), Vector2(3, 2.361)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.96667, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.850856, 0.64526, 0.913586, 1), Color(0.970293, 0.408888, 0.697944, 1), Color(0.6823, 0.236948, 0.276089, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_c8b6g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 2.361)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s0mdd"]
+_data = {
+"RESET": SubResource("Animation_c8b6g"),
+"scale": SubResource("Animation_kl5j8")
+}
+
+[node name="BossLargeLaserProjectile" instance=ExtResource("1_nho4r")]
+script = ExtResource("2_vf6vf")
+
+[node name="Sprite2D" parent="." index="1"]
+scale = Vector2(3, 2.361)
+texture = ExtResource("3_hys3u")
+flip_v = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_s0mdd")
+}
+autoplay = "scale"

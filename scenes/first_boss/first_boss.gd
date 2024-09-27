@@ -10,6 +10,7 @@ class_name FirstBoss
 @onready var energy_beam: AnimatedSprite2D = $Ship/EnergyBeam
 @onready var shield: AnimatedSprite2D = $Ship/Shield
 
+@onready var laser_barage_timer_end: Timer = $LaserBarageTimerEnd
 @onready var energy_beam_timer: Timer = $EnergyBeamTimer
 @onready var shield_timer: Timer = $ShieldTimer
 @onready var move_timer: Timer = $MoveTimer
@@ -17,7 +18,7 @@ class_name FirstBoss
 @onready var rocket_timer: Timer = $RocketTimer
 
 
-var player: Area2D
+@onready var player: Area2D
 var current_health: int
 var defence_active: bool = false
 
@@ -34,14 +35,12 @@ var defence_active: bool = false
 var rocket_barage_active: bool = false
 var energy_beam_active: bool = false
 var is_moved_recently: bool = true
-
+var can_fire_regular_laser: bool = true
 var last_move_direction: Vector2
 var speed: float  = GameManager.first_boss_speed
 
 
 func _ready() -> void:
-	print("Start position")
-	print(global_position)
 	current_health = GameManager.first_boss_health
 	engine.play("engine")
 	$BeamArea/BeamCollision.disabled = true
@@ -51,8 +50,8 @@ func _process(delta: float) -> void:
 	if !is_moved_recently:
 		move(delta)
 	if Input.is_action_just_pressed("Shield") and not rocket_barage_active:
-		#start_rocket_barage()
-		laser_attack()
+		start_rocket_barage()
+		#laser_attack()
 	#if Input.is_action_just_pressed("ui_accept") and not energy_beam_active:
 		#energy_beam_active = true
 		#energy_beam_attack()
@@ -61,9 +60,7 @@ func _process(delta: float) -> void:
 func move(delta: float) -> void:
 	var screen_width = 1200
 	position += speed * last_move_direction * delta
-
 	if global_position.x < 0:
-		print(position)
 		position.x = 0
 		last_move_direction = Vector2.RIGHT
 	elif global_position.x > screen_width:
@@ -74,7 +71,7 @@ func move(delta: float) -> void:
 		
 		
 func laser_attack() -> void:
-	if !rocket_barage_active:
+	if !rocket_barage_active and can_fire_regular_laser:
 		ProjectileFactory.spawn_projectile(ProjectileFactory.ProjectileType.BASIC_PROJECTILE, player.position, position)
 	
 func start_rocket_barage() -> void:
@@ -85,7 +82,8 @@ func start_rocket_barage() -> void:
 func fire_rocket(marker: Marker2D) -> void:
 	var fired_rocket = rocket.instantiate()
 	get_tree().root.add_child(fired_rocket)
-	
+	SignalBus.rocket_launched.emit()
+	$RocketStartSound.play()
 	# Set rocket position and rotation
 	var direction = Vector2.DOWN
 	fired_rocket.rotation = direction.angle() + deg_to_rad(90)
@@ -122,7 +120,6 @@ func _on_energy_beam_finished(anim_name: StringName) -> void:
 	energy_beam.visible = false
 	
 
-
 func _on_boss_attacked(area: Area2D) -> void:
 	if !defence_active:
 		if area.is_in_group("laser"):
@@ -130,7 +127,9 @@ func _on_boss_attacked(area: Area2D) -> void:
 		if area.is_in_group("rocket"):
 			receive_damage(area, GameManager.first_boss_rocket_damage)
 			activate_defence()
+			$RocketSound.play()
 	else:
+		$ShieldSound.play()
 		area.queue_free()
 
 func receive_damage(projectile: Area2D, damage: int) -> void:
@@ -175,6 +174,12 @@ func _on_laser_attack_cooldown() -> void:
 
 func _on_rocket_timer() -> void:
 	speed = 0
-	var direction = (player.global_position - global_position).normalized()
-	rotation = get_angle_to(player.global_position) + deg_to_rad(-90)
 	start_rocket_barage()
+
+
+func _on_laser_barage_end() -> void:
+	can_fire_regular_laser = false
+	var spawned_projectile = ProjectileFactory.spawn_projectile(ProjectileFactory.ProjectileType.BOSS_BIG_LASER, player.global_position, global_position)
+	spawned_projectile.set_target(player.global_position)
+	laser_barage_timer_end.stop()
+	

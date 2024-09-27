@@ -39,3 +39,7 @@ res://globals/SignalBus.gd
 res://scenes/ui.gd
 res://globals/ProjectileFactory.gd
 res://scenes/projectiles/basic_projectile.tscn
+res://scenes/main_menu.gd
+res://scenes/first_boss/first_boss_arena.gd
+res://boss_large_laser_projectile.gd
+res://scenes/projectiles/boss_large_laser_projectile.tscn

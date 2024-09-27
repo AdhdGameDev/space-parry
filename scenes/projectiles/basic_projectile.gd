@@ -2,7 +2,7 @@ extends Area2D
 
 class_name BasicProjectile
 # Speed of the projectile
-var speed = 250
+var speed = 350
 var velocity = Vector2.ZERO
 
 var reflected: bool = false

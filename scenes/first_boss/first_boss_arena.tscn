@@ -1,13 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyrvyqpsd8106"]
+[gd_scene load_steps=4 format=3 uid="uid://dyrvyqpsd8106"]
 
 [ext_resource type="PackedScene" uid="uid://cptdneovd2ovh" path="res://scenes/game_scene.tscn" id="1_yei7m"]
 [ext_resource type="Texture2D" uid="uid://cxse64mop6pa4" path="res://assets/backgrounds/Small 512x512/Purple Nebula/Purple_Nebula_08-512x512.png" id="2_repoe"]
+[ext_resource type="Script" path="res://scenes/first_boss/first_boss_arena.gd" id="2_yrufr"]
 
 [node name="first_boss_arena" instance=ExtResource("1_yei7m")]
+script = ExtResource("2_yrufr")
 
 [node name="Background" parent="." index="1"]
-position = Vector2(632, 670)
-scale = Vector2(3.13281, 2.72508)
+z_index = -1
+position = Vector2(559, 654.5)
+scale = Vector2(4.88281, 4.5332)
 texture = ExtResource("2_repoe")
 
 [node name="Control" parent="." index="3"]
@@ -15,3 +18,15 @@ offset_left = 74.0
 offset_top = 72.0
 offset_right = 74.0
 offset_bottom = 72.0
+
+[node name="RocketLD" type="Marker2D" parent="." index="5"]
+position = Vector2(48, 1180)
+
+[node name="RocketLU" type="Marker2D" parent="." index="6"]
+position = Vector2(55, 563)
+
+[node name="RocketRU" type="Marker2D" parent="." index="7"]
+position = Vector2(1265, 575)
+
+[node name="RocketRD" type="Marker2D" parent="." index="8"]
+position = Vector2(1278, 1215)
