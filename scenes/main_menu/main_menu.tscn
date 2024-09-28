@@ -1,0 +1,99 @@
+[gd_scene load_steps=8 format=3 uid="uid://digu0geow8wmw"]
+
+[ext_resource type="Script" path="res://scenes/main_menu/main_menu.gd" id="1_q65os"]
+[ext_resource type="LabelSettings" uid="uid://cjlptd0a1wqyj" path="res://assets/fonts/new_label_settings.tres" id="2_oednu"]
+[ext_resource type="FontFile" uid="uid://bpo08sdyanq62" path="res://assets/Bonus/kenvector_future.ttf" id="3_y0xt3"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cdmw3"]
+load_path = "res://.godot/imported/purple.png-52c0cdc1e489e32101e2b2181245fb84.ctex"
+
+[sub_resource type="LabelSettings" id="LabelSettings_fejfb"]
+font = ExtResource("3_y0xt3")
+font_size = 62
+font_color = Color(0.658824, 0.968627, 0.596078, 1)
+outline_size = 7
+outline_color = Color(0.116677, 0.601864, 0.43534, 1)
+shadow_size = 14
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lyvp1"]
+font = ExtResource("3_y0xt3")
+font_size = 31
+font_color = Color(0.858824, 0.827451, 0.976471, 1)
+outline_size = 7
+outline_color = Color(0.116677, 0.601864, 0.43534, 1)
+shadow_size = 14
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hcgcb"]
+font = ExtResource("3_y0xt3")
+font_size = 31
+font_color = Color(0.858824, 0.827451, 0.976471, 1)
+outline_size = 7
+outline_color = Color(0.116677, 0.601864, 0.43534, 1)
+shadow_size = 14
+shadow_offset = Vector2(10, 10)
+
+[node name="MainMenu" type="Control" groups=["projectile"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q65os")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_cdmw3")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Title" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "SPACE
+PARRY
+"
+label_settings = ExtResource("2_oednu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartGameLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "PRESS SPACE
+             TO
+          PLAY
+"
+label_settings = SubResource("LabelSettings_fejfb")
+
+[node name="Highscore" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "HIGHSCORE"
+label_settings = SubResource("LabelSettings_lyvp1")
+
+[node name="HighscoreValueLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "1"
+label_settings = SubResource("LabelSettings_hcgcb")

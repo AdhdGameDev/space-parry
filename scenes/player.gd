@@ -24,8 +24,8 @@ class_name Player
 @onready var shield: Sprite2D = $Shield
 @onready var ship_collision: CollisionShape2D = $ShipCollision
 
-@export var health: int = 15
-@export var enemy_max_count: int = 5
+@export var health: int = GameManager.player_max_health
+@export var enemy_max_count: int = GameManager.maximum_enemies
 var current_enemy_count: int = 0
 
 var player_speed: float = 250.0
@@ -40,9 +40,9 @@ func _ready() -> void:
 	shield.visible = false
 	SignalBus.enemy_destroyed.connect(enemy_destroyed)
 	SignalBus.player_collision_hit.connect(on_player_collision_hit)
-	SignalBus.enemy_group_defeated.connect(on_group_defeated)
 	SignalBus.rocked_exploded.connect(_on_rocket_exploded)
 	enemy_spawn_timer.start()
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -66,16 +66,16 @@ func _process(delta: float) -> void:
 			open_fire(new_design_ship.rotation)
 	if Input.is_action_just_pressed("Shield"):
 		activate_shield()
-		
-	#if GameManager.game_mode == GameManager.GameMode.BOSS_LEVEL_1:
-	move(delta)
+	
+	SignalBus.player_moved.emit(global_position)
+	if GameManager.game_mode == GameManager.GameMode.BOSS_LEVEL_1:
+		move(delta)
 	
 
 func move(delta: float) -> void:
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var velocity = input_direction * player_speed
 	position += velocity * delta
-	SignalBus.player_moved.emit(global_position)
 	
 func enemy_destroyed(points: int) -> void:
 	current_enemy_count = current_enemy_count - 1
@@ -138,7 +138,9 @@ func _on_area_entered(area: Area2D) -> void:
 		SignalBus.player_death.emit()
 	if !area.is_in_group("laser"):
 		if !shield_active:
+			print(area)
 			health = health - 1
+			SignalBus.player_damaged.emit(1)
 			camera_2d.start_screen_shake(5, 2)
 			if health == 0:
 				SignalBus.player_death.emit()
@@ -160,16 +162,8 @@ func _on_shield_end() -> void:
 func _on_shield_cooldown_passed() -> void:
 	shield_cooldown_passed = !shield_cooldown_passed
 	
-func on_group_defeated(count: int) -> void:
-	if count % 10 == 0:
-		EnemyFactory.spawn_enemy(EnemyFactory.EnemyType.ELITE_ENEMY)
-	if count == 15:
-		print("count 15")
-		EnemyFactory.spawn_boss(EnemyFactory.BossType.FIRST_BOSS)
-
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	$AnimationPlayer.stop()
 	laser_cooldown_timer.wait_time = laser_cooldown_timer.wait_time * 4
 
 

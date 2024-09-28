@@ -1,4 +1,4 @@
-extends GameScene
+extends Node2D
 
 @onready var rocket_ld: Marker2D = $RocketLD
 @onready var rocket_lu: Marker2D = $RocketLU

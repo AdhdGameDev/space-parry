@@ -1,74 +1,106 @@
-[gd_scene load_steps=10 format=3 uid="uid://benhlcikss48w"]
+[gd_scene load_steps=20 format=3 uid="uid://benhlcikss48w"]
 
 [ext_resource type="Script" path="res://scenes/enemies/elite_enemy.gd" id="1_kvgb1"]
 [ext_resource type="PackedScene" uid="uid://h1yu104a5hd1" path="res://scenes/projectiles/elite_projectile.tscn" id="2_8n03e"]
 [ext_resource type="PackedScene" uid="uid://c8w0dawifubjw" path="res://scenes/gpu_particles_2d.tscn" id="3_obl2c"]
 [ext_resource type="Texture2D" uid="uid://bt7sjrlrgndwa" path="res://assets/recent/Enemies/Kla'ed/Base/PNGs/Kla'ed - Bomber - Base.png" id="4_aiif5"]
-[ext_resource type="Texture2D" uid="uid://hxh87mlsystq" path="res://assets/PNG/Effects/fire14.png" id="5_ivny4"]
+[ext_resource type="Texture2D" uid="uid://dorr58hdbhdx2" path="res://assets/recent/Enemies/Kla'ed/Engine/PNGs/Kla'ed - Bomber - Engine.png" id="5_i3iyb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vys6y"]
 radius = 45.2217
 
-[sub_resource type="Animation" id="Animation_ykoys"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D/Sprite2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1.5, 1.5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/Sprite2D:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_bj4nj"]
+atlas = ExtResource("4_aiif5")
+region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="Animation" id="Animation_pk6l7"]
-resource_name = "speed"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D/Sprite2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5, 1.96667, 2.5, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(1.5, 1.5), Vector2(2, 2), Vector2(1.5, 1.5), Vector2(2, 2), Vector2(1.5, 1.5), Vector2(2, 2), Vector2(1.5, 1.5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/Sprite2D:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.859514, 0.310217, 0.594905, 1), Color(0.988249, 0.897771, 0.917063, 1)]
-}
+[sub_resource type="SpriteFrames" id="SpriteFrames_75o6p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bj4nj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_glqyf"]
-_data = {
-"RESET": SubResource("Animation_ykoys"),
-"speed": SubResource("Animation_pk6l7")
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvs1l"]
+atlas = ExtResource("5_i3iyb")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3iw4"]
+atlas = ExtResource("5_i3iyb")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dc5hp"]
+atlas = ExtResource("5_i3iyb")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nql56"]
+atlas = ExtResource("5_i3iyb")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt7i7"]
+atlas = ExtResource("5_i3iyb")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ls4lx"]
+atlas = ExtResource("5_i3iyb")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbu0s"]
+atlas = ExtResource("5_i3iyb")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3gsx"]
+atlas = ExtResource("5_i3iyb")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xk4ip"]
+atlas = ExtResource("5_i3iyb")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vv077"]
+atlas = ExtResource("5_i3iyb")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_61x1r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tvs1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3iw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dc5hp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nql56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt7i7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ls4lx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbu0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3gsx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xk4ip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vv077")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="EliteEnemy" type="Area2D" groups=["enemy"]]
 scale = Vector2(1.3, 1.3)
@@ -79,19 +111,19 @@ explosion_particle = ExtResource("3_obl2c")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vys6y")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
-texture = ExtResource("4_aiif5")
+[node name="Ship" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.769231, 6.92308)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_75o6p")
+animation = &"idle"
+flip_v = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
-position = Vector2(-0.384615, -34.6154)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("5_ivny4")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_glqyf")
-}
+[node name="Engine" type="AnimatedSprite2D" parent="Ship"]
+position = Vector2(-0.307693, -0.307692)
+sprite_frames = SubResource("SpriteFrames_61x1r")
+autoplay = "default"
+frame_progress = 0.293941
+flip_v = true
 
 [node name="BoostedTimer" type="Timer" parent="."]
 wait_time = 2.0

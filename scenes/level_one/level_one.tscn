@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbb043dcyf5pc"]
+
+[ext_resource type="PackedScene" uid="uid://cptdneovd2ovh" path="res://scenes/basic_scene/basic_scene.tscn" id="1_cillq"]
+[ext_resource type="Script" path="res://scenes/level_one/level_one.gd" id="2_cmby7"]
+
+[node name="LevelOne" instance=ExtResource("1_cillq")]
+script = ExtResource("2_cmby7")
+
+[node name="Background" parent="." index="1"]
+z_index = -1
+
+[node name="RegularEnemySpawnTimer" type="Timer" parent="." index="5"]
+wait_time = 4.0
+autostart = true
+
+[node name="OnBombEnemySpawnTimer" type="Timer" parent="." index="6"]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="RegularEnemySpawnTimer" to="." method="_on_regular_enemy_spawn"]
+[connection signal="timeout" from="OnBombEnemySpawnTimer" to="." method="_on_on_bomb_enemy_spawn_timer_timeout"]

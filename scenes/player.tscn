@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://b3yoi5ia0ewu2"]
+[gd_scene load_steps=51 format=3 uid="uid://b3yoi5ia0ewu2"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_vorp1"]
 [ext_resource type="PackedScene" uid="uid://bjm5awditly3x" path="res://scenes/enemies/simple_enemy.tscn" id="2_o7w06"]
@@ -257,19 +257,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jd2sv"]
 size = Vector2(168, 71.5)
 
-[sub_resource type="Animation" id="Animation_1nhbr"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_s0ocm"]
-resource_name = "overcharge"
-length = 2.0
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_o3dj8"]
-_data = {
-"RESET": SubResource("Animation_1nhbr"),
-"overcharge": SubResource("Animation_s0ocm")
-}
-
 [node name="Player" type="Area2D" groups=["player"]]
 script = ExtResource("1_vorp1")
 enemy = ExtResource("2_o7w06")
@@ -318,7 +305,7 @@ autostart = true
 [node name="DeflectArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeflectArea" groups=["player"]]
-position = Vector2(1, -78)
+position = Vector2(-1, -83)
 shape = SubResource("RectangleShape2D_jd2sv")
 
 [node name="DeflectTimerBuffer" type="Timer" parent="."]
@@ -349,15 +336,9 @@ one_shot = true
 wait_time = 6.0
 one_shot = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_o3dj8")
-}
-
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="DeflectTimerBuffer" to="." method="_on_deflect_end"]
 [connection signal="timeout" from="LaserCooldownTimer" to="." method="_on_laser_cooldown_timer_timeout"]
 [connection signal="timeout" from="ShieldTimer" to="." method="_on_shield_end"]
 [connection signal="timeout" from="ShieldCooldownTimer" to="." method="_on_shield_cooldown_passed"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,0 +1,145 @@
+[gd_scene load_steps=21 format=3 uid="uid://bhk75g7kss3nc"]
+
+[ext_resource type="Script" path="res://scenes/enemies/bomb_drone_enemy.gd" id="1_42adl"]
+[ext_resource type="Texture2D" uid="uid://thb34kdvqelf" path="res://assets/recent/Enemies/Kla'ed/Weapons/PNGs/Kla'ed - Scout - Weapons.png" id="2_gqymu"]
+[ext_resource type="Texture2D" uid="uid://dknyh3wtxmrli" path="res://assets/explosions/explosion pack 1/Explosions/explosion-1-g/spritesheet.png" id="3_5ptb2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fc6hw"]
+atlas = ExtResource("2_gqymu")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24h75"]
+atlas = ExtResource("2_gqymu")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwtec"]
+atlas = ExtResource("2_gqymu")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n640a"]
+atlas = ExtResource("2_gqymu")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44vw6"]
+atlas = ExtResource("2_gqymu")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r32pg"]
+atlas = ExtResource("2_gqymu")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_omaks"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fc6hw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24h75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwtec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n640a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44vw6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r32pg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gd3ac"]
+radius = 18.2816
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04lt8"]
+atlas = ExtResource("3_5ptb2")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pajrn"]
+atlas = ExtResource("3_5ptb2")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rssu"]
+atlas = ExtResource("3_5ptb2")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7a3j"]
+atlas = ExtResource("3_5ptb2")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3au8"]
+atlas = ExtResource("3_5ptb2")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxrpl"]
+atlas = ExtResource("3_5ptb2")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dv3dp"]
+atlas = ExtResource("3_5ptb2")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8sd54"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04lt8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pajrn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rssu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7a3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3au8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxrpl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dv3dp")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2pl5"]
+radius = 75.2111
+
+[node name="BombDroneEnemy" type="Area2D" groups=["projectile"]]
+scale = Vector2(1.25, 1.25)
+script = ExtResource("1_42adl")
+
+[node name="bomb" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.15, 1.15)
+sprite_frames = SubResource("SpriteFrames_omaks")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gd3ac")
+
+[node name="Explosion" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_8sd54")
+
+[node name="ExplosionRadius" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionRadius"]
+shape = SubResource("CircleShape2D_g2pl5")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="animation_finished" from="Explosion" to="." method="_on_explosion_animation_finished"]

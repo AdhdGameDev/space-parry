@@ -23,27 +23,16 @@ func _on_timer_timeout() -> void:
 	is_turned = !is_turned
 
 func spawn_projectile() -> void:
-	var spawned_projectile: BasicProjectile = projectile.instantiate()
-	get_tree().root.add_child(spawned_projectile)  # Add it to the scene root
-	
-	var direction = (center_position - global_position).normalized()
-	spawned_projectile.rotation = direction.angle() + deg_to_rad(90)
-	spawned_projectile.global_position = self.global_position
-	spawned_projectile.add_to_group("projectile")
-	spawned_projectile.set_target(center_position)
+	ProjectileFactory.spawn_projectile(ProjectileFactory.ProjectileType.BASIC_PROJECTILE, center_position, global_position)
 
 func _on_enemy_hit(area: Area2D) -> void:
 	if area.is_in_group("projectile"):
 		var current_projectile: BasicProjectile = area as BasicProjectile
 		if current_projectile.reflected:
-			SignalBus.enemy_destroyed.emit(10)
-			explode()
-			queue_free()  # Enemy is hit by a reflected projectile
+			die(GameManager.BASIC_ENEMY_SCORE)
 			current_projectile.queue_free()  # Optionally remove the projectile
 	elif area.is_in_group("laser"):
-		SignalBus.enemy_destroyed.emit(10)
-		queue_free()
-		explode()
+		die(GameManager.BASIC_ENEMY_SCORE)
 	elif area.is_in_group("enemy"):
 		direction = direction * -1
 		rotation = current_angle + deg_to_rad(90)

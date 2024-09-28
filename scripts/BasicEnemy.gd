@@ -31,8 +31,10 @@ func move(delta: float) -> void:
 	global_position = Vector2(new_x, new_y)
 	
 	
-func explode() -> void:
+func die(points: int) -> void:
 	var explosion = explosion_particle.instantiate()
 	explosion.global_position = self.global_position
 	get_tree().root.add_child(explosion)  # Add it to the scene root, not as a child of Enemy
 	explosion.emitting = true
+	queue_free()
+	SignalBus.enemy_destroyed.emit(points)

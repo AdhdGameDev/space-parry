@@ -1,13 +1,15 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1727434146
-boss_rocket.gd::GDScript::-1::1727434146::0::1::::<>BasicProjectile<>::
+::res://::1727525300
+boss_large_laser_projectile.gd::GDScript::-1::1727450465::0::1::::BigBossLaser<>BasicProjectile<>::
+boss_rocket.gd::GDScript::-1::1727444432::0::1::::<>BasicProjectile<>::
 icon.svg::CompressedTexture2D::3556721121096077783::1726671702::1726671707::1::::<><>::
-::res://assets/::1727437338
+::res://assets/::1727524504
 atlas_17.png::CompressedTexture2D::4791753202657669557::1726766257::1726766258::1::::<><>::
 chip-mode-danijel-zambo-main-version-1431-02-05.mp3::AudioStreamMP3::5256194561275316761::1726853922::1726853922::1::::<><>::
 craiyon_141502_space_background_2d_cartoon.png::CompressedTexture2D::7374348591999650148::1726853878::1726830954::1::::<><>::
 laserBlue03.png::CompressedTexture2D::3871056047485253251::1726850672::1726850672::1::::<><>::
 license.txt::TextFile::-1::1726915813::0::1::::<><>::
+new_label_settings.tres::LabelSettings::2910137157351111915::1727524504::0::1::::<><>::uid://bpo08sdyanq62::::res://assets/Bonus/kenvector_future.ttf
 preview.png::CompressedTexture2D::1905595553438994334::1726915813::1726915818::1::::<><>::
 sample.png::CompressedTexture2D::3959605057785415588::1726915813::1726915818::1::::<><>::
 sfx_laser1.ogg::AudioStreamOggVorbis::4541100778019999767::1726850672::1726850672::1::::<><>::
@@ -68,9 +70,9 @@ sfx_zap.ogg::AudioStreamOggVorbis::4622586049988727577::1726915809::1726915817::
 ::res://assets/explosions/__MACOSX/::1727437344
 ::res://assets/explosions/__MACOSX/explosion pack 1/::1727437344
 ::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/::1727437346
-::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/explosion-1-a/::1727437345
+::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/explosion-1-a/::1727437457
 ._spritesheet.png::CompressedTexture2D::2018806350813939755::1727437345::1727437457::0::::<><>::
-::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/explosion-1-a/Sprites/::1727437345
+::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/explosion-1-a/Sprites/::1727437457
 ._explosion-1.png::CompressedTexture2D::495317740499779682::1727437345::1727437457::0::::<><>::
 ._explosion-2.png::CompressedTexture2D::3734978065044867264::1727437345::1727437457::0::::<><>::
 ._explosion-3.png::CompressedTexture2D::5094854043783194197::1727437345::1727437457::0::::<><>::
@@ -79,9 +81,9 @@ sfx_zap.ogg::AudioStreamOggVorbis::4622586049988727577::1726915809::1726915817::
 ._explosion-6.png::CompressedTexture2D::3364887170115605684::1727437345::1727437457::0::::<><>::
 ._explosion-7.png::CompressedTexture2D::1895923423766382291::1727437345::1727437457::0::::<><>::
 ._explosion-8.png::CompressedTexture2D::3166453128769548610::1727437345::1727437457::0::::<><>::
-::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/explosion-1-b/::1727437346
+::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/explosion-1-b/::1727437457
 ._spritesheet.png::CompressedTexture2D::6601991719791397172::1727437346::1727437457::0::::<><>::
-::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/explosion-1-b/Sprites/::1727437346
+::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/explosion-1-b/Sprites/::1727437457
 ._explosion-1-b-1.png::CompressedTexture2D::1681283787774217684::1727437346::1727437457::0::::<><>::
 ._explosion-1-b-2.png::CompressedTexture2D::1067507633510431429::1727437346::1727437457::0::::<><>::
 ._explosion-1-b-3.png::CompressedTexture2D::3855155080575783346::1727437346::1727437457::0::::<><>::
@@ -90,9 +92,9 @@ sfx_zap.ogg::AudioStreamOggVorbis::4622586049988727577::1726915809::1726915817::
 ._explosion-1-b-6.png::CompressedTexture2D::4329549568689527866::1727437346::1727437457::0::::<><>::
 ._explosion-1-b-7.png::CompressedTexture2D::7578634006328335684::1727437346::1727437457::0::::<><>::
 ._explosion-1-b-8.png::CompressedTexture2D::525093163310665769::1727437346::1727437457::0::::<><>::
-::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/explosion-1-c/::1727437345
+::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/explosion-1-c/::1727437457
 ._spritesheet.png::CompressedTexture2D::3955658013874704472::1727437345::1727437457::0::::<><>::
-::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/explosion-1-c/Sprites/::1727437345
+::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/explosion-1-c/Sprites/::1727437457
 ._explosion-c1.png::CompressedTexture2D::7694503495631239800::1727437346::1727437457::0::::<><>::
 ._explosion-c2.png::CompressedTexture2D::6801992859677068165::1727437345::1727437457::0::::<><>::
 ._explosion-c3.png::CompressedTexture2D::4416410622878653241::1727437345::1727437457::0::::<><>::
@@ -103,9 +105,9 @@ sfx_zap.ogg::AudioStreamOggVorbis::4622586049988727577::1726915809::1726915817::
 ._explosion-c8.png::CompressedTexture2D::3823796445711701606::1727437345::1727437457::0::::<><>::
 ._explosion-c9.png::CompressedTexture2D::2842702476744191111::1727437345::1727437457::0::::<><>::
 ._explosion-c10.png::CompressedTexture2D::5744769222389418676::1727437345::1727437457::0::::<><>::
-::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/explosion-1-d/::1727437345
+::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/explosion-1-d/::1727437457
 ._spritsheet.png::CompressedTexture2D::4846763847152283784::1727437345::1727437457::0::::<><>::
-::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/explosion-1-d/Sprites/::1727437345
+::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/explosion-1-d/Sprites/::1727437457
 ._explosion-d1.png::CompressedTexture2D::6024767920466679319::1727437345::1727437457::0::::<><>::
 ._explosion-d2.png::CompressedTexture2D::2144659129075471783::1727437345::1727437457::0::::<><>::
 ._explosion-d3.png::CompressedTexture2D::2731528755003035269::1727437345::1727437457::0::::<><>::
@@ -118,9 +120,9 @@ sfx_zap.ogg::AudioStreamOggVorbis::4622586049988727577::1726915809::1726915817::
 ._explosion-d10.png::CompressedTexture2D::4663713290221765410::1727437345::1727437457::0::::<><>::
 ._explosion-d11.png::CompressedTexture2D::3253728245255477000::1727437345::1727437457::0::::<><>::
 ._explosion-d12.png::CompressedTexture2D::2958434069551259364::1727437345::1727437457::0::::<><>::
-::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/explosion-1-e/::1727437346
+::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/explosion-1-e/::1727437457
 ._explosion-5.png::CompressedTexture2D::3914580388541474567::1727437346::1727437457::0::::<><>::
-::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/explosion-1-e/Sprites/::1727437346
+::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/explosion-1-e/Sprites/::1727437457
 ._explosion-e1.png::CompressedTexture2D::8002130694735186982::1727437346::1727437457::0::::<><>::
 ._explosion-e2.png::CompressedTexture2D::1796186885451174356::1727437346::1727437457::0::::<><>::
 ._explosion-e3.png::CompressedTexture2D::4093599859359371628::1727437346::1727437457::0::::<><>::
@@ -143,9 +145,9 @@ sfx_zap.ogg::AudioStreamOggVorbis::4622586049988727577::1726915809::1726915817::
 ._explosion-e20.png::CompressedTexture2D::2514867146739185335::1727437346::1727437457::0::::<><>::
 ._explosion-e21.png::CompressedTexture2D::4811367596838287519::1727437346::1727437457::0::::<><>::
 ._explosion-e22.png::CompressedTexture2D::8069942601150263157::1727437346::1727437457::0::::<><>::
-::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/explosion-1-f/::1727437344
+::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/explosion-1-f/::1727437457
 ._Sprites.png::CompressedTexture2D::2485460473730565250::1727437344::1727437457::0::::<><>::
-::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/explosion-1-f/Sprites/::1727437345
+::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/explosion-1-f/Sprites/::1727437457
 ._explosion-f1.png::CompressedTexture2D::7121494157856685779::1727437345::1727437457::0::::<><>::
 ._explosion-f2.png::CompressedTexture2D::5297811829499518328::1727437345::1727437457::0::::<><>::
 ._explosion-f3.png::CompressedTexture2D::2815624352254719474::1727437345::1727437457::0::::<><>::
@@ -154,9 +156,9 @@ sfx_zap.ogg::AudioStreamOggVorbis::4622586049988727577::1726915809::1726915817::
 ._explosion-f6.png::CompressedTexture2D::1619692725995244121::1727437345::1727437457::0::::<><>::
 ._explosion-f7.png::CompressedTexture2D::4542780297226365009::1727437345::1727437457::0::::<><>::
 ._explosion-f8.png::CompressedTexture2D::1216216779216553148::1727437345::1727437457::0::::<><>::
-::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/explosion-1-g/::1727437344
+::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/explosion-1-g/::1727437457
 ._spritesheet.png::CompressedTexture2D::2586322501303115510::1727437344::1727437457::0::::<><>::
-::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/explosion-1-g/Sprites/::1727437344
+::res://assets/explosions/__MACOSX/explosion pack 1/Explosions/explosion-1-g/Sprites/::1727437457
 ._frame1.png::CompressedTexture2D::6999483777187587057::1727437344::1727437457::0::::<><>::
 ._frame2.png::CompressedTexture2D::7038138979762120401::1727437344::1727437457::0::::<><>::
 ._frame3.png::CompressedTexture2D::4804637924589306651::1727437344::1727437457::0::::<><>::
@@ -166,9 +168,9 @@ sfx_zap.ogg::AudioStreamOggVorbis::4622586049988727577::1726915809::1726915817::
 ._frame7.png::CompressedTexture2D::1015557127905188087::1727437344::1727437457::0::::<><>::
 ::res://assets/explosions/explosion pack 1/::1727437342
 ::res://assets/explosions/explosion pack 1/Explosions/::1727437343
-::res://assets/explosions/explosion pack 1/Explosions/explosion-1-a/::1727437342
+::res://assets/explosions/explosion pack 1/Explosions/explosion-1-a/::1727437457
 spritesheet.png::CompressedTexture2D::5706406775417997104::1727437342::1727437457::1::::<><>::
-::res://assets/explosions/explosion pack 1/Explosions/explosion-1-a/Sprites/::1727437342
+::res://assets/explosions/explosion pack 1/Explosions/explosion-1-a/Sprites/::1727437457
 explosion-1.png::CompressedTexture2D::3399553265875342754::1727437342::1727437457::1::::<><>::
 explosion-2.png::CompressedTexture2D::1591670071725557367::1727437342::1727437457::1::::<><>::
 explosion-3.png::CompressedTexture2D::6994587542634934745::1727437342::1727437457::1::::<><>::
@@ -177,9 +179,9 @@ explosion-5.png::CompressedTexture2D::5890386484267520507::1727437342::172743745
 explosion-6.png::CompressedTexture2D::4588812483127534915::1727437342::1727437457::1::::<><>::
 explosion-7.png::CompressedTexture2D::5503911456226692826::1727437342::1727437457::1::::<><>::
 explosion-8.png::CompressedTexture2D::1470193597180593453::1727437343::1727437457::1::::<><>::
-::res://assets/explosions/explosion pack 1/Explosions/explosion-1-b/::1727437343
+::res://assets/explosions/explosion pack 1/Explosions/explosion-1-b/::1727437457
 spritesheet.png::CompressedTexture2D::569798370739562297::1727437343::1727437457::1::::<><>::
-::res://assets/explosions/explosion pack 1/Explosions/explosion-1-b/Sprites/::1727437343
+::res://assets/explosions/explosion pack 1/Explosions/explosion-1-b/Sprites/::1727437457
 explosion-1-b-1.png::CompressedTexture2D::1592539982520868362::1727437343::1727437457::1::::<><>::
 explosion-1-b-2.png::CompressedTexture2D::5050532240547220296::1727437343::1727437457::1::::<><>::
 explosion-1-b-3.png::CompressedTexture2D::7041229371672986096::1727437343::1727437457::1::::<><>::
@@ -188,9 +190,9 @@ explosion-1-b-5.png::CompressedTexture2D::487560377208288538::1727437343::172743
 explosion-1-b-6.png::CompressedTexture2D::339399771168022767::1727437343::1727437457::1::::<><>::
 explosion-1-b-7.png::CompressedTexture2D::5485793937192765744::1727437343::1727437457::1::::<><>::
 explosion-1-b-8.png::CompressedTexture2D::677699796478352112::1727437343::1727437457::1::::<><>::
-::res://assets/explosions/explosion pack 1/Explosions/explosion-1-c/::1727437343
+::res://assets/explosions/explosion pack 1/Explosions/explosion-1-c/::1727437457
 spritesheet.png::CompressedTexture2D::3218815011330846584::1727437343::1727437457::1::::<><>::
-::res://assets/explosions/explosion pack 1/Explosions/explosion-1-c/Sprites/::1727437343
+::res://assets/explosions/explosion pack 1/Explosions/explosion-1-c/Sprites/::1727437457
 explosion-c1.png::CompressedTexture2D::1237472200216541951::1727437343::1727437457::1::::<><>::
 explosion-c2.png::CompressedTexture2D::7507439522700337595::1727437343::1727437457::1::::<><>::
 explosion-c3.png::CompressedTexture2D::22464935938649982::1727437343::1727437457::1::::<><>::
@@ -201,9 +203,9 @@ explosion-c7.png::CompressedTexture2D::4283492334192000840::1727437343::17274374
 explosion-c8.png::CompressedTexture2D::1413530830171245731::1727437343::1727437457::1::::<><>::
 explosion-c9.png::CompressedTexture2D::5028358017857233067::1727437343::1727437457::1::::<><>::
 explosion-c10.png::CompressedTexture2D::2395871918889114175::1727437343::1727437457::1::::<><>::
-::res://assets/explosions/explosion pack 1/Explosions/explosion-1-d/::1727437343
+::res://assets/explosions/explosion pack 1/Explosions/explosion-1-d/::1727437457
 spritsheet.png::CompressedTexture2D::3596311291142114419::1727437343::1727437457::1::::<><>::
-::res://assets/explosions/explosion pack 1/Explosions/explosion-1-d/Sprites/::1727437343
+::res://assets/explosions/explosion pack 1/Explosions/explosion-1-d/Sprites/::1727437457
 explosion-d1.png::CompressedTexture2D::3030040977945382098::1727437343::1727437457::1::::<><>::
 explosion-d2.png::CompressedTexture2D::2910048839624725235::1727437343::1727437457::1::::<><>::
 explosion-d3.png::CompressedTexture2D::8922748266872133098::1727437343::1727437457::1::::<><>::
@@ -216,9 +218,9 @@ explosion-d9.png::CompressedTexture2D::5712640578047673650::1727437343::17274374
 explosion-d10.png::CompressedTexture2D::3337366698722381943::1727437343::1727437457::1::::<><>::
 explosion-d11.png::CompressedTexture2D::463007359016560278::1727437343::1727437457::1::::<><>::
 explosion-d12.png::CompressedTexture2D::5191984350519522234::1727437343::1727437457::1::::<><>::
-::res://assets/explosions/explosion pack 1/Explosions/explosion-1-e/::1727437343
+::res://assets/explosions/explosion pack 1/Explosions/explosion-1-e/::1727437457
 explosion-5.png::CompressedTexture2D::8050151399032472273::1727437343::1727437457::1::::<><>::
-::res://assets/explosions/explosion pack 1/Explosions/explosion-1-e/Sprites/::1727437344
+::res://assets/explosions/explosion pack 1/Explosions/explosion-1-e/Sprites/::1727437457
 explosion-e1.png::CompressedTexture2D::8559541827343459081::1727437344::1727437457::1::::<><>::
 explosion-e2.png::CompressedTexture2D::5475469157767973832::1727437344::1727437457::1::::<><>::
 explosion-e3.png::CompressedTexture2D::1884169103567566127::1727437344::1727437457::1::::<><>::
@@ -241,9 +243,9 @@ explosion-e19.png::CompressedTexture2D::5402988748108508018::1727437344::1727437
 explosion-e20.png::CompressedTexture2D::2082010380977268680::1727437344::1727437457::1::::<><>::
 explosion-e21.png::CompressedTexture2D::7612689057127808163::1727437344::1727437457::1::::<><>::
 explosion-e22.png::CompressedTexture2D::5685982879829069146::1727437344::1727437457::1::::<><>::
-::res://assets/explosions/explosion pack 1/Explosions/explosion-1-f/::1727437342
+::res://assets/explosions/explosion pack 1/Explosions/explosion-1-f/::1727437457
 Sprites.png::CompressedTexture2D::9061494535404066836::1727437342::1727437457::1::::<><>::
-::res://assets/explosions/explosion pack 1/Explosions/explosion-1-f/Sprites/::1727437342
+::res://assets/explosions/explosion pack 1/Explosions/explosion-1-f/Sprites/::1727437457
 explosion-f1.png::CompressedTexture2D::1185344131204004484::1727437342::1727437457::1::::<><>::
 explosion-f2.png::CompressedTexture2D::5684737778019221129::1727437342::1727437457::1::::<><>::
 explosion-f3.png::CompressedTexture2D::760559649236638437::1727437342::1727437457::1::::<><>::
@@ -252,9 +254,9 @@ explosion-f5.png::CompressedTexture2D::340995446286931874::1727437342::172743745
 explosion-f6.png::CompressedTexture2D::1910274585319325161::1727437342::1727437457::1::::<><>::
 explosion-f7.png::CompressedTexture2D::3247555272889965952::1727437342::1727437457::1::::<><>::
 explosion-f8.png::CompressedTexture2D::8321612317025343163::1727437342::1727437457::1::::<><>::
-::res://assets/explosions/explosion pack 1/Explosions/explosion-1-g/::1727437342
+::res://assets/explosions/explosion pack 1/Explosions/explosion-1-g/::1727437457
 spritesheet.png::CompressedTexture2D::7889458612180135154::1727437342::1727437457::1::::<><>::
-::res://assets/explosions/explosion pack 1/Explosions/explosion-1-g/Sprites/::1727437342
+::res://assets/explosions/explosion pack 1/Explosions/explosion-1-g/Sprites/::1727437457
 frame1.png::CompressedTexture2D::3371287490952765949::1727437342::1727437457::1::::<><>::
 frame2.png::CompressedTexture2D::8243264043092626726::1727437342::1727437457::1::::<><>::
 frame3.png::CompressedTexture2D::6706784185473208878::1727437342::1727437457::1::::<><>::
@@ -262,8 +264,8 @@ frame4.png::CompressedTexture2D::4138310158120816768::1727437342::1727437457::1:
 frame5.png::CompressedTexture2D::2267999613307702324::1727437342::1727437457::1::::<><>::
 frame6.png::CompressedTexture2D::1952575000124360530::1727437342::1727437457::1::::<><>::
 frame7.png::CompressedTexture2D::427141935276990151::1727437342::1727437457::1::::<><>::
-::res://assets/fonts/::1727426049
-new_label_settings.tres::LabelSettings::5428193996624630665::1727426049::0::1::::<><>::uid://bpo08sdyanq62::::res://assets/Bonus/kenvector_future.ttf
+::res://assets/fonts/::1727523936
+new_label_settings.tres::LabelSettings::5428193996624630665::1727523936::0::1::::<><>::uid://bpo08sdyanq62::::res://assets/Bonus/kenvector_future.ttf
 ::res://assets/healthbar/::1727286455
 healthbarProgress (1).png::CompressedTexture2D::738518198753527851::1727286411::1727286455::1::::<><>::
 healthbarUnder (1).png::CompressedTexture2D::3186779905095088148::1727286421::1727286455::1::::<><>::
@@ -288,6 +290,19 @@ Pixel (3).png::CompressedTexture2D::5348429321150880093::1526724745::1727285761:
 Pixel (4).png::CompressedTexture2D::5694798586156337986::1526724748::1727285761::1::::<><>::
 RPG Style (1).png::CompressedTexture2D::7441481775713879987::1526724752::1727285761::1::::<><>::
 RPG Style (2).png::CompressedTexture2D::4533308124423357017::1526724757::1727285761::1::::<><>::
+::res://assets/player_health/::1727518525
+README.txt::TextFile::-1::1727518525::0::1::::<><>::
+::res://assets/player_health/animate/::1727517859
+animate h1.png::CompressedTexture2D::6711873291079780418::1727517834::1727517859::1::::<><>::
+animate h2.png::CompressedTexture2D::4799823343891666404::1727517834::1727517859::1::::<><>::
+animate h3.png::CompressedTexture2D::7099357024570964892::1727517834::1727517859::1::::<><>::
+::res://assets/player_health/hearts/::1727517859
+heart border half.png::CompressedTexture2D::8951561643341590833::1727517834::1727517859::1::::<><>::
+heart border sh.png::CompressedTexture2D::1652397035411867321::1727517834::1727517859::1::::<><>::
+heart border.png::CompressedTexture2D::3003748918808517941::1727517834::1727517859::1::::<><>::
+heart half.png::CompressedTexture2D::6225716055430876027::1727517834::1727517859::1::::<><>::
+heart.png::CompressedTexture2D::4702555106769091366::1727517834::1727517859::1::::<><>::
+heartsh.png::CompressedTexture2D::7075392500565580816::1727517834::1727517859::1::::<><>::
 ::res://assets/PNG/::1727011836
 playerShip1_blue.png::CompressedTexture2D::4746130081267561087::1726915809::1726915817::1::::<><>::
 playerShip1_green.png::CompressedTexture2D::4422890645638786853::1726915809::1726915817::1::::<><>::
@@ -808,41 +823,45 @@ sheet.png::CompressedTexture2D::7566407576472208420::1726915813::1726915818::1::
 sheet.xml::TextFile::-1::1726915813::0::1::::<><>::
 ::res://assets/Vector/::1726915818
 sheet.svg::CompressedTexture2D::2074611111678125940::1726915813::1726915818::1::::<><>::
-::res://globals/::1727431674
+::res://globals/::1727520966
 EnemyFactory.gd::GDScript::-1::1727333649::0::1::::<>Node<>::
-GameManager.gd::GDScript::-1::1727361938::0::1::::<>Node<>::
-ProjectileFactory.gd::GDScript::-1::1727351480::0::1::::<>Node<>::
-SignalBus.gd::GDScript::-1::1727431674::0::1::::<>Node<>::
-::res://scenes/::1727434148
+GameManager.gd::GDScript::-1::1727520966::0::1::::<>Node<>::
+ProjectileFactory.gd::GDScript::-1::1727449859::0::1::::<>Node<>::
+SignalBus.gd::GDScript::-1::1727520903::0::1::::<>Node<>::
+::res://scenes/::1727524513
 camera_2d.gd::GDScript::-1::1726937218::0::1::::<>Camera2D<>::
-game_scene.gd::GDScript::-1::1727431823::0::1::::GameScene<>Node2D<>::
-game_scene.tscn::PackedScene::5865102798262780081::1727434148::0::1::::<><>::res://scenes/game_scene.gd<>uid://ddcgpdfhpuft1::::res://assets/craiyon_141502_space_background_2d_cartoon.png<>uid://b3yoi5ia0ewu2::::res://scenes/player.tscn<>uid://wfnpdlgrmtni::::res://scenes/ui.tscn<>uid://cg5e0yq4td0gb::::res://assets/chip-mode-danijel-zambo-main-version-1431-02-05.mp3
-gpu_particles_2d.tscn::PackedScene::7136012834588111932::1727099032::0::1::::<><>::
-main_menu.gd::GDScript::-1::1727426777::0::1::::<>Control<>::
-main_menu.tscn::PackedScene::7734418373397009326::1727434148::0::1::::<><>::res://scenes/main_menu.gd<>uid://cjlptd0a1wqyj::::res://assets/fonts/new_label_settings.tres<>uid://bpo08sdyanq62::::res://assets/Bonus/kenvector_future.ttf
-player.gd::GDScript::-1::1727426540::0::1::::Player<>Area2D<>::
-player.tscn::PackedScene::4402119283997943499::1727434148::0::1::::<><>::res://scenes/player.gd<>uid://bjm5awditly3x::::res://scenes/enemies/simple_enemy.tscn<>uid://dsdome0t6utyc::::res://scenes/projectiles/player_laser.tscn<>uid://benhlcikss48w::::res://scenes/enemies/elite_enemy.tscn<>uid://b7p1kpvpvjril::::res://scenes/shield_explosion.tscn<>uid://b5x0jb5wimtmt::::res://assets/sfx_laser1.ogg<>res://scenes/camera_2d.gd<>uid://driu487wo6y4m::::res://assets/PNG/spr_shield.png<>uid://b28kifs5xav4c::::res://assets/recent/Player/Main Ship/Main Ship - Engines/PNGs/Main Ship - Engines - Base Engine.png<>uid://bey8sinnkxr6m::::res://assets/recent/Player/Main Ship/Main Ship - Engine Effects/PNGs/Main Ship - Engines - Base Engine - Idle.png<>uid://bc0hjenctgqgo::::res://assets/recent/Player/Main Ship/Main Ship - Weapons/PNGs/Main Ship - Weapons - Zapper.png<>uid://cmqxm4ocvw7x2::::res://assets/recent/Player/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Full health.png<>uid://bbphngf0m8ca3::::res://assets/recent/Player/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Slight damage.png<>uid://6btbi5evxvw5::::res://assets/recent/Player/Main Ship/Main Ship - Shields/PNGs/Main Ship - Shields - Front Shield.png<>uid://bo7oaqcaida57::::res://assets/recent/Player/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Damaged.png<>uid://b5mcryigxcdrl::::res://assets/recent/Player/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Very damaged.png<>uid://b64hk1kpr2op2::::res://assets/Bonus/sfx_zap.ogg
-first_boss_arena.tscn::PackedScene::4146411052083230986::1727282454::0::1::::<><>::
+gpu_particles_2d.tscn::PackedScene::7136012834588111932::1727524513::0::1::::<><>::
+hud.gd::GDScript::-1::1727521072::0::1::::<>Control<>::
+hud.tscn::PackedScene::1555292731480272126::1727524513::0::1::::<><>::res://scenes/hud.gd<>uid://bhpxsfcxegng2::::res://assets/new_label_settings.tres<>uid://bpo08sdyanq62::::res://assets/Bonus/kenvector_future.ttf<>uid://blnx2gfj38605::::res://assets/healthbar/healthbarUnder (1).png<>uid://kr0j0t0ogmtf::::res://assets/healthbar/healthbarProgress (1).png<>uid://b787npi7ri7vm::::res://assets/player_health/hearts/heart.png
+player.gd::GDScript::-1::1727520715::0::1::::Player<>Area2D<>::
+player.tscn::PackedScene::4402119283997943499::1727524512::0::1::::<><>::res://scenes/player.gd<>uid://bjm5awditly3x::::res://scenes/enemies/simple_enemy.tscn<>uid://dsdome0t6utyc::::res://scenes/projectiles/player_laser.tscn<>uid://benhlcikss48w::::res://scenes/enemies/elite_enemy.tscn<>uid://b7p1kpvpvjril::::res://scenes/shield_explosion.tscn<>uid://b5x0jb5wimtmt::::res://assets/sfx_laser1.ogg<>res://scenes/camera_2d.gd<>uid://driu487wo6y4m::::res://assets/PNG/spr_shield.png<>uid://b28kifs5xav4c::::res://assets/recent/Player/Main Ship/Main Ship - Engines/PNGs/Main Ship - Engines - Base Engine.png<>uid://bey8sinnkxr6m::::res://assets/recent/Player/Main Ship/Main Ship - Engine Effects/PNGs/Main Ship - Engines - Base Engine - Idle.png<>uid://bc0hjenctgqgo::::res://assets/recent/Player/Main Ship/Main Ship - Weapons/PNGs/Main Ship - Weapons - Zapper.png<>uid://cmqxm4ocvw7x2::::res://assets/recent/Player/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Full health.png<>uid://bbphngf0m8ca3::::res://assets/recent/Player/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Slight damage.png<>uid://6btbi5evxvw5::::res://assets/recent/Player/Main Ship/Main Ship - Shields/PNGs/Main Ship - Shields - Front Shield.png<>uid://bo7oaqcaida57::::res://assets/recent/Player/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Damaged.png<>uid://b5mcryigxcdrl::::res://assets/recent/Player/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Very damaged.png<>uid://b64hk1kpr2op2::::res://assets/Bonus/sfx_zap.ogg
 shield_explosion.gd::GDScript::-1::1727016436::0::1::::<>AnimatedSprite2D<>::
 shield_explosion.tscn::PackedScene::4665026667173123991::1727185671::0::1::::<><>::uid://df0wfpepa4eae::::res://assets/recent/hit - yellow.png<>res://scenes/shield_explosion.gd
-ui.gd::GDScript::-1::1727348169::0::1::::<>Control<>::
-ui.tscn::PackedScene::1555292731480272126::1727434148::0::1::::<><>::res://scenes/ui.gd<>uid://bpo08sdyanq62::::res://assets/Bonus/kenvector_future.ttf<>uid://blnx2gfj38605::::res://assets/healthbar/healthbarUnder (1).png<>uid://kr0j0t0ogmtf::::res://assets/healthbar/healthbarProgress (1).png
-::res://scenes/enemies/::1727434148
+::res://scenes/basic_scene/::1727518997
+basic_scene.tscn::PackedScene::5865102798262780081::1727518997::0::1::::<><>::uid://ddcgpdfhpuft1::::res://assets/craiyon_141502_space_background_2d_cartoon.png<>uid://b3yoi5ia0ewu2::::res://scenes/player.tscn<>uid://wfnpdlgrmtni::::res://scenes/hud.tscn<>uid://cg5e0yq4td0gb::::res://assets/chip-mode-danijel-zambo-main-version-1431-02-05.mp3
+::res://scenes/enemies/::1727524512
 elite_enemy.gd::GDScript::-1::1727107006::0::1::::<>BasicEnemy<>::
-elite_enemy.tscn::PackedScene::2694457749614612828::1727434148::0::1::::<><>::res://scenes/enemies/elite_enemy.gd<>uid://h1yu104a5hd1::::res://scenes/projectiles/elite_projectile.tscn<>uid://c8w0dawifubjw::::res://scenes/gpu_particles_2d.tscn<>uid://bt7sjrlrgndwa::::res://assets/recent/Enemies/Kla'ed/Base/PNGs/Kla'ed - Bomber - Base.png<>uid://hxh87mlsystq::::res://assets/PNG/Effects/fire14.png
+elite_enemy.tscn::PackedScene::2694457749614612828::1727511878::0::1::::<><>::res://scenes/enemies/elite_enemy.gd<>uid://h1yu104a5hd1::::res://scenes/projectiles/elite_projectile.tscn<>uid://c8w0dawifubjw::::res://scenes/gpu_particles_2d.tscn<>uid://bt7sjrlrgndwa::::res://assets/recent/Enemies/Kla'ed/Base/PNGs/Kla'ed - Bomber - Base.png<>uid://hxh87mlsystq::::res://assets/PNG/Effects/fire14.png
 simple_enemy.gd::GDScript::-1::1727188073::0::1::::<>BasicEnemy<>::
-simple_enemy.tscn::PackedScene::3044715479804554999::1727434148::0::1::::<><>::res://scenes/enemies/simple_enemy.gd<>uid://cpg7fworn2gp3::::res://scenes/projectiles/basic_projectile.tscn<>uid://c8w0dawifubjw::::res://scenes/gpu_particles_2d.tscn<>uid://d3ls6uimg51fa::::res://assets/recent/Enemies/Kla'ed/Base/PNGs/Kla'ed - Fighter - Base.png
-::res://scenes/first_boss/::1727434148
-first_boss.gd::GDScript::-1::1727431702::0::1::::FirstBoss<>Area2D<>::
-first_boss.tscn::PackedScene::5660569089055558337::1727434148::0::1::::<><>::res://scenes/first_boss/first_boss.gd<>uid://bpg7agf87jvm2::::res://scenes/projectiles/boss_rocket.tscn<>uid://x8gfucvagfwn::::res://assets/recent/Enemies/Kla'ed/Destruction/PNGs/Kla'ed - Torpedo Ship - Destruction.png<>uid://bsf4y64jnjn6j::::res://assets/recent/Enemies/Kla'ed/Weapons/PNGs/Kla'ed - Torpedo Ship - Weapons.png<>uid://dhrioem2m2ohh::::res://assets/recent/Enemies/Kla'ed/Base/PNGs/Kla'ed - Torpedo Ship - Base.png<>uid://d3eh7iekekjdq::::res://assets/recent/Enemies/Kla'ed/Shield/PNGs/Kla'ed - Torpedo Ship - Shield.png<>uid://dxkdcai521ijj::::res://assets/recent/Enemies/Kla'ed/Engine/PNGs/Kla'ed - Torpedo Ship - Engine.png<>uid://ufql81o0n2hs::::res://assets/recent/Enemies/Kla'ed/Projectiles/PNGs/Kla'ed - Ray.png<>uid://cjd50uwv1o1gp::::res://assets/sounds/Audio/explosionCrunch_000.ogg<>uid://cuybofev8f0k1::::res://assets/sounds/Audio/lowFrequency_explosion_000.ogg<>uid://dncnebwrihqh0::::res://assets/sounds/Audio/forceField_000.ogg
-first_boss_arena.tscn::PackedScene::8880207500481752977::1727434148::0::1::::<><>::uid://cptdneovd2ovh::::res://scenes/game_scene.tscn<>uid://cxse64mop6pa4::::res://assets/backgrounds/Small 512x512/Purple Nebula/Purple_Nebula_08-512x512.png<>res://scenes/first_boss/first_boss_arena.gd
-first_boss_arena.gd::GDScript::-1::1727432506::0::1::::<>GameScene<>::
-::res://scenes/projectiles/::1727434148
-basic_projectile.gd::GDScript::-1::1727351811::0::1::::BasicProjectile<>Area2D<>::
-basic_projectile.tscn::PackedScene::5840013339150906106::1727434148::0::1::::<><>::res://scenes/projectiles/basic_projectile.gd<>uid://dexcftqwj4se5::::res://assets/PNG/Lasers/laserRed04.png
-boss_rocket.tscn::PackedScene::3453582872963105455::1727434148::0::1::::<><>::res://boss_rocket.gd<>uid://bk7shvk3l76vd::::res://assets/recent/Enemies/Kla'ed/Projectiles/PNGs/Kla'ed - Torpedo.png
+simple_enemy.tscn::PackedScene::3044715479804554999::1727524512::0::1::::<><>::res://scenes/enemies/simple_enemy.gd<>uid://cpg7fworn2gp3::::res://scenes/projectiles/basic_projectile.tscn<>uid://c8w0dawifubjw::::res://scenes/gpu_particles_2d.tscn<>uid://d3ls6uimg51fa::::res://assets/recent/Enemies/Kla'ed/Base/PNGs/Kla'ed - Fighter - Base.png
+::res://scenes/first_boss/::1727524512
+first_boss.gd::GDScript::-1::1727450131::0::1::::FirstBoss<>Area2D<>::
+first_boss.tscn::PackedScene::5660569089055558337::1727524512::0::1::::<><>::res://scenes/first_boss/first_boss.gd<>uid://bpg7agf87jvm2::::res://scenes/projectiles/boss_rocket.tscn<>uid://x8gfucvagfwn::::res://assets/recent/Enemies/Kla'ed/Destruction/PNGs/Kla'ed - Torpedo Ship - Destruction.png<>uid://bsf4y64jnjn6j::::res://assets/recent/Enemies/Kla'ed/Weapons/PNGs/Kla'ed - Torpedo Ship - Weapons.png<>uid://dhrioem2m2ohh::::res://assets/recent/Enemies/Kla'ed/Base/PNGs/Kla'ed - Torpedo Ship - Base.png<>uid://d3eh7iekekjdq::::res://assets/recent/Enemies/Kla'ed/Shield/PNGs/Kla'ed - Torpedo Ship - Shield.png<>uid://dxkdcai521ijj::::res://assets/recent/Enemies/Kla'ed/Engine/PNGs/Kla'ed - Torpedo Ship - Engine.png<>uid://ufql81o0n2hs::::res://assets/recent/Enemies/Kla'ed/Projectiles/PNGs/Kla'ed - Ray.png<>uid://cjd50uwv1o1gp::::res://assets/sounds/Audio/explosionCrunch_000.ogg<>uid://cuybofev8f0k1::::res://assets/sounds/Audio/lowFrequency_explosion_000.ogg<>uid://dncnebwrihqh0::::res://assets/sounds/Audio/forceField_000.ogg
+first_boss_arena.gd::GDScript::-1::1727471376::0::1::::<>Node2D<>::
+first_boss_arena.tscn::PackedScene::8880207500481752977::1727524512::0::1::::<><>::uid://cptdneovd2ovh::::res://scenes/basic_scene/basic_scene.tscn<>uid://cxse64mop6pa4::::res://assets/backgrounds/Small 512x512/Purple Nebula/Purple_Nebula_08-512x512.png<>res://scenes/first_boss/first_boss_arena.gd
+::res://scenes/level_one/::1727524513
+level_one.gd::GDScript::-1::1727510347::0::1::::LevelOne<>Node2D<>::
+level_one.tscn::PackedScene::4846665777032089760::1727524513::0::1::::<><>::uid://cptdneovd2ovh::::res://scenes/basic_scene/basic_scene.tscn<>res://scenes/level_one/level_one.gd
+::res://scenes/main_menu/::1727524512
+main_menu.gd::GDScript::-1::1727520997::0::1::::<>Control<>::
+main_menu.tscn::PackedScene::7734418373397009326::1727524512::0::1::::<><>::res://scenes/main_menu/main_menu.gd<>uid://cjlptd0a1wqyj::::res://assets/fonts/new_label_settings.tres<>uid://bpo08sdyanq62::::res://assets/Bonus/kenvector_future.ttf
+::res://scenes/projectiles/::1727524513
+basic_projectile.gd::GDScript::-1::1727449635::0::1::::BasicProjectile<>Area2D<>::
+basic_projectile.tscn::PackedScene::5840013339150906106::1727450513::0::1::::<><>::res://scenes/projectiles/basic_projectile.gd<>uid://dexcftqwj4se5::::res://assets/PNG/Lasers/laserRed04.png
+boss_large_laser_projectile.tscn::PackedScene::8916890173942683589::1727524513::0::1::::<><>::uid://cpg7fworn2gp3::::res://scenes/projectiles/basic_projectile.tscn<>res://boss_large_laser_projectile.gd<>uid://1kmc68cihpac::::res://assets/PNG/Lasers/laserRed16.png
+boss_rocket.tscn::PackedScene::3453582872963105455::1727450513::0::1::::<><>::res://boss_rocket.gd<>uid://bk7shvk3l76vd::::res://assets/recent/Enemies/Kla'ed/Projectiles/PNGs/Kla'ed - Torpedo.png<>uid://d2dpqxyc32woi::::res://assets/explosions/explosion pack 1/Explosions/explosion-1-f/Sprites.png
 elite_projectile.gd::GDScript::-1::1727099628::0::1::::EliteProjectile<>BasicProjectile<>::
-elite_projectile.tscn::PackedScene::546490056322302700::1727434148::0::1::::<><>::uid://cpg7fworn2gp3::::res://scenes/projectiles/basic_projectile.tscn<>res://scenes/projectiles/elite_projectile.gd<>uid://b34dj582n8hen::::res://assets/PNG/Lasers/laserRed10.png
+elite_projectile.tscn::PackedScene::546490056322302700::1727511878::0::1::::<><>::uid://cpg7fworn2gp3::::res://scenes/projectiles/basic_projectile.tscn<>res://scenes/projectiles/elite_projectile.gd<>uid://b34dj582n8hen::::res://assets/PNG/Lasers/laserRed10.png
 player_laser.gd::GDScript::-1::1727187177::0::1::::<>Area2D<>::
 player_laser.tscn::PackedScene::8429726086870673966::1727189499::0::1::::<><>::res://scenes/projectiles/player_laser.gd<>uid://bvffy0a8q3qnj::::res://assets/laserBlue03.png
 ::res://scripts/::1727186536

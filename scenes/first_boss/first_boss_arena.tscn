@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dyrvyqpsd8106"]
 
-[ext_resource type="PackedScene" uid="uid://cptdneovd2ovh" path="res://scenes/game_scene.tscn" id="1_yei7m"]
+[ext_resource type="PackedScene" uid="uid://cptdneovd2ovh" path="res://scenes/basic_scene/basic_scene.tscn" id="1_yei7m"]
 [ext_resource type="Texture2D" uid="uid://cxse64mop6pa4" path="res://assets/backgrounds/Small 512x512/Purple Nebula/Purple_Nebula_08-512x512.png" id="2_repoe"]
 [ext_resource type="Script" path="res://scenes/first_boss/first_boss_arena.gd" id="2_yrufr"]
 
