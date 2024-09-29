@@ -19,8 +19,8 @@ class_name Player
 @onready var engine_effect: AnimatedSprite2D = $NewDesignShip/EngineEffect
 @onready var laser_gun: AnimatedSprite2D = $NewDesignShip/LaserGun
 @onready var deflect_shield: AnimatedSprite2D = $NewDesignShip/DeflectShield
+@onready var next_level_timer: Timer = $NextLevelTimer
 
-@onready var camera_2d: Camera2D = $Camera2D
 @onready var shield: Sprite2D = $Shield
 @onready var ship_collision: CollisionShape2D = $ShipCollision
 
@@ -34,6 +34,9 @@ var shield_active: bool = false
 var shield_cooldown_passed: bool = true
 var can_laser: bool = true
 
+
+var level_complete: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	deflect_shield.visible = false
@@ -41,36 +44,45 @@ func _ready() -> void:
 	SignalBus.enemy_destroyed.connect(enemy_destroyed)
 	SignalBus.player_collision_hit.connect(on_player_collision_hit)
 	SignalBus.rocked_exploded.connect(_on_rocket_exploded)
+	SignalBus.on_basic_dialog_yes_pressed.connect(_on_level_complete)
 	enemy_spawn_timer.start()
 	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	engine_effect.play("default")
-	var mouse_pos = get_global_mouse_position()
-	var needed_vector = mouse_pos - position
-	var angl = needed_vector.angle()
-	 # Smoothly rotate towards the target angle using lerp_angle()
-	new_design_ship.rotation = lerp_angle(new_design_ship.rotation, angl + deg_to_rad(90), 2 * PI * delta)
-	# Sync the deflect area rotation with the player
-	deflect_area.rotation = new_design_ship.rotation
-	if Input.is_action_just_pressed("Deflect"):
-		deflect_shield.visible = true
-		deflect_shield.play("deflect")
-		
-		deflect_timer_buffer.start()
-		try_to_deflect()
-	if Input.is_action_just_pressed("LaserFirePlayer"):
-		if can_laser:
-			open_fire(new_design_ship.rotation)
-	if Input.is_action_just_pressed("Shield"):
-		activate_shield()
+	if level_complete:
+		move_to_the_next_level(delta)
+	else:
+		engine_effect.play("default")
+		var mouse_pos = get_global_mouse_position()
+		var needed_vector = mouse_pos - position
+		var angl = needed_vector.angle()
+		 # Smoothly rotate towards the target angle using lerp_angle()
+		new_design_ship.rotation = lerp_angle(new_design_ship.rotation, angl + deg_to_rad(90), 2 * PI * delta)
+		# Sync the deflect area rotation with the player
+		deflect_area.rotation = new_design_ship.rotation
+		if Input.is_action_just_pressed("Deflect"):
+			deflect_shield.visible = true
+			deflect_shield.play("deflect")
+			
+			deflect_timer_buffer.start()
+			try_to_deflect()
+		if Input.is_action_just_pressed("LaserFirePlayer"):
+			if can_laser:
+				open_fire(new_design_ship.rotation)
+		if Input.is_action_just_pressed("Shield"):
+			activate_shield()
+		SignalBus.player_moved.emit(global_position)
+		if GameManager.game_mode == GameManager.GameMode.BOSS_LEVEL_1:
+			move(delta)
 	
-	SignalBus.player_moved.emit(global_position)
-	if GameManager.game_mode == GameManager.GameMode.BOSS_LEVEL_1:
-		move(delta)
-	
+func move_to_the_next_level(delta: float) -> void:
+	var new_direction = Vector2.UP
+	var gain_velocity = 50.0
+	player_speed += gain_velocity
+	position += new_direction * player_speed * delta
+
 
 func move(delta: float) -> void:
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -141,7 +153,6 @@ func _on_area_entered(area: Area2D) -> void:
 			print(area)
 			health = health - 1
 			SignalBus.player_damaged.emit(1)
-			camera_2d.start_screen_shake(5, 2)
 			if health == 0:
 				SignalBus.player_death.emit()
 			var next_frame = new_design_ship.frame + 1
@@ -173,3 +184,12 @@ func _on_deflect_end() -> void:
 func _on_rocket_exploded(position: Vector2) -> void:
 	if global_position.distance_to(position) < 75:
 		SignalBus.player_death.emit()
+
+
+func _on_level_complete() -> void:
+	next_level_timer.start()
+	level_complete = true
+
+
+func _on_next_level_timer_timeout() -> void:
+	GameManager.load_first_level_boss_scene()

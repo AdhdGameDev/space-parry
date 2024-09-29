@@ -5,11 +5,14 @@ extends Node2D
 @onready var rocket_ru: Marker2D = $RocketRU
 @onready var rocket_rd: Marker2D = $RocketRD
 
+
+
 const MINIMUM_DISTANCE: float = 150.0
 var previous_strikes: Array[Dictionary] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GameManager.game_mode = GameManager.GameMode.BOSS_LEVEL_1
 	EnemyFactory.spawn_boss(EnemyFactory.BossType.FIRST_BOSS)
 	SignalBus.rocket_launched.connect(_on_rocket_launched)
 

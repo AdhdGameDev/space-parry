@@ -10,7 +10,7 @@ load_path = "res://.godot/imported/purple.png-52c0cdc1e489e32101e2b2181245fb84.c
 [sub_resource type="LabelSettings" id="LabelSettings_fejfb"]
 font = ExtResource("3_y0xt3")
 font_size = 62
-font_color = Color(0.658824, 0.968627, 0.596078, 1)
+font_color = Color(0.945361, 0.333791, 0.495674, 1)
 outline_size = 7
 outline_color = Color(0.116677, 0.601864, 0.43534, 1)
 shadow_size = 14

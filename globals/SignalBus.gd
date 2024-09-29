@@ -11,3 +11,10 @@ signal coordinates_recevied(position: Vector2)
 signal rocked_exploded(position: Vector2)
 signal on_level_one_complete
 signal player_moved(position: Vector2)
+signal boss_moved(position: Vector2)
+signal first_boss_barage_ended
+signal rocket_barage_ended
+
+
+signal on_basic_dialog_yes_pressed
+signal on_basic_dialog_no_pressed

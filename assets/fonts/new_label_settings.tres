@@ -4,8 +4,8 @@
 
 [resource]
 font = ExtResource("1_wdade")
-font_size = 31
-font_color = Color(0.372513, 0.982404, 0.685346, 1)
+font_size = 66
+font_color = Color(0.850147, 0.881499, 0.955056, 1)
 outline_size = 7
 outline_color = Color(0.847623, 0.190592, 0.640252, 1)
 shadow_size = 14

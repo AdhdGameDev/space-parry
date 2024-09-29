@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://drqkg4fww124i"]
+
+[ext_resource type="FontFile" uid="uid://yg52n2ybbo8g" path="res://assets/Bonus/kenvector_future_thin.ttf" id="1_ji5ol"]
+[ext_resource type="Script" path="res://scenes/ui/window.gd" id="2_842k2"]
+[ext_resource type="LabelSettings" uid="uid://bhpxsfcxegng2" path="res://assets/new_label_settings.tres" id="2_trfxi"]
+
+[sub_resource type="Theme" id="Theme_1qw5y"]
+
+[node name="BasicDialog" type="Window"]
+title = "Confirmation"
+initial_position = 1
+size = Vector2i(400, 200)
+exclusive = true
+always_on_top = true
+theme = SubResource("Theme_1qw5y")
+theme_override_fonts/title_font = ExtResource("1_ji5ol")
+script = ExtResource("2_842k2")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/shadow_offset_y = 0
+text = "Want to proceed to the next level?"
+label_settings = ExtResource("2_trfxi")
+
+[node name="YesButton" type="Button" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 8
+text = "Yes
+"
+alignment = 0
+
+[node name="NoButton" type="Button" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+theme_override_constants/h_separation = 100
+text = "No
+"
+alignment = 0
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="pressed" from="MarginContainer/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="MarginContainer/NoButton" to="." method="_on_no_button_pressed"]

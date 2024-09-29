@@ -10,7 +10,7 @@ enum BossType {
 	FIRST_BOSS = 0
 }
 
-const PLAYER_POSITION: Vector2 = Vector2(600, 600)
+const PLAYER_POSITION: Vector2 = Vector2(741, 735)
 const RADIUS: int = 500
 const BOSS_RADIUS: int = 575
 

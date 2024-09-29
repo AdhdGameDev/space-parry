@@ -8,6 +8,11 @@ script = ExtResource("2_cmby7")
 
 [node name="Background" parent="." index="1"]
 z_index = -1
+position = Vector2(727, 800)
+scale = Vector2(3, 2.955)
+
+[node name="Player" parent="." index="2"]
+position = Vector2(741, 735)
 
 [node name="RegularEnemySpawnTimer" type="Timer" parent="." index="5"]
 wait_time = 4.0

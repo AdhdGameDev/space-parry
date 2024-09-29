@@ -532,13 +532,8 @@ shape = SubResource("RectangleShape2D_htl8g")
 wait_time = 5.0
 one_shot = true
 
-[node name="MoveTimer" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
-
 [node name="LaserAttackTimer" type="Timer" parent="."]
 wait_time = 0.2
-autostart = true
 
 [node name="RocketTimer" type="Timer" parent="."]
 wait_time = 10.0
@@ -559,6 +554,10 @@ stream = ExtResource("10_teisd")
 [node name="LaserBarageTimerEnd" type="Timer" parent="."]
 wait_time = 4.0
 one_shot = true
+
+[node name="StartActionTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
 autostart = true
 
 [connection signal="area_entered" from="." to="." method="_on_boss_attacked"]
@@ -568,7 +567,7 @@ autostart = true
 [connection signal="timeout" from="EnergyBeamTimer" to="." method="_on_energy_beam_readz"]
 [connection signal="area_entered" from="BeamArea" to="." method="_on_beam_area_area_entered"]
 [connection signal="timeout" from="ShieldTimer" to="." method="_on_shield_end"]
-[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer"]
 [connection signal="timeout" from="LaserAttackTimer" to="." method="_on_laser_attack_cooldown"]
 [connection signal="timeout" from="RocketTimer" to="." method="_on_rocket_timer"]
 [connection signal="timeout" from="LaserBarageTimerEnd" to="." method="_on_laser_barage_end"]
+[connection signal="timeout" from="StartActionTimer" to="." method="_on_start_action_timer_timeout"]

@@ -13,10 +13,11 @@ class_name FirstBoss
 @onready var laser_barage_timer_end: Timer = $LaserBarageTimerEnd
 @onready var energy_beam_timer: Timer = $EnergyBeamTimer
 @onready var shield_timer: Timer = $ShieldTimer
-@onready var move_timer: Timer = $MoveTimer
 @onready var laser_attack_timer: Timer = $LaserAttackTimer
 @onready var rocket_timer: Timer = $RocketTimer
+@onready var start_action_timer: Timer = $StartActionTimer
 
+var state_machine: BossStateMachine
 
 @onready var player: Area2D
 var current_health: int
@@ -36,29 +37,27 @@ var rocket_barage_active: bool = false
 var energy_beam_active: bool = false
 var is_moved_recently: bool = true
 var can_fire_regular_laser: bool = true
-var last_move_direction: Vector2
+var last_move_direction: Vector2 = Vector2.LEFT
 var speed: float  = GameManager.first_boss_speed
 
 
 func _ready() -> void:
+	state_machine = BossStateMachine.new()
+	state_machine.set_boss(self)
+	add_child(state_machine)
+	state_machine.change_state(GameManager.STATE_IDLE)
+	
 	current_health = GameManager.first_boss_health
 	engine.play("engine")
 	$BeamArea/BeamCollision.disabled = true
 	player = get_tree().get_nodes_in_group("player")[0]
 	
 func _process(delta: float) -> void:
-	if !is_moved_recently:
-		move(delta)
-	if Input.is_action_just_pressed("Shield") and not rocket_barage_active:
-		start_rocket_barage()
-		#laser_attack()
-	#if Input.is_action_just_pressed("ui_accept") and not energy_beam_active:
-		#energy_beam_active = true
-		#energy_beam_attack()
+	state_machine._process(delta)
 		
-		
+	
 func move(delta: float) -> void:
-	var screen_width = 1200
+	var screen_width = 1300
 	position += speed * last_move_direction * delta
 	if global_position.x < 0:
 		position.x = 0
@@ -66,13 +65,16 @@ func move(delta: float) -> void:
 	elif global_position.x > screen_width:
 		position.x = screen_width
 		last_move_direction = Vector2.LEFT
+	SignalBus.boss_moved.emit(position)
 	
 
 		
 		
 func laser_attack() -> void:
-	if !rocket_barage_active and can_fire_regular_laser:
-		ProjectileFactory.spawn_projectile(ProjectileFactory.ProjectileType.BASIC_PROJECTILE, player.position, position)
+	can_fire_regular_laser = true
+	laser_attack_timer.autostart = true
+	laser_attack_timer.start()
+	laser_barage_timer_end.start()
 	
 func start_rocket_barage() -> void:
 	rocket_barage_active = true
@@ -99,6 +101,7 @@ func _on_ship_frame_changed() -> void:
 	if ship.frame == 15:
 		speed = GameManager.first_boss_speed
 		end_rocket_barage()
+		SignalBus.rocket_barage_ended.emit()
 
 func end_rocket_barage() -> void:
 	rocket_barage_active = false
@@ -122,12 +125,10 @@ func _on_energy_beam_finished(anim_name: StringName) -> void:
 
 func _on_boss_attacked(area: Area2D) -> void:
 	if !defence_active:
+		if area is BigBossLaser and area.reflected:
+			receive_damage(area, GameManager.first_boss_big_laser)
 		if area.is_in_group("laser"):
 			receive_damage(area, GameManager.laser_damage)
-		if area.is_in_group("rocket"):
-			receive_damage(area, GameManager.first_boss_rocket_damage)
-			activate_defence()
-			$RocketSound.play()
 	else:
 		$ShieldSound.play()
 		area.queue_free()
@@ -155,31 +156,22 @@ func _on_shield_end() -> void:
 	shield.visible = false
 
 
-func _on_move_timer() -> void:
-	is_moved_recently = false
-	var right_direction  = Vector2.RIGHT
-	var left_direction = Vector2.LEFT
-	
-	var choosen_direction = randi_range(0, 1)
-	if choosen_direction == 0:
-		last_move_direction = left_direction
-	elif choosen_direction == 1:
-		last_move_direction = right_direction
-	
-
-
 func _on_laser_attack_cooldown() -> void:
-	laser_attack()
+	if !rocket_barage_active and can_fire_regular_laser:
+		ProjectileFactory.spawn_projectile(ProjectileFactory.ProjectileType.BASIC_PROJECTILE, player.position, position)
 
 
 func _on_rocket_timer() -> void:
-	speed = 0
-	start_rocket_barage()
+	pass
+	#speed = 0
+	#start_rocket_barage()
 
 
 func _on_laser_barage_end() -> void:
 	can_fire_regular_laser = false
 	var spawned_projectile = ProjectileFactory.spawn_projectile(ProjectileFactory.ProjectileType.BOSS_BIG_LASER, player.global_position, global_position)
 	spawned_projectile.set_target(player.global_position)
+	laser_attack_timer.stop()
 	laser_barage_timer_end.stop()
+	SignalBus.first_boss_barage_ended.emit()
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://b3yoi5ia0ewu2"]
+[gd_scene load_steps=50 format=3 uid="uid://b3yoi5ia0ewu2"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_vorp1"]
 [ext_resource type="PackedScene" uid="uid://bjm5awditly3x" path="res://scenes/enemies/simple_enemy.tscn" id="2_o7w06"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://benhlcikss48w" path="res://scenes/enemies/elite_enemy.tscn" id="3_udoea"]
 [ext_resource type="PackedScene" uid="uid://b7p1kpvpvjril" path="res://scenes/shield_explosion.tscn" id="4_38wwn"]
 [ext_resource type="AudioStream" uid="uid://b5x0jb5wimtmt" path="res://assets/sfx_laser1.ogg" id="5_cek4k"]
-[ext_resource type="Script" path="res://scenes/camera_2d.gd" id="7_gsn5i"]
 [ext_resource type="Texture2D" uid="uid://driu487wo6y4m" path="res://assets/PNG/spr_shield.png" id="7_up5bv"]
 [ext_resource type="Texture2D" uid="uid://b28kifs5xav4c" path="res://assets/recent/Player/Main Ship/Main Ship - Engines/PNGs/Main Ship - Engines - Base Engine.png" id="10_auhe4"]
 [ext_resource type="Texture2D" uid="uid://bey8sinnkxr6m" path="res://assets/recent/Player/Main Ship/Main Ship - Engine Effects/PNGs/Main Ship - Engines - Base Engine - Idle.png" id="11_es8o8"]
@@ -293,6 +292,7 @@ frame = 13
 frame_progress = 1.0
 
 [node name="DeflectShield" type="AnimatedSprite2D" parent="NewDesignShip"]
+visible = false
 position = Vector2(0, -12.8)
 sprite_frames = SubResource("SpriteFrames_k21jb")
 animation = &"deflect"
@@ -321,10 +321,8 @@ stream = ExtResource("15_punmw")
 wait_time = 1.5
 one_shot = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("7_gsn5i")
-
 [node name="Shield" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.3, 0.298)
 texture = ExtResource("7_up5bv")
 
@@ -336,9 +334,14 @@ one_shot = true
 wait_time = 6.0
 one_shot = true
 
+[node name="NextLevelTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="DeflectTimerBuffer" to="." method="_on_deflect_end"]
 [connection signal="timeout" from="LaserCooldownTimer" to="." method="_on_laser_cooldown_timer_timeout"]
 [connection signal="timeout" from="ShieldTimer" to="." method="_on_shield_end"]
 [connection signal="timeout" from="ShieldCooldownTimer" to="." method="_on_shield_cooldown_passed"]
+[connection signal="timeout" from="NextLevelTimer" to="." method="_on_next_level_timer_timeout"]

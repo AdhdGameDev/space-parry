@@ -13,6 +13,9 @@ position = Vector2(559, 654.5)
 scale = Vector2(4.88281, 4.5332)
 texture = ExtResource("2_repoe")
 
+[node name="Player" parent="." index="2"]
+position = Vector2(795, 1231)
+
 [node name="Control" parent="." index="3"]
 offset_left = 74.0
 offset_top = 72.0
