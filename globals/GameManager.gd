@@ -24,6 +24,7 @@ var first_boss_big_laser: int = 100
 const STATE_IDLE = "Idle"
 const STATE_LASER_ATTACK = "LaserAttack"
 const STATE_ROCKET_ATTACK = "RocketAttack"
+const STATE_BEAM_ATTACK = "BeamAttack"
 
 const BASIC_ENEMY_SCORE: int = 10
 const BASIC_ENEMY_DAMAGE: int = 10

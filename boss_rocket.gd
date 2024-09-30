@@ -1,9 +1,9 @@
 extends BasicProjectile
 
 
-@export var initial_velocity: float = 125  # Starting speed of the projectile
+@export var initial_velocity: float = 150  # Starting speed of the projectile
 @export var max_velocity: float = 800  # Max speed limit for the projectile
-@export var acceleration: float = 70  # How much the speed increases per second
+@export var acceleration: float = 100  # How much the speed increases per second
 
 @onready var rocket: AnimatedSprite2D = $Rocket
 @onready var aiming_timer: Timer = $AimingTimer

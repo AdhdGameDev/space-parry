@@ -29,4 +29,8 @@ func _on_player_ara_entered(area: Area2D) -> void:
 	if area.is_in_group("player"):
 		SignalBus.player_collision_hit.emit(self.global_position)
 		queue_free()
+		
+		
+func die() -> void:
+	queue_free()
 	

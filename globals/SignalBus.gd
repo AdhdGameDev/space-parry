@@ -14,6 +14,7 @@ signal player_moved(position: Vector2)
 signal boss_moved(position: Vector2)
 signal first_boss_barage_ended
 signal rocket_barage_ended
+signal boss_beam_finished
 
 
 signal on_basic_dialog_yes_pressed

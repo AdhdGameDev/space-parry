@@ -15,9 +15,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	global_position += velocity * delta
 	if !is_in_viewport():
-		queue_free()
+		die()
 
 
 func is_in_viewport() -> bool:
 	var viewport_rect = get_viewport().get_visible_rect()
 	return viewport_rect.has_point(global_position)
+	
+	
+func die() -> void:
+	queue_free()

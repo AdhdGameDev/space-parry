@@ -1,11 +1,9 @@
-extends Node
+extends BossState
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func enter_state() -> void:
+	boss.energy_beam_attack()
+	SignalBus.boss_beam_finished.connect(_on_beam_ended)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_beam_ended() -> void:
+	boss.state_machine.change_state(GameManager.STATE_IDLE)

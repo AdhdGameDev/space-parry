@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://cmwa0mh7vfd1j"]
+[gd_scene load_steps=77 format=3 uid="uid://cmwa0mh7vfd1j"]
 
 [ext_resource type="Script" path="res://scenes/first_boss/first_boss.gd" id="1_cjwql"]
 [ext_resource type="PackedScene" uid="uid://bpg7agf87jvm2" path="res://scenes/projectiles/boss_rocket.tscn" id="2_6lh6p"]
@@ -11,6 +11,11 @@
 [ext_resource type="AudioStream" uid="uid://cjd50uwv1o1gp" path="res://assets/sounds/Audio/explosionCrunch_000.ogg" id="9_fyety"]
 [ext_resource type="AudioStream" uid="uid://cuybofev8f0k1" path="res://assets/sounds/Audio/lowFrequency_explosion_000.ogg" id="10_f18ll"]
 [ext_resource type="AudioStream" uid="uid://dncnebwrihqh0" path="res://assets/sounds/Audio/forceField_000.ogg" id="10_teisd"]
+[ext_resource type="Script" path="res://scripts/boss_state_machine/boss_state_machine.gd" id="12_apxis"]
+[ext_resource type="Script" path="res://scripts/boss_state_machine/boss_beam_state.gd" id="13_lskgi"]
+[ext_resource type="Script" path="res://scripts/boss_state_machine/boss_idle_state.gd" id="14_g7mmu"]
+[ext_resource type="Script" path="res://scripts/boss_state_machine/boss_rocket_state.gd" id="15_h3qea"]
+[ext_resource type="Script" path="res://scripts/boss_state_machine/boss_laser_state.gd" id="16_wkjpd"]
 
 [sub_resource type="Animation" id="Animation_lg71o"]
 length = 0.001
@@ -528,16 +533,8 @@ position = Vector2(1.75, 180.75)
 scale = Vector2(0.694444, 9.61842)
 shape = SubResource("RectangleShape2D_htl8g")
 
-[node name="ShieldTimer" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
-
 [node name="LaserAttackTimer" type="Timer" parent="."]
 wait_time = 0.2
-
-[node name="RocketTimer" type="Timer" parent="."]
-wait_time = 10.0
-autostart = true
 
 [node name="RocketSound" type="AudioStreamPlayer2D" parent="."]
 scale = Vector2(0.25, 0.25)
@@ -560,14 +557,31 @@ wait_time = 3.0
 one_shot = true
 autostart = true
 
+[node name="BossStateMachine" type="Node" parent="." node_paths=PackedStringArray("idle_state", "laser_state", "rocket_state", "beam_state")]
+script = ExtResource("12_apxis")
+idle_state = NodePath("BossIdleState")
+laser_state = NodePath("BossLaserState")
+rocket_state = NodePath("BossRocketState")
+beam_state = NodePath("BossBeamState")
+
+[node name="BossBeamState" type="Node" parent="BossStateMachine"]
+script = ExtResource("13_lskgi")
+
+[node name="BossIdleState" type="Node" parent="BossStateMachine"]
+script = ExtResource("14_g7mmu")
+
+[node name="BossRocketState" type="Node" parent="BossStateMachine"]
+script = ExtResource("15_h3qea")
+
+[node name="BossLaserState" type="Node" parent="BossStateMachine"]
+script = ExtResource("16_wkjpd")
+
 [connection signal="area_entered" from="." to="." method="_on_boss_attacked"]
 [connection signal="animation_finished" from="EnergyBeamAnimation" to="." method="_on_energy_beam_finished"]
 [connection signal="frame_changed" from="Ship" to="." method="_on_ship_frame_changed"]
 [connection signal="sprite_frames_changed" from="Ship" to="." method="_on_ship_sprite_frames_changed"]
 [connection signal="timeout" from="EnergyBeamTimer" to="." method="_on_energy_beam_readz"]
 [connection signal="area_entered" from="BeamArea" to="." method="_on_beam_area_area_entered"]
-[connection signal="timeout" from="ShieldTimer" to="." method="_on_shield_end"]
 [connection signal="timeout" from="LaserAttackTimer" to="." method="_on_laser_attack_cooldown"]
-[connection signal="timeout" from="RocketTimer" to="." method="_on_rocket_timer"]
 [connection signal="timeout" from="LaserBarageTimerEnd" to="." method="_on_laser_barage_end"]
 [connection signal="timeout" from="StartActionTimer" to="." method="_on_start_action_timer_timeout"]
