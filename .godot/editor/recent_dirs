@@ -1,3 +1,7 @@
+res://scenes/projectiles
+res://scenes/basic_types
+res://scripts/player_related_scripts
+res://scenes/player
 res://assets/explosions/explosion pack 1/Explosions/explosion-1-d
 res://assets/explosions/explosion pack 1/Explosions/explosion-1-c
 res://scripts/boss_state_machine
@@ -9,7 +13,6 @@ res://assets/recent/Enemies/Kla'ed/Weapons/PNGs
 res://scenes/enemies
 res://assets
 res://scenes
-res://scenes/projectiles
 res://assets/explosions/explosion pack 1/Explosions/explosion-1-f
 res://scenes/first_boss
 res://assets/recent/Enemies/Kla'ed/Projectiles/PNGs
@@ -17,6 +20,3 @@ res://assets/recent/Enemies/Kla'ed/Destruction/PNGs
 res://assets/recent/Enemies/Kla'ed/Shield/PNGs
 res://assets/recent/Player/Main Ship/Main Ship - Shields/PNGs
 res://assets/recent/Player/Main Ship/Main Ship - Weapons/PNGs
-res://assets/recent/Player/Main Ship/Main Ship - Engine Effects/PNGs
-res://
-res://assets/recent

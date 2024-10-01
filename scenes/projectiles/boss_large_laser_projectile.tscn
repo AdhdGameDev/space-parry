@@ -161,6 +161,7 @@ animations = [{
 
 [node name="BossLargeLaserProjectile" instance=ExtResource("1_nho4r")]
 script = ExtResource("2_vf6vf")
+speed = 800.0
 
 [node name="Sprite2D" parent="." index="1"]
 scale = Vector2(3, 2.361)

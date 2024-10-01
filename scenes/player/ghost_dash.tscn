@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://7a0oms0kdb4b"]
+
+[ext_resource type="Texture2D" uid="uid://cmqxm4ocvw7x2" path="res://assets/recent/Player/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Full health.png" id="1_sahan"]
+[ext_resource type="Script" path="res://ghost_dash.gd" id="2_md8iv"]
+
+[node name="Sprite2D" type="Sprite2D"]
+modulate = Color(0.593134, 0.593134, 0.593134, 1)
+show_behind_parent = true
+texture = ExtResource("1_sahan")
+script = ExtResource("2_md8iv")

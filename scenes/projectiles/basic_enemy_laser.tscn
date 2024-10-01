@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://duxfbms4lva8q"]
+
+[ext_resource type="Script" path="res://scenes/basic_types/basic_laser_projectile.gd" id="1_bdxib"]
+[ext_resource type="Texture2D" uid="uid://buwt3aqd75drd" path="res://assets/PNG/Lasers/laserRed14.png" id="2_yvyyu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pe71a"]
+radius = 5.0
+height = 58.0
+
+[node name="BasicEnemyLaser" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_bdxib")
+speed = 500.0
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("2_yvyyu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_pe71a")

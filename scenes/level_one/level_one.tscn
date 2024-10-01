@@ -14,13 +14,15 @@ scale = Vector2(3, 2.955)
 [node name="Player" parent="." index="2"]
 position = Vector2(741, 735)
 
+[node name="AudioStreamPlayer" parent="." index="4"]
+volume_db = -49.914
+
 [node name="RegularEnemySpawnTimer" type="Timer" parent="." index="5"]
 wait_time = 4.0
 autostart = true
 
 [node name="OnBombEnemySpawnTimer" type="Timer" parent="." index="6"]
 wait_time = 3.0
-autostart = true
 
 [connection signal="timeout" from="RegularEnemySpawnTimer" to="." method="_on_regular_enemy_spawn"]
 [connection signal="timeout" from="OnBombEnemySpawnTimer" to="." method="_on_on_bomb_enemy_spawn_timer_timeout"]

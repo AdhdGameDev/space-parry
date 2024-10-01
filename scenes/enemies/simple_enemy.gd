@@ -1,6 +1,6 @@
 extends BasicEnemy  # Inherit from BasicEnemy
 
-@export var projectile: PackedScene
+@onready var body: Sprite2D = $Body
 
 func _ready() -> void:
 	$Timer.wait_time = randf_range(1, 4)
@@ -23,16 +23,22 @@ func _on_timer_timeout() -> void:
 	is_turned = !is_turned
 
 func spawn_projectile() -> void:
-	ProjectileFactory.spawn_projectile(ProjectileFactory.ProjectileType.BASIC_PROJECTILE, center_position, global_position)
+	# Calculate a forward offset based on the current angle of movement.
+	var forward_offset = Vector2(cos(current_angle), sin(current_angle)) * -40  # Offset in front of the enemy based on the direction of movement
+
+	# Calculate the global position for spawning the laser.
+	var laser_global_position = global_position + forward_offset
+
+	# Spawn the laser at the calculated global position.
+	ProjectileFactory.spawn_laser(ProjectileFactory.LaserType.BASIC_ENEMY_LASER, center_position, laser_global_position)
+
+
+
 
 func _on_enemy_hit(area: Area2D) -> void:
-	if area.is_in_group("projectile"):
-		var current_projectile: BasicProjectile = area as BasicProjectile
-		if current_projectile.reflected:
-			die(GameManager.BASIC_ENEMY_SCORE)
-			current_projectile.queue_free()  # Optionally remove the projectile
-	elif area.is_in_group("laser"):
+	if area is BasicProjectile:
 		die(GameManager.BASIC_ENEMY_SCORE)
+		area.queue_free()
 	elif area.is_in_group("enemy"):
 		direction = direction * -1
 		rotation = current_angle + deg_to_rad(90)
