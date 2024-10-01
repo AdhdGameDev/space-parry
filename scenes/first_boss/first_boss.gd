@@ -18,7 +18,7 @@ class_name FirstBoss
 
 var state_machine: BossStateMachine
 
-@onready var player: Area2D
+@onready var player: CharacterBody2D
 var current_health: int
 var defence_active: bool = false
 

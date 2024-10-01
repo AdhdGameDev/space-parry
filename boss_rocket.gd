@@ -12,6 +12,7 @@ extends BasicProjectile
 var target: Vector2
 var target_coordinates_set: bool = false
 var aimed: bool = false
+var velocity
 
 
 # Called when the node enters the scene tree for the first time.
@@ -71,7 +72,7 @@ func _on_explosion_animation_finished() -> void:
 	queue_free()
 
 
-func _on_area_entered(area: Area2D) -> void:
-	if area is Player:
-		explode()
-		SignalBus.player_death.emit()
+#func _on_area_entered(area: Area2D) -> void:
+	#if area is Player:
+		#explode()
+		#SignalBus.player_death.emit()

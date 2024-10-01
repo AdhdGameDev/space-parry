@@ -1,4 +1,4 @@
-extends Area2D
+extends CharacterBody2D
 
 class_name Player
 
@@ -6,11 +6,10 @@ class_name Player
 @export var eliteEnemy: PackedScene
 @export var laser: PackedScene
 @export var shield_explosion: PackedScene
-
+@export var ghost_dash_node: PackedScene
 @onready var deflect_area: Area2D = $DeflectArea
 
 @onready var deflect_timer_buffer: Timer = $DeflectTimerBuffer
-@onready var laser_cooldown_timer: Timer = $LaserCooldownTimer
 @onready var enemy_spawn_timer: Timer = $EnemySpawnTimer
 @onready var shield_timer: Timer = $ShieldTimer
 @onready var shield_cooldown_timer: Timer = $ShieldCooldownTimer
@@ -20,6 +19,8 @@ class_name Player
 @onready var laser_gun: AnimatedSprite2D = $NewDesignShip/LaserGun
 @onready var deflect_shield: AnimatedSprite2D = $NewDesignShip/DeflectShield
 @onready var next_level_timer: Timer = $NextLevelTimer
+@onready var dash_ghosting_timer: Timer = $DashGhostingTimer
+@onready var laser_sound: AudioStreamPlayer = $LaserSound
 
 @onready var shield: Sprite2D = $Shield
 @onready var ship_collision: CollisionShape2D = $ShipCollision
@@ -28,12 +29,21 @@ class_name Player
 @export var enemy_max_count: int = GameManager.maximum_enemies
 var current_enemy_count: int = 0
 
+@export var attack_component: PlayerAttackComponent
+
 var player_speed: float = 250.0
 
 var shield_active: bool = false
 var shield_cooldown_passed: bool = true
 var can_laser: bool = true
 
+var acceleration: float = 700.0
+var deacceleration: float = 300.0
+var max_speed: float = 300.0
+var friction: float = 0.93
+
+# This is the direction the ship faces for shooting or deflecting
+var aim_direction: Vector2 = Vector2.UP  # Default direction the ship faces
 
 var level_complete: bool = false
 
@@ -47,6 +57,10 @@ func _ready() -> void:
 	SignalBus.on_basic_dialog_yes_pressed.connect(_on_level_complete)
 	enemy_spawn_timer.start()
 	
+func add_ghosting_dash_effect():
+	var ghost_dash = ghost_dash_node.instantiate()
+	ghost_dash.set_property(global_position, new_design_ship.scale, rotation)
+	get_parent().add_child(ghost_dash)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -54,28 +68,51 @@ func _process(delta: float) -> void:
 	if level_complete:
 		move_to_the_next_level(delta)
 	else:
-		engine_effect.play("default")
-		var mouse_pos = get_global_mouse_position()
-		var needed_vector = mouse_pos - position
-		var angl = needed_vector.angle()
-		 # Smoothly rotate towards the target angle using lerp_angle()
-		new_design_ship.rotation = lerp_angle(new_design_ship.rotation, angl + deg_to_rad(90), 2 * PI * delta)
-		# Sync the deflect area rotation with the player
 		deflect_area.rotation = new_design_ship.rotation
 		if Input.is_action_just_pressed("Deflect"):
 			deflect_shield.visible = true
 			deflect_shield.play("deflect")
-			
 			deflect_timer_buffer.start()
 			try_to_deflect()
 		if Input.is_action_just_pressed("LaserFirePlayer"):
-			if can_laser:
-				open_fire(new_design_ship.rotation)
+			attack_component.fire_laser()
 		if Input.is_action_just_pressed("Shield"):
 			activate_shield()
 		SignalBus.player_moved.emit(global_position)
-		if GameManager.game_mode == GameManager.GameMode.BOSS_LEVEL_1:
-			move(delta)
+		#if GameManager.game_mode == GameManager.GameMode.BOSS_LEVEL_1:
+			#move(delta)
+			
+func _physics_process(delta: float) -> void:
+	# Get input for absolute movement based on screen directions
+	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+
+	if input_direction != Vector2.ZERO:
+		input_direction = input_direction.normalized()  # Normalize to prevent fast diagonal movement
+		velocity = velocity.move_toward(input_direction * max_speed, acceleration * delta)
+	else:
+		velocity = velocity * friction  # Gradually reduce the velocity for smooth stopping
+
+	move_and_slide()
+	update_aim_direction()
+
+	if aim_direction != Vector2.ZERO:
+		rotation = aim_direction.angle() + deg_to_rad(90)
+	
+	if Input.is_action_just_pressed("Dash"):
+		dash()
+
+
+func update_aim_direction() -> void:
+	var mouse_position = get_global_mouse_position()
+	aim_direction = (mouse_position - global_position).normalized()
+	
+func dash() -> void:
+	dash_ghosting_timer.start()
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "position", position + velocity * 1.5, 0.50)
+	
+	await tween.finished
+	dash_ghosting_timer.stop()
 	
 func move_to_the_next_level(delta: float) -> void:
 	var new_direction = Vector2.UP
@@ -83,12 +120,6 @@ func move_to_the_next_level(delta: float) -> void:
 	player_speed += gain_velocity
 	position += new_direction * player_speed * delta
 
-
-func move(delta: float) -> void:
-	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	var velocity = input_direction * player_speed
-	position += velocity * delta
-	
 func enemy_destroyed(points: int) -> void:
 	current_enemy_count = current_enemy_count - 1
 	
@@ -104,46 +135,16 @@ func activate_shield() -> void:
 func try_to_deflect() -> void:
 	if deflect_timer_buffer.time_left > 0:
 		for projectile in deflect_area.get_overlapping_areas():
-			if !projectile.is_in_group("player") and !projectile.is_in_group("laser") and !projectile.is_in_group("beam"):
-				$DeflectSound.play()
-				var current_projectile: BasicProjectile = projectile
-				current_projectile.reflected = true
-				current_projectile.direction = current_projectile.direction * -1
-				current_projectile.velocity = current_projectile.velocity * -1
-				current_projectile.flip()
-				overcharge()
+			if projectile is BasicProjectile:
+				if projectile.can_be_reflected:
+					$DeflectSound.play()
+					projectile.deflect()
 		
-func overcharge() -> void:
-	laser_cooldown_timer.wait_time = laser_cooldown_timer.wait_time / 4
-
-	
-func open_fire(rotation: float) -> void:
-	laser_cooldown_timer.start()
-	can_laser = !can_laser
-	var laser_instance = laser.instantiate()
-	var forward_offset = Vector2(0, -40).rotated(new_design_ship.rotation)  
-	laser_instance.global_position = new_design_ship.position + forward_offset
-	
-	var mouse_pos = get_global_mouse_position()
-	var direction = (mouse_pos - new_design_ship.global_position).normalized()
-	laser_instance.rotation = direction.angle() + deg_to_rad(90)
-	
-	# Set the laser's velocity in that direction (you may need to adjust the speed)
-	laser_instance.velocity = direction * 600  # Adjust speed as needed
-	laser_instance.add_to_group("laser")
-	add_child(laser_instance)
-	$LaserSound.play()
-	laser_gun.play("fire")
 
 func _on_enemy_spawn_timer_timeout() -> void:
 	if enemy_max_count > current_enemy_count:
 		EnemyFactory.spawn_enemy(EnemyFactory.EnemyType.REGULAR_ENEMY)
 		current_enemy_count = current_enemy_count + 1
-
-
-func _on_laser_cooldown_timer_timeout() -> void:
-	can_laser = !can_laser
-
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("beam") and !shield_active:
@@ -174,10 +175,6 @@ func _on_shield_cooldown_passed() -> void:
 	shield_cooldown_passed = !shield_cooldown_passed
 	
 
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	laser_cooldown_timer.wait_time = laser_cooldown_timer.wait_time * 4
-
-
 func _on_deflect_end() -> void:
 	deflect_shield.visible = false
 	
@@ -193,3 +190,7 @@ func _on_level_complete() -> void:
 
 func _on_next_level_timer_timeout() -> void:
 	GameManager.load_first_level_boss_scene()
+
+
+func _on_dash_ghosting_timer_timeout() -> void:
+	add_ghosting_dash_effect()

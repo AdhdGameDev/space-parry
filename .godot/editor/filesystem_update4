@@ -20,3 +20,17 @@ res://scenes/projectiles/player_laser.tscn
 res://scenes/projectiles/player_laser.gd
 res://scenes/projectiles/boss_rocket.tscn
 res://boss_rocket.gd
+res://scenes/player.gd
+res://scenes/enemies/bomb_drone_enemy.gd
+res://scenes/player/sprite_2d.tscn
+res://ghost_dash.gd
+res://scenes/player/ghost_dash.tscn
+res://scenes/basic_types/basic_laser_projectile.tscn
+res://scenes/basic_types/basic_laser_projectile.gd
+res://scenes/player/player_laser.tscn
+res://scripts/player_related_scripts/attack_component.gd
+res://scenes/projectiles/basic_projectile.tscn
+res://scenes/basic_types/player_laser.tscn
+res://scenes/enemies/simple_enemy.tscn
+res://scenes/enemies/simple_enemy.gd
+res://scenes/projectiles/basic_enemy_laser.tscn
